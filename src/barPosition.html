@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        background-color: black;
+        height: 800px;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../node_modules/three/build/three.module.js",
+          "dat.gui": "../node_modules/dat.gui/build/dat.gui.module.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from '../node_modules/three/build/three.module.js';
+      import * as dat from 'dat.gui';
+      import ThreeBase from './ThreeBase.js';
+      class MyEarth extends ThreeBase {
+        constructor() {
+          super();
+          this.initCameraPos = [0, 0, 10];
+          this.isAxis = true;
+        }
+
+        addBar(lon, lat, value, geometry, lonHelper, latHelper, positionHelper) {
+          const amount = (value - this.min) / this.range;
+          const material = new THREE.MeshBasicMaterial();
+          const hue = THREE.MathUtils.lerp(this.that.barHueStart, this.that.barHueEnd, amount);
+          const saturation = 1;
+          const lightness = THREE.MathUtils.lerp(
+            this.that.barLightStart,
+            this.that.barLightEnd,
+            amount
+          );
+          material.color.setHSL(hue, saturation, lightness);
+          const mesh = new THREE.Mesh(geometry, material);
+          this.scene.add(mesh);
+
+          lonHelper.rotation.y = THREE.MathUtils.degToRad(lon) + Math.PI * 0.5;
+          latHelper.rotation.x = THREE.MathUtils.degToRad(-lat);
+
+          positionHelper.updateWorldMatrix(true, false);
+          mesh.applyMatrix4(positionHelper.matrixWorld);
+
+          mesh.scale.set(0.01, 0.01, THREE.MathUtils.lerp(0.01, 0.5, amount));
+        }
+
+        createChart(that) {
+          this.camera.near = 0.01;
+          this.camera.updateProjectionMatrix();
+
+          //柱体变换矩阵辅助对象
+          const lonHelper = new THREE.Mesh(
+            new THREE.BoxGeometry(0.5, 0.5, 2),
+            new THREE.MeshBasicMaterial({ color: '#FF0000' })
+          );
+          this.scene.add(lonHelper);
+          const latHelper = new THREE.Mesh(
+            new THREE.BoxGeometry(0.5, 0.5, 1),
+            new THREE.MeshBasicMaterial({ color: '#0000FF' })
+          );
+          lonHelper.add(latHelper);
+
+          const positionHelper = new THREE.Mesh(
+            new THREE.BoxGeometry(0.5, 0.5, 0.5),
+            new THREE.MeshBasicMaterial({ color: '#00FF00' })
+          );
+          positionHelper.position.z = 1;
+          latHelper.add(positionHelper);
+          const gui = new dat.GUI();
+          gui.add(lonHelper.rotation, 'y', -Math.PI, Math.PI);
+          gui.add(latHelper.rotation, 'x', -Math.PI * 0.5, Math.PI * 0.5);
+        }
+      }
+
+      var myEarth = new MyEarth();
+      window.myEarth = myEarth;
+      myEarth.initThree(document.getElementById('canvas'));
+      myEarth.createChart({
+        // bg: 'rgb(10 ,20 ,28)',
+        // borderColor: 'rgb(10 ,20 ,28)',
+        // blurColor: '#000000',
+        // borderWidth: 2,
+        // blurWidth: 0,
+        // fillColor: 'rgb(26, 35, 44)',
+
+        bg: '#000080',
+        borderColor: '#1E90FF',
+        blurColor: '#1E90FF',
+        borderWidth: 1,
+        blurWidth: 5,
+        fillColor: 'rgb(30 ,144 ,255,0.3)',
+
+        barHueStart: 0.2,
+        barHueEnd: 0.5,
+        barLightStart: 0.5,
+        barLightEnd: 0.78
+      });
+    </script>
+  </body>
+</html>

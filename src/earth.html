@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        background-color: black;
+        height: 800px;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../node_modules/three/build/three.module.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from '../node_modules/three/build/three.module.js';
+      import ThreeBase from './ThreeBase.js';
+      class MyEarth extends ThreeBase {
+        constructor() {
+          super();
+          this.initCameraPos = [0, 0, 10];
+          //   this.isAxis = true;
+          this.isStats = true;
+        }
+
+        drawEarthTex() {
+          let that = this.that;
+          return new Promise((resolve) => {
+            function drawRegion(ctx, c, geoInfo) {
+              ctx.beginPath();
+              c.forEach((item, i) => {
+                let pos = [(item[0] + 180) * 10, (-item[1] + 90) * 10];
+                if (i == 0) {
+                  ctx.moveTo(pos[0], pos[1]);
+                } else {
+                  ctx.lineTo(pos[0], pos[1]);
+                }
+              });
+              ctx.closePath();
+              ctx.fill();
+              ctx.stroke();
+            }
+            fetch('../node_modules/@surbowl/world-geo-json-zh/world.zh.json')
+              .then((res) => res.json())
+              .then((geojson) => {
+                let canvas = document.createElement('canvas');
+
+                canvas.width = 3600;
+                canvas.height = 1800;
+
+                let ctx = canvas.getContext('2d');
+                ctx.fillStyle = that.bg;
+                ctx.rect(0, 0, canvas.width, canvas.height);
+                ctx.fill();
+                //设置地图样式
+                ctx.strokeStyle = that.borderColor;
+                ctx.lineWidth = that.borderWidth;
+
+                ctx.fillStyle = that.fillColor;
+                if (that.blurWidth) {
+                  ctx.shadowBlur = that.blurWidth;
+                  ctx.shadowColor = that.blurColor;
+                }
+
+                geojson.features.forEach((a) => {
+                  if (a.geometry.type == 'MultiPolygon') {
+                    a.geometry.coordinates.forEach((b) => {
+                      b.forEach((c) => {
+                        drawRegion(ctx, c);
+                      });
+                    });
+                  } else {
+                    a.geometry.coordinates.forEach((c) => {
+                      drawRegion(ctx, c);
+                    });
+                  }
+                });
+                resolve(canvas);
+              });
+          });
+        }
+
+        animateAction() {}
+
+        addBar(lon, lat, value, geometry, lonHelper, latHelper, positionHelper) {
+          const amount = (value - this.min) / this.range;
+          const material = new THREE.MeshBasicMaterial();
+          const hue = THREE.MathUtils.lerp(this.that.barHueStart, this.that.barHueEnd, amount);
+          const saturation = 1;
+          const lightness = THREE.MathUtils.lerp(
+            this.that.barLightStart,
+            this.that.barLightEnd,
+            amount
+          );
+          material.color.setHSL(hue, saturation, lightness);
+          const mesh = new THREE.Mesh(geometry, material);
+          this.scene.add(mesh);
+
+          lonHelper.rotation.y = THREE.MathUtils.degToRad(lon) + Math.PI * 0.5;
+          latHelper.rotation.x = THREE.MathUtils.degToRad(-lat);
+
+          positionHelper.updateWorldMatrix(true, false);
+          mesh.applyMatrix4(positionHelper.matrixWorld);
+
+          mesh.scale.set(0.01, 0.01, THREE.MathUtils.lerp(0.01, 0.5, amount));
+        }
+
+        createChart(that) {
+          this.camera.near = 0.01;
+          this.camera.updateProjectionMatrix();
+          let thiz = this;
+          this.that = that;
+          this.drawEarthTex().then((canvas) => {
+            const map = new THREE.CanvasTexture(canvas);
+            map.wrapS = THREE.RepeatWrapping;
+            map.wrapT = THREE.RepeatWrapping;
+            const geometry = new THREE.SphereGeometry(1, 32, 32);
+            const material = new THREE.MeshBasicMaterial({ map: map, transparent: true });
+            const sphere = new THREE.Mesh(geometry, material);
+            this.scene.add(sphere);
+            //柱体变换矩阵辅助对象
+            const lonHelper = new THREE.Object3D();
+            this.scene.add(lonHelper);
+            const latHelper = new THREE.Object3D();
+            lonHelper.add(latHelper);
+
+            const positionHelper = new THREE.Object3D();
+            positionHelper.position.z = 1;
+            latHelper.add(positionHelper);
+            thiz.min = Number.MAX_SAFE_INTEGER;
+            thiz.max = Number.MIN_SAFE_INTEGER;
+            const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
+
+            boxGeometry.applyMatrix4(new THREE.Matrix4().makeTranslation(0, 0, 0.5));
+            fetch('./earthquake.json')
+              .then((res) => res.json())
+              .then((res) => {
+                res.forEach((a) => {
+                  if (thiz.min > a.mag) {
+                    thiz.min = a.mag;
+                  }
+                  if (thiz.max < a.mag) {
+                    thiz.max = a.mag;
+                  }
+                });
+                thiz.range = thiz.max - thiz.min;
+                res.forEach((a) => {
+                  thiz.addBar(
+                    a.lon,
+                    a.lat,
+                    a.mag,
+                    boxGeometry,
+                    lonHelper,
+                    latHelper,
+                    positionHelper
+                  );
+                });
+              });
+
+            //     fetch('./Photo.json')
+            //       .then((res) => res.json())
+            //       .then((res) => {
+            //         res.forEach((a) => {
+            //           if (thiz.min > a.value) {
+            //             thiz.min = a.value;
+            //           }
+            //           if (thiz.max < a.value) {
+            //             thiz.max = a.value;
+            //           }
+            //         });
+            //         thiz.range = thiz.max - thiz.min;
+
+            //         res.forEach((a) => {
+            //           thiz.addBar(
+            //             a.lng,
+            //             a.lat,
+            //             a.value,
+            //             boxGeometry,
+            //             lonHelper,
+            //             latHelper,
+            //             positionHelper
+            //           );
+            //         });
+            //       });
+          });
+        }
+      }
+
+      var myEarth = new MyEarth();
+      window.myEarth = myEarth;
+      myEarth.initThree(document.getElementById('canvas'));
+      myEarth.createChart({
+        // bg: 'rgb(10 ,20 ,28)',
+        // borderColor: 'rgb(10 ,20 ,28)',
+        // blurColor: '#000000',
+        // borderWidth: 2,
+        // blurWidth: 0,
+        // fillColor: 'rgb(26, 35, 44)',
+
+        bg: '#000080',
+        borderColor: '#1E90FF',
+        blurColor: '#1E90FF',
+        borderWidth: 1,
+        blurWidth: 5,
+        fillColor: 'rgb(30 ,144 ,255,0.3)',
+
+        barHueStart: 0.2,
+        barHueEnd: 0.5,
+        barLightStart: 0.5,
+        barLightEnd: 0.78
+      });
+    </script>
+  </body>
+</html>

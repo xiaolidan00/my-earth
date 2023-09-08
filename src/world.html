@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="module">
+      function drawRegion(ctx, c, geoInfo) {
+        ctx.beginPath();
+        c.forEach((item, i) => {
+          let pos = [(item[0] + 180) * 10, (-item[1] + 90) * 10];
+          if (i == 0) {
+            ctx.moveTo(pos[0], pos[1]);
+          } else {
+            ctx.lineTo(pos[0], pos[1]);
+          }
+        });
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+      }
+      var that = {
+        bg: '#000080',
+        borderColor: '#1E90FF',
+        blurColor: '#1E90FF',
+        borderWidth: 1,
+        blurWidth: 5,
+        fillColor: 'rgb(30 ,144 ,255,0.3)'
+      };
+      let canvas = document.createElement('canvas');
+
+      canvas.width = 3600;
+      canvas.height = 1800;
+
+      let ctx = canvas.getContext('2d');
+      //背景颜色
+      ctx.fillStyle = that.bg;
+      ctx.rect(0, 0, canvas.width, canvas.height);
+      ctx.fill();
+      //设置地图样式
+      ctx.strokeStyle = that.borderColor;
+      ctx.lineWidth = that.borderWidth;
+
+      ctx.fillStyle = that.fillColor;
+      if (that.blurWidth) {
+        ctx.shadowBlur = that.blurWidth;
+        ctx.shadowColor = that.blurColor;
+      }
+      fetch('../node_modules/@surbowl/world-geo-json-zh/world.zh.json')
+        .then((res) => res.json())
+        .then((geojson) => {
+          console.log(geojson);
+          geojson.features.forEach((a) => {
+            if (a.geometry.type == 'MultiPolygon') {
+              a.geometry.coordinates.forEach((b) => {
+                b.forEach((c) => {
+                  drawRegion(ctx, c);
+                });
+              });
+            } else {
+              a.geometry.coordinates.forEach((c) => {
+                drawRegion(ctx, c);
+              });
+            }
+          });
+          document.body.appendChild(canvas);
+        });
+    </script>
+  </body>
+</html>

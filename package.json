@@ -1,0 +1,17 @@
+{
+  "name": "my-earth",
+  "version": "1.0.0",
+  "description": "```js\r npm i @surbowl/world-geo-json-zh\r ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@surbowl/world-geo-json-zh": "^2.1.2",
+    "dat.gui": "^0.7.9",
+    "three": "^0.156.1"
+  }
+}
