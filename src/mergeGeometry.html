@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        background-color: black;
+        height: 800px;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../node_modules/three/build/three.module.js",
+          "three/addons/": "../node_modules/three/examples/jsm/utils/"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from 'three';
+      import ThreeBase from './ThreeBase.js';
+
+      import * as BufferGeometryUtils from 'three/addons/BufferGeometryUtils.js';
+      class MyEarth extends ThreeBase {
+        constructor() {
+          super();
+          this.isRaycaster = true;
+          this.initCameraPos = [0, 0, 10];
+          this.max = 10;
+          this.min = 0;
+          //   this.isAxis = true;
+        }
+
+        raycasterAction() {
+          const intersects = this.raycaster.intersectObjects(this.actionGroup, true);
+
+          if (intersects.length > 0) {
+            let activeObj = intersects[0];
+            let index = parseInt(activeObj.faceIndex / 12);
+            let len = this.boxmesh.geometry.getAttribute('position').count;
+            const selectIndex = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+              selectIndex[i] = index;
+            }
+            this.boxmesh.geometry.setAttribute(
+              'selectIndex',
+              new THREE.BufferAttribute(selectIndex, 1, true)
+            );
+            console.log(activeObj, this.boxmesh.geometry, index);
+            this.boxmesh.geometry.getAttribute('selectIndex').needsUpdate = true;
+          }
+          // console.log(intersects);
+        }
+        animateAction() {}
+        addBar(index) {
+          const amount = (index - this.min) / this.max;
+
+          const hue = THREE.MathUtils.lerp(this.that.barHueStart, this.that.barHueEnd, amount);
+          const saturation = 1;
+          const lightness = THREE.MathUtils.lerp(
+            this.that.barLightStart,
+            this.that.barLightEnd,
+            amount
+          );
+          const color = new THREE.Color();
+          color.setHSL(hue, saturation, lightness);
+
+          const geometry = new THREE.BoxGeometry(1, 1, 1);
+
+          const rgb = color.toArray().map((v) => v * 255);
+          const count = geometry.getAttribute('position').count;
+          const colors = new Uint8Array(count * 3);
+
+          // 将颜色复制到每个顶点的颜色数组中
+          colors.forEach((v, ndx) => {
+            colors[ndx] = rgb[ndx % 3];
+          });
+
+          const modelIndex = new Uint8Array(count);
+          const selectIndex = new Uint8Array(count);
+          for (let i = 0; i < count; i++) {
+            modelIndex[i] = index;
+            selectIndex[i] = -1;
+          }
+          geometry.setAttribute('selectIndex', new THREE.BufferAttribute(selectIndex, 1, true));
+          geometry.setAttribute('modelIndex', new THREE.BufferAttribute(modelIndex, 1, true));
+          geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3, true));
+          this.helper.position.set(index * 1.5, 0, 0);
+          this.helper.updateWorldMatrix(true, false);
+          geometry.applyMatrix4(this.helper.matrixWorld);
+          this.geometries.push(geometry);
+        }
+        createChart(that) {
+          this.that = that;
+          this.geometries = [];
+          this.actionGroup = [];
+          this.helper = new THREE.Object3D();
+          for (let i = 0; i < this.max; i++) {
+            this.addBar(i);
+          }
+
+          const mergedGeometry = BufferGeometryUtils.mergeGeometries(this.geometries, false);
+          const material = new THREE.MeshBasicMaterial({
+            vertexColors: true
+          });
+
+          material.onBeforeCompile = (shader) => {
+            shader.vertexShader = shader.vertexShader.replace(
+              `void main() {`,
+              ` attribute float selectIndex;
+                    attribute float modelIndex;
+                    varying float vselectIndex;
+                    varying float vmodelIndex;
+                    void main() {
+                      vmodelIndex=modelIndex;
+                      vselectIndex=selectIndex;`
+            );
+            shader.fragmentShader = shader.fragmentShader.replace(
+              `void main() {`,
+              `varying float vselectIndex;
+                     varying float vmodelIndex;
+                        void main() {`
+            );
+            shader.fragmentShader = shader.fragmentShader.replace(
+              `vec3 outgoingLight = reflectedLight.indirectDiffuse;`,
+              `vec3 outgoingLight = vmodelIndex ==vselectIndex  ?vec3(1.0,0.0,0.0 ):  reflectedLight.indirectDiffuse ;`
+            );
+          };
+          const boxmesh = new THREE.Mesh(mergedGeometry, material);
+          this.boxmesh = boxmesh;
+          this.actionGroup.push(boxmesh);
+          this.scene.add(boxmesh);
+        }
+      }
+
+      var myEarth = new MyEarth();
+      window.myEarth = myEarth;
+      myEarth.initThree(document.getElementById('canvas'));
+      myEarth.createChart({
+        barHueStart: 0.2,
+        barHueEnd: 0.5,
+        barLightStart: 0.5,
+        barLightEnd: 0.78
+      });
+    </script>
+  </body>
+</html>
