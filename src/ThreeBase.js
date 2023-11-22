@@ -104,20 +104,22 @@ export default class ThreeBase {
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
-    let thiz = this;
-    function animate() {
-      if (thiz.isStats && thiz.stats) {
-        thiz.stats.update();
-      }
-      if (thiz.controls) {
-        thiz.controls.update();
-      }
+    window.addEventListener('resize', this.onResize.bind(this));
+    window.addEventListener('unload', this.cleanAll.bind(this));
 
-      thiz.animateAction();
-      thiz.renderer.render(thiz.scene, thiz.camera);
-      thiz.threeAnim = requestAnimationFrame(animate);
+    this.animateRender();
+  }
+  animateRender() {
+    if (this.isStats && this.stats) {
+      this.stats.update();
     }
-    animate();
+    if (this.controls) {
+      this.controls.update();
+    }
+
+    this.animateAction();
+    this.renderer.render(this.scene, this.camera);
+    this.threeAnim = requestAnimationFrame(this.animateRender.bind(this));
   }
   //执行动画动作
   animateAction() {}
@@ -240,7 +242,7 @@ export default class ThreeBase {
   }
   cleanAll() {
     cancelAnimationFrame(this.threeAnim);
-
+    window.removeEventListener('resize', this.onResize.bind(this));
     if (this.stats) {
       this.container.removeChild(this.stats.domElement);
       this.stats = null;
