@@ -1,0 +1,26 @@
+lockfileVersion: '6.0'
+
+dependencies:
+  '@surbowl/world-geo-json-zh':
+    specifier: ^2.1.2
+    version: 2.1.2
+  dat.gui:
+    specifier: ^0.7.9
+    version: 0.7.9
+  three:
+    specifier: ^0.161.0
+    version: 0.161.0
+
+packages:
+
+  /@surbowl/world-geo-json-zh@2.1.2:
+    resolution: {integrity: sha512-qWJB8F6Zv6irlnxZO243TSPb93z/fV/yqHXEaGRoB9mGlEYmrhENy5et1vq2gzuzC83uPwBb6fHpkMYX4OL5Pg==}
+    dev: false
+
+  /dat.gui@0.7.9:
+    resolution: {integrity: sha512-sCNc1OHobc+Erc1HqiswYgHdVNpSJUlk/Hz8vzOCsER7rl+oF/4+v8GXFUyCgtXpoCX6+bnmg07DedLvBLwYKQ==}
+    dev: false
+
+  /three@0.161.0:
+    resolution: {integrity: sha512-LC28VFtjbOyEu5b93K0bNRLw1rQlMJ85lilKsYj6dgTu+7i17W+JCCEbvrpmNHF1F3NAUqDSWq50UD7w9H2xQw==}
+    dev: false

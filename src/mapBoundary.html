@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        background-color: black;
+        height: 800px;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../node_modules/three/build/three.module.js",
+          "three/addons/": "../node_modules/three/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from 'three';
+      import ThreeBase from './ThreeBase.js';
+      import { initGeoFun, latlng2px } from './geoUtil.js';
+
+      import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+      import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+      import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+      import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+      class MyThree extends ThreeBase {
+        constructor() {
+          super();
+          this.isAxis = false;
+          this.time = 1.0;
+        }
+        getData() {
+          return new Promise((resolve) => {
+            fetch('./assets/guangzhou.json')
+              .then((res) => res.json())
+              .then((res) => {
+                resolve(res.features[0].geometry.coordinates[0][0]);
+              });
+          });
+        }
+        createRegion(points) {
+          const extrudeSettings = {
+            depth: 0.2,
+            bevelEnabled: false
+          };
+          const shape = new THREE.Shape();
+
+          shape.moveTo(points[0].x, points[0].z);
+
+          for (let i = 1; i < points.length; i = i + 2) {
+            shape.lineTo(points[i].x, points[i].z);
+          }
+          shape.lineTo(points[0].x, points[0].z);
+          //添加区块形状
+          const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+          const tex = new THREE.TextureLoader().load('./assets/tex.png');
+          tex.wrapS = THREE.RepeatWrapping;
+          tex.wrapT = THREE.RepeatWrapping;
+          const material = new THREE.MeshBasicMaterial({
+            map: tex,
+            color: new THREE.Color('#00FFFF')
+          });
+          const mesh = new THREE.Mesh(geometry, material);
+          mesh.rotateX(Math.PI * 0.5);
+
+          return mesh;
+        }
+        createLine(points) {
+          const curve = new THREE.CatmullRomCurve3(points, true, 'catmullrom', 0);
+
+          const geometry = new THREE.TubeGeometry(
+            curve,
+            Math.round(points.length * 0.5),
+            0.01,
+            8,
+            true
+          );
+          const material = new THREE.ShaderMaterial({
+            uniforms: {
+              time: { value: 0.0 },
+              len: { value: 0.05 },
+              size: { value: 0.02 },
+              color1: { value: new THREE.Color('#FFFFFF') },
+              color2: { value: new THREE.Color('yellow') }
+            },
+            vertexShader: `uniform float time;
+uniform float size;
+uniform float len;
+uniform vec3 color1;
+uniform vec3 color2;
+varying vec3 vColor; 
+void main() {
+    vColor = color1;
+    vec3 newPosition = position;
+    float d = uv.x - time;
+    
+    if(abs(d) < len) {
+        newPosition = newPosition + normal * size;
+        vColor = color2;
+    }
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
+}`,
+            fragmentShader: `
+varying vec3 vColor; 
+void main() {
+  gl_FragColor =vec4(vColor, 1.0);
+}`
+          });
+          this.material = material;
+          // const material = new THREE.MeshBasicMaterial({ color: 'white' });
+          const mesh = new THREE.Mesh(geometry, material);
+          return mesh;
+        }
+        async createChart(option) {
+          this.option = option;
+          initGeoFun(180);
+
+          let points = await this.getData();
+          points = points.map((item) => {
+            const p = latlng2px(item);
+            return new THREE.Vector3(p[0], 0, p[1]);
+          });
+
+          this.group = new THREE.Group();
+          this.group.add(this.createLine(points));
+          this.normalObj = this.createRegion(points);
+          this.group.add(this.normalObj);
+          this.scene.add(this.group);
+          this.setModelCenter(this.group, option.cameraControl);
+          this.initBloom(option.bloom);
+        }
+        initBloom(params) {
+          const renderScene = new RenderPass(this.scene, this.camera);
+
+          const bloomPass = new UnrealBloomPass(
+            new THREE.Vector2(this.container.offsetWidth, this.container.offsetHeight),
+            1.5,
+            0.4,
+            0.85
+          );
+          bloomPass.threshold = params.threshold;
+          bloomPass.strength = params.strength;
+          bloomPass.radius = params.radius;
+
+          const composer = new EffectComposer(this.renderer);
+          composer.addPass(renderScene);
+          composer.addPass(bloomPass);
+          const outputPass = new OutputPass();
+          composer.addPass(outputPass);
+
+          this.composer = composer;
+        }
+        animateAction() {
+          if (this.material) {
+            if (this.time >= 1.0) {
+              this.time = 0.0;
+            }
+            this.time = this.time + 0.005;
+            this.material.uniforms.time.value = this.time;
+          }
+        }
+        animate() {
+          if (this.isStats && this.stats) {
+            this.stats.update();
+          }
+          if (this.controls) {
+            this.controls.update();
+          }
+
+          this.animateAction();
+          if (this.normalObj) {
+            this.renderer.setViewport(
+              0,
+              0,
+              this.container.offsetWidth,
+              this.container.offsetHeight
+            );
+            //必须关闭autoClear,避免渲染效果被清除
+            this.renderer.autoClear = false;
+            this.renderer.clear();
+            //不需要发光的物体在bloom后期前隐藏
+            this.normalObj.visible = false;
+
+            this.composer.render();
+            this.renderer.clearDepth();
+            //不需要发光的物体在bloom后期后显示
+            this.normalObj.visible = true;
+            this.renderer.render(this.scene, this.camera);
+          } else {
+            this.renderer.render(this.scene, this.camera);
+          }
+          this.threeAnim = requestAnimationFrame(this.animate.bind(this));
+        }
+        onResize() {
+          if (this.container) {
+            this.camera.aspect = this.container.offsetWidth / this.container.offsetHeight;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(this.container.offsetWidth, this.container.offsetHeight);
+
+            this.composer.setSize(this.container.offsetWidth, this.container.offsetHeight);
+          }
+        }
+      }
+
+      var myThree = new MyThree();
+      window.myThree = myThree;
+      myThree.initThree(document.getElementById('canvas'));
+      myThree.createChart({
+        bloom: {
+          threshold: 0,
+          strength: 0.5,
+          radius: 0.5,
+          exposure: 0.5
+        },
+        cameraControl: {
+          autoCamera: true,
+          height: 10,
+          width: 0.5,
+          depth: 1,
+          cameraPosX: 10,
+          cameraPosY: 181,
+          cameraPosZ: 116,
+          autoRotate: false,
+          rotateSpeed: 2000
+        }
+      });
+    </script>
+  </body>
+</html>

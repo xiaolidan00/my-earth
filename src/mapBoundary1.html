@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        background-color: black;
+        height: 800px;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../node_modules/three/build/three.module.js",
+          "three/addons/": "../node_modules/three/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from 'three';
+      import ThreeBase from './ThreeBase.js';
+      import { initGeoFun, latlng2px } from './geoUtil.js';
+      class MyThree extends ThreeBase {
+        constructor() {
+          super();
+          this.isAxis = false;
+        }
+        getData() {
+          return new Promise((resolve) => {
+            fetch('./assets/guangzhou.json')
+              .then((res) => res.json())
+              .then((res) => {
+                resolve(res.features[0].geometry.coordinates[0][0]);
+              });
+          });
+        }
+        createShape(points) {
+          const shape = new THREE.Shape();
+
+          shape.moveTo(points[0].x, points[0].z);
+
+          for (let i = 1; i < points.length; i = i + 2) {
+            shape.lineTo(points[i].x, points[i].z);
+          }
+          shape.lineTo(points[0].x, points[0].z);
+          return shape;
+        }
+        createRegion(shape) {
+          const extrudeSettings = {
+            depth: 0.2,
+            bevelEnabled: false
+          };
+          //添加区块形状
+          const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+          const tex = new THREE.TextureLoader().load('./assets/tex.png');
+          tex.wrapS = THREE.RepeatWrapping;
+          tex.wrapT = THREE.RepeatWrapping;
+          const material = new THREE.MeshBasicMaterial({
+            map: tex,
+            color: new THREE.Color('#00FFFF')
+          });
+          const mesh = new THREE.Mesh(geometry, material);
+          mesh.rotateX(Math.PI * 0.5);
+          mesh.position.y = extrudeSettings.depth * 0.5;
+          return mesh;
+        }
+        createBoundary(shape) {
+          const material = new THREE.ShaderMaterial({
+            side: THREE.DoubleSide,
+            transparent: true,
+            depthTest: false,
+            uniforms: {
+              color1: { value: new THREE.Color('#00FFFF') }
+            },
+            vertexShader: ` 
+          varying vec2 vUv;
+          varying vec3 vNormal;
+          
+          void main() {
+            vUv=uv;
+            vNormal=normal;           
+              
+            gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+          }`,
+            fragmentShader: `uniform vec3 color1;                
+                      varying vec2 vUv; 
+                      varying vec3 vNormal;
+                void main() {
+                  if(vNormal.z==1.0||vNormal.z==-1.0||vUv.y ==0.0){
+                    discard;
+                  } else{
+                    gl_FragColor =vec4(color1,mix(1.0,0.0, vUv.y)) ;
+                  } 
+                }`
+          });
+
+          const extrudeSettings = {
+            depth: 1,
+            bevelEnabled: false
+          };
+
+          const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+
+          const mesh = new THREE.Mesh(geometry, material);
+          mesh.rotation.x = Math.PI * 0.5;
+          mesh.position.y = extrudeSettings.depth + 0.1;
+          return mesh;
+        }
+        async createChart(option) {
+          initGeoFun(180);
+
+          let points = await this.getData();
+          points = points.map((item) => {
+            const p = latlng2px(item);
+            return new THREE.Vector3(p[0], 0, p[1]);
+          });
+          const shape = this.createShape(points);
+
+          this.group = new THREE.Group();
+          this.group.add(this.createRegion(shape));
+          this.group.add(this.createBoundary(shape));
+
+          this.scene.add(this.group);
+          this.setModelCenter(this.group, option.cameraControl);
+        }
+      }
+
+      var myThree = new MyThree();
+      window.myThree = myThree;
+      myThree.initThree(document.getElementById('canvas'));
+      myThree.createChart({
+        cameraControl: {
+          autoCamera: true,
+          height: 10,
+          width: 0.5,
+          depth: 1,
+          cameraPosX: 10,
+          cameraPosY: 181,
+          cameraPosZ: 116,
+          autoRotate: false,
+          rotateSpeed: 2000
+        }
+      });
+    </script>
+  </body>
+</html>

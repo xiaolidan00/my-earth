@@ -12,6 +12,6 @@
   "dependencies": {
     "@surbowl/world-geo-json-zh": "^2.1.2",
     "dat.gui": "^0.7.9",
-    "three": "^0.156.1"
+    "three": "^0.161.0"
   }
 }
