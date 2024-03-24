@@ -1,11 +1,5 @@
 # 用 Three.js 搞个炫酷 3D 地球
 
-## 安装
-
-```js
-npm i @surbowl/world-geo-json-zh three
-```
-
 ## src/world.html 地球贴图
 
 ## src/earth.html 地球柱体
@@ -20,8 +14,14 @@ npm i @surbowl/world-geo-json-zh three
 
 # src/UnrealBloom.html 部分泛光
 
-# src/mapBoundary 3D 区块泛光轮廓
+# src/mapBoundary.html 3D 区块泛光轮廓
 
-# src/mapBoundary1 3D 区块渐变围栏
+# src/mapBoundary1.html 3D 区块渐变围栏
 
-# src/mapBoundary2 3D 区块多重渐变围栏
+# src/mapBoundary2.html 3D 区块多重渐变围栏
+
+# src/building.html 生成随机建筑，俯视 UV
+
+# src/radar.html 雷达扩散特效
+
+# src/radar1.html 雷达扫描特效

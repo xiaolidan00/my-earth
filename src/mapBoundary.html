@@ -6,7 +6,7 @@
     <title>Document</title>
     <style>
       #canvas {
-        background-color: black;
+        background-color: rgb(216, 14, 14);
         height: 800px;
         width: 800px;
       }
@@ -139,7 +139,13 @@ void main() {
           this.initBloom(option.bloom);
         }
         initBloom(params) {
-          const renderScene = new RenderPass(this.scene, this.camera);
+          const renderScene = new RenderPass(
+            this.scene,
+            this.camera,
+            null,
+            new THREE.Color('rgba(0,0,255,0.0)'),
+            0
+          );
 
           const bloomPass = new UnrealBloomPass(
             new THREE.Vector2(this.container.offsetWidth, this.container.offsetHeight),
@@ -150,6 +156,7 @@ void main() {
           bloomPass.threshold = params.threshold;
           bloomPass.strength = params.strength;
           bloomPass.radius = params.radius;
+          bloomPass.copyUniforms.opacity.value = 1;
 
           const composer = new EffectComposer(this.renderer);
           composer.addPass(renderScene);
