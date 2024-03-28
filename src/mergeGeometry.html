@@ -44,10 +44,8 @@
             let activeObj = intersects[0];
             let index = parseInt(activeObj.faceIndex / 12);
             let len = this.boxmesh.geometry.getAttribute('position').count;
-            const selectIndex = new Uint8Array(len);
-            for (let i = 0; i < len; i++) {
-              selectIndex[i] = index;
-            }
+            const selectIndex = new Uint8Array(len).fill(index);
+
             this.boxmesh.geometry.setAttribute(
               'selectIndex',
               new THREE.BufferAttribute(selectIndex, 1, true)
@@ -82,12 +80,9 @@
             colors[ndx] = rgb[ndx % 3];
           });
 
-          const modelIndex = new Uint8Array(count);
-          const selectIndex = new Uint8Array(count);
-          for (let i = 0; i < count; i++) {
-            modelIndex[i] = index;
-            selectIndex[i] = -1;
-          }
+          const modelIndex = new Uint8Array(count).fill(index);
+          const selectIndex = new Uint8Array(count).fill(-1);
+
           geometry.setAttribute('selectIndex', new THREE.BufferAttribute(selectIndex, 1, true));
           geometry.setAttribute('modelIndex', new THREE.BufferAttribute(modelIndex, 1, true));
           geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3, true));
