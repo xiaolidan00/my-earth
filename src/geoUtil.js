@@ -3,7 +3,7 @@ import d3geo from './d3-geo.min.js';
 let geoFun;
 export function initGeoFun(size) {
   //放大倍数
-  geoFun = d3geo.geoMercator().scale(size);
+  geoFun = d3geo.geoMercator().scale(size || 100);
 }
 
 export const latlng2px = (pos) => {

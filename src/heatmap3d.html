@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        background-color: black;
+        height: 800px;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../node_modules/three/build/three.module.js",
+          "three/addons/": "../node_modules/three/examples/jsm/utils/"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from 'three';
+      import ThreeBase from './ThreeBase.js';
+      import { initGeoFun, latlng2px } from './geoUtil.js';
+      import { createHeatmap } from './heatmap.js';
+      initGeoFun(1000);
+      class MyHeatmap extends ThreeBase {
+        constructor() {
+          super();
+          //   this.isRaycaster = true;
+          this.initCameraPos = [-25, 288, 342];
+          this.isTWEEN = true;
+        }
+
+        createHeatmap() {
+          return new Promise((resolve) => {
+            fetch('./assets/traffic.json')
+              .then((res) => res.json())
+              .then((res) => {
+                let info = {
+                  max: Number.MIN_SAFE_INTEGER,
+                  min: Number.MAX_SAFE_INTEGER,
+                  maxlng: Number.MIN_SAFE_INTEGER,
+                  minlng: Number.MAX_SAFE_INTEGER,
+                  maxlat: Number.MIN_SAFE_INTEGER,
+                  minlat: Number.MAX_SAFE_INTEGER,
+                  data: []
+                };
+                res.features.forEach((item) => {
+                  let pos = latlng2px(item.geometry.coordinates);
+                  let newitem = {
+                    lng: pos[0],
+                    lat: pos[1],
+                    value: item.properties.avg
+                  };
+                  info.max = Math.max(newitem.value, info.max);
+                  info.maxlng = Math.max(newitem.lng, info.maxlng);
+                  info.maxlat = Math.max(newitem.lat, info.maxlat);
+
+                  info.min = Math.min(newitem.value, info.min);
+                  info.minlng = Math.min(newitem.lng, info.minlng);
+                  info.minlat = Math.min(newitem.lat, info.minlat);
+                  info.data.push(newitem);
+                });
+                info.size = info.max - info.min;
+                info.sizelng = info.maxlng - info.minlng;
+                info.sizelat = info.maxlat - info.minlat;
+                const radius = 40;
+                const option = {
+                  width: info.sizelng + radius * 2,
+                  height: info.sizelng + radius * 2,
+                  colors: {
+                    0.1: '#2A85B8',
+                    0.2: '#16B0A9',
+                    0.3: '#29CF6F',
+                    0.4: '#5CE182',
+                    0.5: '#7DF675',
+                    0.6: '#FFF100',
+                    0.7: '#FAA53F',
+                    1: '#D04343'
+                  },
+                  radius,
+                  ...info
+                  // x, y 表示二维坐标； value表示强弱值
+                };
+                const canvas = createHeatmap(option);
+                resolve({ option, canvas });
+              });
+          });
+        }
+
+        async createChart(that) {
+          const { canvas: heatmapCanvas, option } = await this.createHeatmap();
+          const map = new THREE.CanvasTexture(heatmapCanvas);
+          map.wrapS = THREE.RepeatWrapping;
+          map.wrapT = THREE.RepeatWrapping;
+          const geometry = new THREE.PlaneGeometry(
+            option.width * 0.5,
+            option.height * 0.5,
+            500,
+            500
+          );
+
+          //   const material = new THREE.MeshBasicMaterial({
+          //     map: map,
+          //     side: THREE.DoubleSide,
+          //     transparent: true
+          //   });
+
+          const material = new THREE.ShaderMaterial({
+            transparent: true,
+            side: THREE.DoubleSide,
+            uniforms: {
+              map: { value: map },
+              uHeight: { value: 50 },
+              uOpacity: { value: 2.0 }
+            },
+            vertexShader: `uniform sampler2D map;
+                          uniform float uHeight;
+                          varying vec2 v_texcoord;
+              void main(void)
+              {
+              v_texcoord = uv;
+              float h=texture2D(map, v_texcoord).a*uHeight;
+              gl_Position = projectionMatrix * modelViewMatrix * vec4( position.x,position.y,h, 1.0 );
+              }`,
+            fragmentShader: `precision mediump float;
+              uniform sampler2D map;
+              uniform float uOpacity;
+              varying vec2 v_texcoord;
+              void main (void)
+              {
+                vec4 color= texture2D(map, v_texcoord);
+                float a=color.a*uOpacity;
+              gl_FragColor.rgb =color.rgb;
+              gl_FragColor.a=a>1.0?1.0:a;
+              }`
+          });
+          const plane = new THREE.Mesh(geometry, material);
+          plane.rotateX(-Math.PI * 0.5);
+          this.scene.add(plane);
+          let tween = new this.TWEEN.Tween({ v: 0 })
+            .to({ v: 50 }, 2000)
+
+            .onUpdate((obj) => {
+              material.uniforms.uHeight.value = obj.v;
+            })
+            .easing(this.TWEEN.Easing.Quadratic.Out)
+            .start();
+          this.TWEEN.add(tween);
+        }
+      }
+
+      var heatmap = new MyHeatmap();
+      window.heatmap = heatmap;
+      heatmap.initThree(document.getElementById('canvas'));
+      heatmap.createChart();
+    </script>
+  </body>
+</html>

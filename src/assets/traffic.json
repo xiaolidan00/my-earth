@@ -1,0 +1,6159 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.48699, 30.283114]
+            },
+            "properties": {
+                "ranking": 1,
+                "prov": "湖北省",
+                "city": "恩施土家族苗族自治州",
+                "mom": "-4.4%",
+                "yoy": "-5.1%",
+                "index": 2.367,
+                "avg": 14.685,
+                "lnglat": "109.48699,30.283114"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [106.753669, 31.858809]
+            },
+            "properties": {
+                "ranking": 2,
+                "prov": "四川省",
+                "city": "巴中市",
+                "mom": "-2.9%",
+                "yoy": "0.3%",
+                "index": 2.113,
+                "avg": 19.375,
+                "lnglat": "106.753669,31.858809"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [111.46923, 27.237842]
+            },
+            "properties": {
+                "ranking": 3,
+                "prov": "湖南省",
+                "city": "邵阳市",
+                "mom": "-6.5%",
+                "yoy": "-8.1%",
+                "index": 2.038,
+                "avg": 20.483,
+                "lnglat": "111.46923,27.237842"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.191555, 27.718346]
+            },
+            "properties": {
+                "ranking": 4,
+                "prov": "贵州省",
+                "city": "铜仁市",
+                "mom": "0.5%",
+                "yoy": "-11.4%",
+                "index": 2.028,
+                "avg": 17.761,
+                "lnglat": "109.191555,27.718346"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [107.977488, 26.583352]
+            },
+            "properties": {
+                "ranking": 5,
+                "prov": "贵州省",
+                "city": "黔东南苗族侗族自治州",
+                "mom": "-1.9%",
+                "yoy": "2.3%",
+                "index": 2.013,
+                "avg": 17.999,
+                "lnglat": "107.977488,26.583352"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [116.405285, 39.904989]
+            },
+            "properties": {
+                "ranking": 6,
+                "prov": "北京市",
+                "city": "北京市",
+                "mom": "-5.4%",
+                "yoy": "-3.1%",
+                "index": 1.982,
+                "avg": 23.91,
+                "lnglat": "116.405285,39.904989"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [107.502262, 31.209484]
+            },
+            "properties": {
+                "ranking": 7,
+                "prov": "四川省",
+                "city": "达州市",
+                "mom": "-5.6%",
+                "yoy": "-9.1%",
+                "index": 1.953,
+                "avg": 17.541,
+                "lnglat": "107.502262,31.209484"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [129.513228, 42.904823]
+            },
+            "properties": {
+                "ranking": 8,
+                "prov": "吉林省",
+                "city": "延边朝鲜族自治州",
+                "mom": "-0.3%",
+                "yoy": "-0.3%",
+                "index": 1.942,
+                "avg": 20.752,
+                "lnglat": "129.513228,42.904823"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [126.55302, 43.843577]
+            },
+            "properties": {
+                "ranking": 9,
+                "prov": "吉林省",
+                "city": "吉林市",
+                "mom": "-0.9%",
+                "yoy": "-2.3%",
+                "index": 1.903,
+                "avg": 21.437,
+                "lnglat": "126.55302,43.843577"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.170255, 29.291965]
+            },
+            "properties": {
+                "ranking": 10,
+                "prov": "重庆市",
+                "city": "重庆市",
+                "mom": "-3.8%",
+                "yoy": "-3.0%",
+                "index": 1.872,
+                "avg": 26.155,
+                "lnglat": "108.170255,29.291965"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [126.642464, 45.756967]
+            },
+            "properties": {
+                "ranking": 11,
+                "prov": "黑龙江省",
+                "city": "哈尔滨市",
+                "mom": "-3.9%",
+                "yoy": "-8.8%",
+                "index": 1.869,
+                "avg": 23.969,
+                "lnglat": "126.642464,45.756967"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.280637, 23.125178]
+            },
+            "properties": {
+                "ranking": 12,
+                "prov": "广东省",
+                "city": "广州市",
+                "mom": "-8.3%",
+                "yoy": "-3.8%",
+                "index": 1.862,
+                "avg": 24.512,
+                "lnglat": "113.280637,23.125178"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [104.641917, 30.122211]
+            },
+            "properties": {
+                "ranking": 13,
+                "prov": "四川省",
+                "city": "资阳市",
+                "mom": "-7.6%",
+                "yoy": "-5.1%",
+                "index": 1.859,
+                "avg": 21.895,
+                "lnglat": "104.641917,30.122211"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [106.713478, 26.578343]
+            },
+            "properties": {
+                "ranking": 14,
+                "prov": "贵州省",
+                "city": "贵阳市",
+                "mom": "-1.3%",
+                "yoy": "3.1%",
+                "index": 1.857,
+                "avg": 25.262,
+                "lnglat": "106.713478,26.578343"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.956806, 42.275317]
+            },
+            "properties": {
+                "ranking": 15,
+                "prov": "内蒙古自治区",
+                "city": "赤峰市",
+                "mom": "-3.3%",
+                "yoy": "-2.8%",
+                "index": 1.847,
+                "avg": 19.446,
+                "lnglat": "118.956806,42.275317"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.204251, 31.03542]
+            },
+            "properties": {
+                "ranking": 16,
+                "prov": "湖北省",
+                "city": "荆门市",
+                "mom": "-3.1%",
+                "yoy": "-0.8%",
+                "index": 1.844,
+                "avg": 20.756,
+                "lnglat": "112.204251,31.03542"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.175444, 18.74758]
+            },
+            "properties": {
+                "ranking": 17,
+                "prov": "海南省",
+                "city": "乐东黎族自治县",
+                "mom": "-3.3%",
+                "yoy": "-5.7%",
+                "index": 1.843,
+                "avg": 19.377,
+                "lnglat": "109.175444,18.74758"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [103.717216, 27.336999]
+            },
+            "properties": {
+                "ranking": 18,
+                "prov": "云南省",
+                "city": "昭通市",
+                "mom": "-4.1%",
+                "yoy": "-5.2%",
+                "index": 1.839,
+                "avg": 21.423,
+                "lnglat": "103.717216,27.336999"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.553986, 22.224979]
+            },
+            "properties": {
+                "ranking": 19,
+                "prov": "广东省",
+                "city": "珠海市",
+                "mom": "-1.9%",
+                "yoy": "1.9%",
+                "index": 1.837,
+                "avg": 25.724,
+                "lnglat": "113.553986,22.224979"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [125.3245, 43.886841]
+            },
+            "properties": {
+                "ranking": 20,
+                "prov": "吉林省",
+                "city": "长春市",
+                "mom": "-1.9%",
+                "yoy": "-3.3%",
+                "index": 1.837,
+                "avg": 24.727,
+                "lnglat": "125.3245,43.886841"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [111.552056, 24.414141]
+            },
+            "properties": {
+                "ranking": 21,
+                "prov": "广西壮族自治区",
+                "city": "贺州市",
+                "mom": "-2.7%",
+                "yoy": "-5.5%",
+                "index": 1.833,
+                "avg": 21.978,
+                "lnglat": "111.552056,24.414141"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [121.472644, 31.231706]
+            },
+            "properties": {
+                "ranking": 22,
+                "prov": "上海市",
+                "city": "上海市",
+                "mom": "-4.1%",
+                "yoy": "-3.8%",
+                "index": 1.827,
+                "avg": 23.289,
+                "lnglat": "121.472644,31.231706"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [103.492488, 29.597478]
+            },
+            "properties": {
+                "ranking": 23,
+                "prov": "四川省",
+                "city": "眉山市",
+                "mom": "-3.3%",
+                "yoy": "-0.8%",
+                "index": 1.819,
+                "avg": 23.554,
+                "lnglat": "103.492488,29.597478"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [106.278179, 38.46637]
+            },
+            "properties": {
+                "ranking": 24,
+                "prov": "宁夏回族自治区",
+                "city": "银川市",
+                "mom": "-6.5%",
+                "yoy": "-0.4%",
+                "index": 1.813,
+                "avg": 21.459,
+                "lnglat": "106.278179,38.46637"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [105.829757, 32.433668]
+            },
+            "properties": {
+                "ranking": 25,
+                "prov": "四川省",
+                "city": "广元市",
+                "mom": "-1.4%",
+                "yoy": "-2.0%",
+                "index": 1.81,
+                "avg": 24.35,
+                "lnglat": "105.829757,32.433668"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.122717, 23.028762]
+            },
+            "properties": {
+                "ranking": 26,
+                "prov": "广东省",
+                "city": "佛山市",
+                "mom": "0.4%",
+                "yoy": "1.1%",
+                "index": 1.808,
+                "avg": 24.02,
+                "lnglat": "113.122717,23.028762"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [105.066138, 29.58708]
+            },
+            "properties": {
+                "ranking": 27,
+                "prov": "四川省",
+                "city": "内江市",
+                "mom": "-5.0%",
+                "yoy": "-5.5%",
+                "index": 1.805,
+                "avg": 22.082,
+                "lnglat": "105.066138,29.58708"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [102.258746, 27.886762]
+            },
+            "properties": {
+                "ranking": 28,
+                "prov": "四川省",
+                "city": "凉山彝族自治州",
+                "mom": "-6.3%",
+                "yoy": "1.5%",
+                "index": 1.804,
+                "avg": 21.585,
+                "lnglat": "102.258746,27.886762"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [124.370785, 43.170344]
+            },
+            "properties": {
+                "ranking": 29,
+                "prov": "吉林省",
+                "city": "四平市",
+                "mom": "-5.0%",
+                "yoy": "-5.0%",
+                "index": 1.803,
+                "avg": 20.894,
+                "lnglat": "124.370785,43.170344"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [116.117582, 24.299112]
+            },
+            "properties": {
+                "ranking": 30,
+                "prov": "广东省",
+                "city": "梅州市",
+                "mom": "-1.6%",
+                "yoy": "-3.2%",
+                "index": 1.797,
+                "avg": 22.226,
+                "lnglat": "116.117582,24.299112"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.49081, 36.596537]
+            },
+            "properties": {
+                "ranking": 31,
+                "prov": "陕西省",
+                "city": "延安市",
+                "mom": "-5.2%",
+                "yoy": "-8.5%",
+                "index": 1.792,
+                "avg": 23.375,
+                "lnglat": "109.49081,36.596537"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.062105, 24.695899]
+            },
+            "properties": {
+                "ranking": 32,
+                "prov": "广西壮族自治区",
+                "city": "河池市",
+                "mom": "-7.0%",
+                "yoy": "-6.2%",
+                "index": 1.79,
+                "avg": 19.81,
+                "lnglat": "108.062105,24.695899"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.085947, 22.547]
+            },
+            "properties": {
+                "ranking": 33,
+                "prov": "广东省",
+                "city": "深圳市",
+                "mom": "-2.4%",
+                "yoy": "0.5%",
+                "index": 1.788,
+                "avg": 26.145,
+                "lnglat": "114.085947,22.547"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.37377, 31.717497]
+            },
+            "properties": {
+                "ranking": 34,
+                "prov": "湖北省",
+                "city": "随州市",
+                "mom": "-6.7%",
+                "yoy": "-8.3%",
+                "index": 1.785,
+                "avg": 25.467,
+                "lnglat": "113.37377,31.717497"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [104.065735, 30.659462]
+            },
+            "properties": {
+                "ranking": 35,
+                "prov": "四川省",
+                "city": "成都市",
+                "mom": "-2.4%",
+                "yoy": "-2.3%",
+                "index": 1.784,
+                "avg": 26.081,
+                "lnglat": "104.065735,30.659462"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [116.708463, 23.37102]
+            },
+            "properties": {
+                "ranking": 36,
+                "prov": "广东省",
+                "city": "汕头市",
+                "mom": "-1.7%",
+                "yoy": "-1.1%",
+                "index": 1.783,
+                "avg": 20.766,
+                "lnglat": "116.708463,23.37102"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [125.145349, 42.902692]
+            },
+            "properties": {
+                "ranking": 37,
+                "prov": "吉林省",
+                "city": "辽源市",
+                "mom": "-1.0%",
+                "yoy": "3.5%",
+                "index": 1.781,
+                "avg": 20.815,
+                "lnglat": "125.145349,42.902692"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.97824, 27.550082]
+            },
+            "properties": {
+                "ranking": 38,
+                "prov": "湖南省",
+                "city": "怀化市",
+                "mom": "-7.0%",
+                "yoy": "-5.2%",
+                "index": 1.776,
+                "avg": 24.429,
+                "lnglat": "109.97824,27.550082"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [102.712251, 25.040609]
+            },
+            "properties": {
+                "ranking": 39,
+                "prov": "云南省",
+                "city": "昆明市",
+                "mom": "-0.9%",
+                "yoy": "-5.2%",
+                "index": 1.775,
+                "avg": 24.038,
+                "lnglat": "102.712251,25.040609"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.412599, 23.079404]
+            },
+            "properties": {
+                "ranking": 40,
+                "prov": "广东省",
+                "city": "惠州市",
+                "mom": "-3.6%",
+                "yoy": "-1.6%",
+                "index": 1.773,
+                "avg": 23.387,
+                "lnglat": "114.412599,23.079404"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [121.618622, 38.91459]
+            },
+            "properties": {
+                "ranking": 41,
+                "prov": "辽宁省",
+                "city": "大连市",
+                "mom": "-2.5%",
+                "yoy": "-8.2%",
+                "index": 1.772,
+                "avg": 26.595,
+                "lnglat": "121.618622,38.91459"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [115.364238, 22.774485]
+            },
+            "properties": {
+                "ranking": 42,
+                "prov": "广东省",
+                "city": "汕尾市",
+                "mom": "-1.9%",
+                "yoy": "-1.4%",
+                "index": 1.772,
+                "avg": 21.483,
+                "lnglat": "115.364238,22.774485"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [123.770519, 41.297909]
+            },
+            "properties": {
+                "ranking": 43,
+                "prov": "辽宁省",
+                "city": "本溪市",
+                "mom": "-7.0%",
+                "yoy": "-7.4%",
+                "index": 1.767,
+                "avg": 23.163,
+                "lnglat": "123.770519,41.297909"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.23813, 30.326857]
+            },
+            "properties": {
+                "ranking": 44,
+                "prov": "湖北省",
+                "city": "荆州市",
+                "mom": "-2.9%",
+                "yoy": "-0.9%",
+                "index": 1.758,
+                "avg": 21.785,
+                "lnglat": "112.23813,30.326857"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [122.116394, 37.509691]
+            },
+            "properties": {
+                "ranking": 45,
+                "prov": "山东省",
+                "city": "威海市",
+                "mom": "-0.0%",
+                "yoy": "-2.7%",
+                "index": 1.757,
+                "avg": 29.341,
+                "lnglat": "122.116394,37.509691"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [100.233026, 26.872108]
+            },
+            "properties": {
+                "ranking": 46,
+                "prov": "云南省",
+                "city": "丽江市",
+                "mom": "-6.4%",
+                "yoy": "-1.3%",
+                "index": 1.757,
+                "avg": 22.173,
+                "lnglat": "100.233026,26.872108"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [115.469381, 35.246531]
+            },
+            "properties": {
+                "ranking": 47,
+                "prov": "山东省",
+                "city": "菏泽市",
+                "mom": "-11.7%",
+                "yoy": "-3.8%",
+                "index": 1.749,
+                "avg": 21.439,
+                "lnglat": "115.469381,35.246531"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.178459, 26.635627]
+            },
+            "properties": {
+                "ranking": 48,
+                "prov": "福建省",
+                "city": "南平市",
+                "mom": "1.6%",
+                "yoy": "-11.8%",
+                "index": 1.745,
+                "avg": 20.889,
+                "lnglat": "118.178459,26.635627"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.840405, 40.658168]
+            },
+            "properties": {
+                "ranking": 49,
+                "prov": "内蒙古自治区",
+                "city": "包头市",
+                "mom": "-6.5%",
+                "yoy": "-1.9%",
+                "index": 1.745,
+                "avg": 26.372,
+                "lnglat": "109.840405,40.658168"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [130.277487, 47.332085]
+            },
+            "properties": {
+                "ranking": 50,
+                "prov": "黑龙江省",
+                "city": "鹤岗市",
+                "mom": "-1.3%",
+                "yoy": "-14.5%",
+                "index": 1.744,
+                "avg": 22.884,
+                "lnglat": "130.277487,47.332085"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [105.28501, 27.301693]
+            },
+            "properties": {
+                "ranking": 51,
+                "prov": "贵州省",
+                "city": "毕节市",
+                "mom": "-6.4%",
+                "yoy": "3.0%",
+                "index": 1.743,
+                "avg": 24.09,
+                "lnglat": "105.28501,27.301693"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [111.670801, 40.818311]
+            },
+            "properties": {
+                "ranking": 52,
+                "prov": "内蒙古自治区",
+                "city": "呼和浩特市",
+                "mom": "-6.5%",
+                "yoy": "-5.0%",
+                "index": 1.741,
+                "avg": 26.382,
+                "lnglat": "111.670801,40.818311"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.283042, 31.86119]
+            },
+            "properties": {
+                "ranking": 53,
+                "prov": "安徽省",
+                "city": "合肥市",
+                "mom": "-0.6%",
+                "yoy": "-6.7%",
+                "index": 1.741,
+                "avg": 25.337,
+                "lnglat": "117.283042,31.86119"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.320004, 22.82402]
+            },
+            "properties": {
+                "ranking": 54,
+                "prov": "广西壮族自治区",
+                "city": "南宁市",
+                "mom": "-4.0%",
+                "yoy": "-2.3%",
+                "index": 1.74,
+                "avg": 23.003,
+                "lnglat": "108.320004,22.82402"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [101.963815, 30.050663]
+            },
+            "properties": {
+                "ranking": 55,
+                "prov": "四川省",
+                "city": "甘孜藏族自治州",
+                "mom": "9.8%",
+                "yoy": "8.9%",
+                "index": 1.738,
+                "avg": 19.935,
+                "lnglat": "101.963815,30.050663"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [100.241369, 25.593067]
+            },
+            "properties": {
+                "ranking": 56,
+                "prov": "云南省",
+                "city": "大理",
+                "mom": "-3.1%",
+                "yoy": "-1.1%",
+                "index": 1.735,
+                "avg": 23.41,
+                "lnglat": "100.241369,25.593067"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [110.919229, 21.659751]
+            },
+            "properties": {
+                "ranking": 57,
+                "prov": "广东省",
+                "city": "茂名市",
+                "mom": "-2.7%",
+                "yoy": "-4.4%",
+                "index": 1.731,
+                "avg": 21.764,
+                "lnglat": "110.919229,21.659751"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.940278, 25.85097]
+            },
+            "properties": {
+                "ranking": 58,
+                "prov": "江西省",
+                "city": "赣州市",
+                "mom": "-5.1%",
+                "yoy": "-0.2%",
+                "index": 1.728,
+                "avg": 21.438,
+                "lnglat": "114.940278,25.85097"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.982279, 28.19409]
+            },
+            "properties": {
+                "ranking": 59,
+                "prov": "湖南省",
+                "city": "长沙市",
+                "mom": "-2.4%",
+                "yoy": "-2.2%",
+                "index": 1.728,
+                "avg": 25.335,
+                "lnglat": "112.982279,28.19409"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.129063, 36.194968]
+            },
+            "properties": {
+                "ranking": 60,
+                "prov": "山东省",
+                "city": "泰安市",
+                "mom": "-2.8%",
+                "yoy": "-5.4%",
+                "index": 1.722,
+                "avg": 21.889,
+                "lnglat": "117.129063,36.194968"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [103.823557, 36.058039]
+            },
+            "properties": {
+                "ranking": 61,
+                "prov": "甘肃省",
+                "city": "兰州市",
+                "mom": "-3.9%",
+                "yoy": "0.2%",
+                "index": 1.72,
+                "avg": 23.813,
+                "lnglat": "103.823557,36.058039"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [123.429096, 41.796767]
+            },
+            "properties": {
+                "ranking": 62,
+                "prov": "辽宁省",
+                "city": "沈阳市",
+                "mom": "-4.8%",
+                "yoy": "-4.1%",
+                "index": 1.72,
+                "avg": 26.398,
+                "lnglat": "123.429096,41.796767"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [103.761263, 29.582024]
+            },
+            "properties": {
+                "ranking": 63,
+                "prov": "四川省",
+                "city": "乐山市",
+                "mom": "-5.5%",
+                "yoy": "-5.4%",
+                "index": 1.718,
+                "avg": 24.965,
+                "lnglat": "103.761263,29.582024"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.000923, 36.675807]
+            },
+            "properties": {
+                "ranking": 64,
+                "prov": "山东省",
+                "city": "济南市",
+                "mom": "-9.1%",
+                "yoy": "-16.9%",
+                "index": 1.717,
+                "avg": 28.156,
+                "lnglat": "117.000923,36.675807"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.767413, 32.041544]
+            },
+            "properties": {
+                "ranking": 65,
+                "prov": "江苏省",
+                "city": "南京市",
+                "mom": "-3.1%",
+                "yoy": "-5.3%",
+                "index": 1.714,
+                "avg": 25.525,
+                "lnglat": "118.767413,32.041544"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.051227, 23.685022]
+            },
+            "properties": {
+                "ranking": 66,
+                "prov": "广东省",
+                "city": "清远市",
+                "mom": "-3.2%",
+                "yoy": "-0.7%",
+                "index": 1.714,
+                "avg": 24.244,
+                "lnglat": "113.051227,23.685022"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [100.08697, 23.886567]
+            },
+            "properties": {
+                "ranking": 67,
+                "prov": "云南省",
+                "city": "临沧市",
+                "mom": "-4.2%",
+                "yoy": "-0.9%",
+                "index": 1.712,
+                "avg": 26.687,
+                "lnglat": "100.08697,23.886567"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [111.975107, 21.859222]
+            },
+            "properties": {
+                "ranking": 68,
+                "prov": "广东省",
+                "city": "阳江市",
+                "mom": "-2.0%",
+                "yoy": "1.8%",
+                "index": 1.71,
+                "avg": 21.365,
+                "lnglat": "111.975107,21.859222"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [121.135742, 41.119269]
+            },
+            "properties": {
+                "ranking": 69,
+                "prov": "辽宁省",
+                "city": "锦州市",
+                "mom": "-4.0%",
+                "yoy": "-10.2%",
+                "index": 1.709,
+                "avg": 22.594,
+                "lnglat": "121.135742,41.119269"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [121.391382, 37.539297]
+            },
+            "properties": {
+                "ranking": 70,
+                "prov": "山东省",
+                "city": "烟台市",
+                "mom": "-3.7%",
+                "yoy": "-6.4%",
+                "index": 1.709,
+                "avg": 26.067,
+                "lnglat": "121.391382,37.539297"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [98.578363, 24.436694]
+            },
+            "properties": {
+                "ranking": 71,
+                "prov": "云南省",
+                "city": "德宏傣族景颇族自治州",
+                "mom": "-6.4%",
+                "yoy": "-5.2%",
+                "index": 1.708,
+                "avg": 23.653,
+                "lnglat": "98.578363,24.436694"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [123.95792, 47.342081]
+            },
+            "properties": {
+                "ranking": 72,
+                "prov": "黑龙江省",
+                "city": "齐齐哈尔市",
+                "mom": "-4.9%",
+                "yoy": "-5.2%",
+                "index": 1.708,
+                "avg": 24.483,
+                "lnglat": "123.95792,47.342081"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [104.773447, 29.352765]
+            },
+            "properties": {
+                "ranking": 73,
+                "prov": "四川省",
+                "city": "自贡市",
+                "mom": "-3.8%",
+                "yoy": "-6.7%",
+                "index": 1.704,
+                "avg": 22.771,
+                "lnglat": "104.773447,29.352765"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [127.499023, 50.249585]
+            },
+            "properties": {
+                "ranking": 74,
+                "prov": "黑龙江省",
+                "city": "黑河市",
+                "mom": "-2.0%",
+                "yoy": "4.1%",
+                "index": 1.702,
+                "avg": 24.487,
+                "lnglat": "127.499023,50.249585"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [124.383044, 40.124296]
+            },
+            "properties": {
+                "ranking": 75,
+                "prov": "辽宁省",
+                "city": "丹东市",
+                "mom": "-2.1%",
+                "yoy": "-5.0%",
+                "index": 1.702,
+                "avg": 25.802,
+                "lnglat": "124.383044,40.124296"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [107.416959, 40.757402]
+            },
+            "properties": {
+                "ranking": 76,
+                "prov": "内蒙古自治区",
+                "city": "巴彦淖尔市",
+                "mom": "-1.8%",
+                "yoy": "-0.4%",
+                "index": 1.699,
+                "avg": 30.021,
+                "lnglat": "107.416959,40.757402"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [104.897971, 25.08812]
+            },
+            "properties": {
+                "ranking": 77,
+                "prov": "贵州省",
+                "city": "黔西南布依族苗族自治",
+                "mom": "-5.5%",
+                "yoy": "-1.4%",
+                "index": 1.691,
+                "avg": 24.511,
+                "lnglat": "104.897971,25.08812"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.583285, 37.861188]
+            },
+            "properties": {
+                "ranking": 78,
+                "prov": "山西省",
+                "city": "阳泉市",
+                "mom": "-3.0%",
+                "yoy": "-3.6%",
+                "index": 1.691,
+                "avg": 21.973,
+                "lnglat": "113.583285,37.861188"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.948024, 34.263161]
+            },
+            "properties": {
+                "ranking": 79,
+                "prov": "陕西省",
+                "city": "西安市",
+                "mom": "-4.6%",
+                "yoy": "-10.0%",
+                "index": 1.691,
+                "avg": 26.448,
+                "lnglat": "108.948024,34.263161"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [116.632301, 23.661701]
+            },
+            "properties": {
+                "ranking": 80,
+                "prov": "广东省",
+                "city": "潮州市",
+                "mom": "-0.6%",
+                "yoy": "-2.3%",
+                "index": 1.69,
+                "avg": 21.894,
+                "lnglat": "116.632301,23.661701"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [102.543907, 24.350461]
+            },
+            "properties": {
+                "ranking": 81,
+                "prov": "云南省",
+                "city": "玉溪市",
+                "mom": "-5.4%",
+                "yoy": "-1.2%",
+                "index": 1.686,
+                "avg": 25.074,
+                "lnglat": "102.543907,24.350461"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [119.758168, 49.215333]
+            },
+            "properties": {
+                "ranking": 82,
+                "prov": "内蒙古自治区",
+                "city": "呼伦贝尔市",
+                "mom": "-5.5%",
+                "yoy": "-7.5%",
+                "index": 1.684,
+                "avg": 24.086,
+                "lnglat": "119.758168,49.215333"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.044439, 22.929801]
+            },
+            "properties": {
+                "ranking": 83,
+                "prov": "广东省",
+                "city": "云浮市",
+                "mom": "1.5%",
+                "yoy": "5.0%",
+                "index": 1.684,
+                "avg": 25.502,
+                "lnglat": "112.044439,22.929801"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [105.443348, 28.889138]
+            },
+            "properties": {
+                "ranking": 84,
+                "prov": "四川省",
+                "city": "泸州市",
+                "mom": "-3.7%",
+                "yoy": "-4.5%",
+                "index": 1.683,
+                "avg": 24.621,
+                "lnglat": "105.443348,28.889138"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [124.823608, 45.118243]
+            },
+            "properties": {
+                "ranking": 85,
+                "prov": "吉林省",
+                "city": "松原市",
+                "mom": "-1.5%",
+                "yoy": "-1.6%",
+                "index": 1.679,
+                "avg": 24.122,
+                "lnglat": "124.823608,45.118243"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [111.297604, 23.474803]
+            },
+            "properties": {
+                "ranking": 86,
+                "prov": "广西壮族自治区",
+                "city": "梧州市",
+                "mom": "-5.3%",
+                "yoy": "-11.4%",
+                "index": 1.677,
+                "avg": 24.206,
+                "lnglat": "111.297604,23.474803"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.029273, 32.6903]
+            },
+            "properties": {
+                "ranking": 87,
+                "prov": "陕西省",
+                "city": "安康市",
+                "mom": "-7.9%",
+                "yoy": "-4.7%",
+                "index": 1.677,
+                "avg": 23.051,
+                "lnglat": "109.029273,32.6903"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [130.361634, 46.809606]
+            },
+            "properties": {
+                "ranking": 88,
+                "prov": "黑龙江省",
+                "city": "佳木斯市",
+                "mom": "-4.3%",
+                "yoy": "-3.2%",
+                "index": 1.676,
+                "avg": 26.083,
+                "lnglat": "130.361634,46.809606"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [110.33119, 20.031971]
+            },
+            "properties": {
+                "ranking": 89,
+                "prov": "海南省",
+                "city": "海口市",
+                "mom": "-6.0%",
+                "yoy": "-6.0%",
+                "index": 1.673,
+                "avg": 22.991,
+                "lnglat": "110.33119,20.031971"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [126.99293, 46.637393]
+            },
+            "properties": {
+                "ranking": 90,
+                "prov": "黑龙江省",
+                "city": "绥化市",
+                "mom": "-2.2%",
+                "yoy": "-6.8%",
+                "index": 1.672,
+                "avg": 22.653,
+                "lnglat": "126.99293,46.637393"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [122.263119, 43.617429]
+            },
+            "properties": {
+                "ranking": 91,
+                "prov": "内蒙古自治区",
+                "city": "通辽市",
+                "mom": "-10.2%",
+                "yoy": "-21.2%",
+                "index": 1.671,
+                "avg": 23.119,
+                "lnglat": "122.263119,43.617429"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [129.618602, 44.582962]
+            },
+            "properties": {
+                "ranking": 92,
+                "prov": "黑龙江省",
+                "city": "牡丹江市",
+                "mom": "-1.5%",
+                "yoy": "0.1%",
+                "index": 1.669,
+                "avg": 24.263,
+                "lnglat": "129.618602,44.582962"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.746262, 23.046237]
+            },
+            "properties": {
+                "ranking": 93,
+                "prov": "广东省",
+                "city": "东莞市",
+                "mom": "-1.4%",
+                "yoy": "0.5%",
+                "index": 1.669,
+                "avg": 29.869,
+                "lnglat": "113.746262,23.046237"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [104.741722, 31.46402]
+            },
+            "properties": {
+                "ranking": 94,
+                "prov": "四川省",
+                "city": "绵阳市",
+                "mom": "-4.5%",
+                "yoy": "-4.4%",
+                "index": 1.668,
+                "avg": 29.111,
+                "lnglat": "104.741722,31.46402"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [116.587245, 35.415393]
+            },
+            "properties": {
+                "ranking": 95,
+                "prov": "山东省",
+                "city": "济宁市",
+                "mom": "-2.8%",
+                "yoy": "-0.8%",
+                "index": 1.667,
+                "avg": 27.676,
+                "lnglat": "116.587245,35.415393"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.516662, 18.776921]
+            },
+            "properties": {
+                "ranking": 96,
+                "prov": "海南省",
+                "city": "五指山市",
+                "mom": "-1.5%",
+                "yoy": "-3.2%",
+                "index": 1.665,
+                "avg": 24.074,
+                "lnglat": "109.516662,18.776921"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [119.007558, 25.431011]
+            },
+            "properties": {
+                "ranking": 97,
+                "prov": "福建省",
+                "city": "莆田市",
+                "mom": "-2.0%",
+                "yoy": "-1.0%",
+                "index": 1.664,
+                "avg": 21.499,
+                "lnglat": "119.007558,25.431011"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [119.306239, 26.075302]
+            },
+            "properties": {
+                "ranking": 98,
+                "prov": "福建省",
+                "city": "福州市",
+                "mom": "-4.8%",
+                "yoy": "-5.0%",
+                "index": 1.664,
+                "avg": 27.864,
+                "lnglat": "119.306239,26.075302"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.151737, 27.835806]
+            },
+            "properties": {
+                "ranking": 99,
+                "prov": "湖南省",
+                "city": "株洲市",
+                "mom": "-2.0%",
+                "yoy": "-2.4%",
+                "index": 1.662,
+                "avg": 26.674,
+                "lnglat": "113.151737,27.835806"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.851274, 35.497553]
+            },
+            "properties": {
+                "ranking": 100,
+                "prov": "山西省",
+                "city": "晋城市",
+                "mom": "-2.1%",
+                "yoy": "2.2%",
+                "index": 1.661,
+                "avg": 24.892,
+                "lnglat": "112.851274,35.497553"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [111.608019, 26.434516]
+            },
+            "properties": {
+                "ranking": 101,
+                "prov": "湖南省",
+                "city": "永州市",
+                "mom": "-4.9%",
+                "yoy": "-8.3%",
+                "index": 1.658,
+                "avg": 26.47,
+                "lnglat": "111.608019,26.434516"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [104.630825, 28.760189]
+            },
+            "properties": {
+                "ranking": 102,
+                "prov": "四川省",
+                "city": "宜宾市",
+                "mom": "-3.6%",
+                "yoy": "1.6%",
+                "index": 1.652,
+                "avg": 23.073,
+                "lnglat": "104.630825,28.760189"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.02978, 25.091603]
+            },
+            "properties": {
+                "ranking": 103,
+                "prov": "福建省",
+                "city": "龙岩市",
+                "mom": "-4.1%",
+                "yoy": "-10.4%",
+                "index": 1.652,
+                "avg": 24.4,
+                "lnglat": "117.02978,25.091603"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.11022, 24.490474]
+            },
+            "properties": {
+                "ranking": 104,
+                "prov": "福建省",
+                "city": "厦门市",
+                "mom": "-0.8%",
+                "yoy": "3.9%",
+                "index": 1.65,
+                "avg": 28.319,
+                "lnglat": "118.11022,24.490474"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [107.517156, 26.258219]
+            },
+            "properties": {
+                "ranking": 105,
+                "prov": "贵州省",
+                "city": "黔南布依族苗族自治州",
+                "mom": "-3.7%",
+                "yoy": "-10.3%",
+                "index": 1.648,
+                "avg": 24.48,
+                "lnglat": "107.517156,26.258219"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [103.384182, 23.366775]
+            },
+            "properties": {
+                "ranking": 106,
+                "prov": "云南省",
+                "city": "红河哈尼族彝族自治州",
+                "mom": "-5.9%",
+                "yoy": "-10.5%",
+                "index": 1.647,
+                "avg": 25.569,
+                "lnglat": "103.384182,23.366775"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [116.857461, 38.310582]
+            },
+            "properties": {
+                "ranking": 107,
+                "prov": "河北省",
+                "city": "沧州市",
+                "mom": "-2.4%",
+                "yoy": "-3.7%",
+                "index": 1.644,
+                "avg": 26.53,
+                "lnglat": "116.857461,38.310582"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.018329, 32.647574]
+            },
+            "properties": {
+                "ranking": 108,
+                "prov": "安徽省",
+                "city": "淮南市",
+                "mom": "-3.9%",
+                "yoy": "-3.6%",
+                "index": 1.643,
+                "avg": 26.073,
+                "lnglat": "117.018329,32.647574"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.549248, 37.857014]
+            },
+            "properties": {
+                "ranking": 109,
+                "prov": "山西省",
+                "city": "太原市",
+                "mom": "-1.6%",
+                "yoy": "-1.9%",
+                "index": 1.642,
+                "avg": 29.997,
+                "lnglat": "112.549248,37.857014"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.926655, 30.926423]
+            },
+            "properties": {
+                "ranking": 110,
+                "prov": "湖北省",
+                "city": "孝感市",
+                "mom": "-2.4%",
+                "yoy": "-0.8%",
+                "index": 1.642,
+                "avg": 23.278,
+                "lnglat": "113.926655,30.926423"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.008497, 27.728136]
+            },
+            "properties": {
+                "ranking": 111,
+                "prov": "湖南省",
+                "city": "娄底市",
+                "mom": "-3.4%",
+                "yoy": "-7.9%",
+                "index": 1.642,
+                "avg": 25.759,
+                "lnglat": "112.008497,27.728136"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [110.364977, 21.274898]
+            },
+            "properties": {
+                "ranking": 112,
+                "prov": "广东省",
+                "city": "湛江市",
+                "mom": "-2.9%",
+                "yoy": "-5.3%",
+                "index": 1.64,
+                "avg": 22.978,
+                "lnglat": "110.364977,21.274898"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.70245, 18.636371]
+            },
+            "properties": {
+                "ranking": 113,
+                "prov": "海南省",
+                "city": "保亭黎族苗族自治县",
+                "mom": "-2.5%",
+                "yoy": "-1.5%",
+                "index": 1.637,
+                "avg": 25.495,
+                "lnglat": "109.70245,18.636371"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.307718, 33.735241]
+            },
+            "properties": {
+                "ranking": 114,
+                "prov": "河南省",
+                "city": "平顶山市",
+                "mom": "-7.7%",
+                "yoy": "-9.0%",
+                "index": 1.637,
+                "avg": 23.529,
+                "lnglat": "113.307718,33.735241"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.697802, 23.746266]
+            },
+            "properties": {
+                "ranking": 115,
+                "prov": "广东省",
+                "city": "河源市",
+                "mom": "-5.5%",
+                "yoy": "-9.9%",
+                "index": 1.634,
+                "avg": 22.227,
+                "lnglat": "114.697802,23.746266"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [101.716007, 26.580446]
+            },
+            "properties": {
+                "ranking": 116,
+                "prov": "四川省",
+                "city": "攀枝花市",
+                "mom": "-8.8%",
+                "yoy": "-10.6%",
+                "index": 1.632,
+                "avg": 27.737,
+                "lnglat": "101.716007,26.580446"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [111.003957, 35.022778]
+            },
+            "properties": {
+                "ranking": 117,
+                "prov": "山西省",
+                "city": "运城市",
+                "mom": "-3.9%",
+                "yoy": "-3.4%",
+                "index": 1.629,
+                "avg": 27.599,
+                "lnglat": "111.003957,35.022778"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.839996, 19.03557]
+            },
+            "properties": {
+                "ranking": 118,
+                "prov": "海南省",
+                "city": "琼中黎族苗族自治县",
+                "mom": "-0.1%",
+                "yoy": "-0.8%",
+                "index": 1.626,
+                "avg": 24.062,
+                "lnglat": "109.839996,19.03557"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [110.787916, 32.646907]
+            },
+            "properties": {
+                "ranking": 119,
+                "prov": "湖北省",
+                "city": "十堰市",
+                "mom": "-9.1%",
+                "yoy": "-13.8%",
+                "index": 1.624,
+                "avg": 27.643,
+                "lnglat": "110.787916,32.646907"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [110.388793, 18.796216]
+            },
+            "properties": {
+                "ranking": 120,
+                "prov": "海南省",
+                "city": "万宁市",
+                "mom": "-1.8%",
+                "yoy": "0.7%",
+                "index": 1.624,
+                "avg": 22.345,
+                "lnglat": "110.388793,18.796216"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.382391, 22.521113]
+            },
+            "properties": {
+                "ranking": 121,
+                "prov": "广东省",
+                "city": "中山市",
+                "mom": "-3.8%",
+                "yoy": "1.3%",
+                "index": 1.623,
+                "avg": 28.83,
+                "lnglat": "113.382391,22.521113"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.298572, 30.584355]
+            },
+            "properties": {
+                "ranking": 122,
+                "prov": "湖北省",
+                "city": "武汉市",
+                "mom": "-5.9%",
+                "yoy": "-4.9%",
+                "index": 1.622,
+                "avg": 30.049,
+                "lnglat": "114.298572,30.584355"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.295259, 40.09031]
+            },
+            "properties": {
+                "ranking": 123,
+                "prov": "山西省",
+                "city": "大同市",
+                "mom": "-5.7%",
+                "yoy": "-6.2%",
+                "index": 1.621,
+                "avg": 26.866,
+                "lnglat": "113.295259,40.09031"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [122.841114, 45.619026]
+            },
+            "properties": {
+                "ranking": 124,
+                "prov": "吉林省",
+                "city": "白城市",
+                "mom": "-3.7%",
+                "yoy": "-28.7%",
+                "index": 1.619,
+                "avg": 23.421,
+                "lnglat": "122.841114,45.619026"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [101.778916, 36.623178]
+            },
+            "properties": {
+                "ranking": 125,
+                "prov": "青海省",
+                "city": "西宁市",
+                "mom": "-3.7%",
+                "yoy": "-4.1%",
+                "index": 1.619,
+                "avg": 31.049,
+                "lnglat": "101.778916,36.623178"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.165862, 30.653061]
+            },
+            "properties": {
+                "ranking": 126,
+                "prov": "湖北省",
+                "city": "天门市",
+                "mom": "0.8%",
+                "yoy": "0.3%",
+                "index": 1.619,
+                "avg": 27.059,
+                "lnglat": "113.165862,30.653061"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.190182, 39.125596]
+            },
+            "properties": {
+                "ranking": 127,
+                "prov": "天津市",
+                "city": "天津市",
+                "mom": "-3.9%",
+                "yoy": "-0.1%",
+                "index": 1.618,
+                "avg": 29.247,
+                "lnglat": "117.190182,39.125596"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.602146, 23.0936]
+            },
+            "properties": {
+                "ranking": 128,
+                "prov": "广西壮族自治区",
+                "city": "贵港市",
+                "mom": "-6.1%",
+                "yoy": "-6.5%",
+                "index": 1.616,
+                "avg": 22.398,
+                "lnglat": "109.602146,23.0936"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [120.153576, 30.287459]
+            },
+            "properties": {
+                "ranking": 129,
+                "prov": "浙江省",
+                "city": "杭州市",
+                "mom": "-1.9%",
+                "yoy": "-4.4%",
+                "index": 1.616,
+                "avg": 25.578,
+                "lnglat": "120.153576,30.287459"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [99.167133, 25.111802]
+            },
+            "properties": {
+                "ranking": 130,
+                "prov": "云南省",
+                "city": "保山市",
+                "mom": "-6.3%",
+                "yoy": "-3.9%",
+                "index": 1.615,
+                "avg": 21.834,
+                "lnglat": "99.167133,25.111802"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [106.825563, 39.673734]
+            },
+            "properties": {
+                "ranking": 131,
+                "prov": "内蒙古自治区",
+                "city": "乌海市",
+                "mom": "-6.3%",
+                "yoy": "-3.6%",
+                "index": 1.613,
+                "avg": 25.064,
+                "lnglat": "106.825563,39.673734"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [115.077048, 30.220074]
+            },
+            "properties": {
+                "ranking": 132,
+                "prov": "湖北省",
+                "city": "黄石市",
+                "mom": "-1.6%",
+                "yoy": "0.8%",
+                "index": 1.612,
+                "avg": 26.046,
+                "lnglat": "115.077048,30.220074"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.132855, 29.37029]
+            },
+            "properties": {
+                "ranking": 133,
+                "prov": "湖南省",
+                "city": "岳阳市",
+                "mom": "-6.5%",
+                "yoy": "-10.2%",
+                "index": 1.612,
+                "avg": 27.242,
+                "lnglat": "113.132855,29.37029"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [105.932188, 26.245544]
+            },
+            "properties": {
+                "ranking": 134,
+                "prov": "贵州省",
+                "city": "安顺市",
+                "mom": "-1.9%",
+                "yoy": "-6.9%",
+                "index": 1.609,
+                "avg": 25.693,
+                "lnglat": "105.932188,26.245544"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.434468, 34.663041]
+            },
+            "properties": {
+                "ranking": 135,
+                "prov": "河南省",
+                "city": "洛阳市",
+                "mom": "-4.1%",
+                "yoy": "-7.3%",
+                "index": 1.607,
+                "avg": 24.277,
+                "lnglat": "112.434468,34.663041"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [106.616285, 23.897742]
+            },
+            "properties": {
+                "ranking": 136,
+                "prov": "广西壮族自治区",
+                "city": "百色市",
+                "mom": "-3.6%",
+                "yoy": "-3.7%",
+                "index": 1.606,
+                "avg": 24.409,
+                "lnglat": "106.616285,23.897742"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.032067, 25.793589]
+            },
+            "properties": {
+                "ranking": 137,
+                "prov": "湖南省",
+                "city": "郴州市",
+                "mom": "-5.5%",
+                "yoy": "-3.7%",
+                "index": 1.605,
+                "avg": 24.731,
+                "lnglat": "113.032067,25.793589"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.507906, 31.689362]
+            },
+            "properties": {
+                "ranking": 138,
+                "prov": "辽宁省",
+                "city": "鞍山市",
+                "mom": "-3.7%",
+                "yoy": "-6.7%",
+                "index": 1.604,
+                "avg": 28.659,
+                "lnglat": "118.507906,31.689362"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [120.619585, 31.299379]
+            },
+            "properties": {
+                "ranking": 139,
+                "prov": "江苏省",
+                "city": "苏州市",
+                "mom": "-2.8%",
+                "yoy": "-1.4%",
+                "index": 1.603,
+                "avg": 30.062,
+                "lnglat": "120.619585,31.299379"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.677736, 36.214397]
+            },
+            "properties": {
+                "ranking": 140,
+                "prov": "山东省",
+                "city": "莱芜市",
+                "mom": "-1.6%",
+                "yoy": "1.9%",
+                "index": 1.602,
+                "avg": 24.596,
+                "lnglat": "117.677736,36.214397"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [125.936501, 41.721177]
+            },
+            "properties": {
+                "ranking": 141,
+                "prov": "吉林省",
+                "city": "通化市",
+                "mom": "-6.5%",
+                "yoy": "-4.4%",
+                "index": 1.601,
+                "avg": 26.961,
+                "lnglat": "125.936501,41.721177"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [119.527082, 26.65924]
+            },
+            "properties": {
+                "ranking": 142,
+                "prov": "福建省",
+                "city": "宁德市",
+                "mom": "-6.6%",
+                "yoy": "-1.4%",
+                "index": 1.6,
+                "avg": 25.071,
+                "lnglat": "119.527082,26.65924"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [102.019988, 35.517744]
+            },
+            "properties": {
+                "ranking": 143,
+                "prov": "青海省",
+                "city": "黄南藏族自治州",
+                "mom": "-1.2%",
+                "yoy": "-0.6%",
+                "index": 1.6,
+                "avg": 22.771,
+                "lnglat": "102.019988,35.517744"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [120.355173, 36.082982]
+            },
+            "properties": {
+                "ranking": 144,
+                "prov": "山东省",
+                "city": "青岛市",
+                "mom": "3.0%",
+                "yoy": "-10.5%",
+                "index": 1.599,
+                "avg": 31.863,
+                "lnglat": "120.355173,36.082982"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.687697, 19.908293]
+            },
+            "properties": {
+                "ranking": 145,
+                "prov": "海南省",
+                "city": "临高县",
+                "mom": "-3.0%",
+                "yoy": "0.6%",
+                "index": 1.598,
+                "avg": 22.553,
+                "lnglat": "109.687697,19.908293"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.275162, 33.963008]
+            },
+            "properties": {
+                "ranking": 146,
+                "prov": "江苏省",
+                "city": "宿迁市",
+                "mom": "-2.7%",
+                "yoy": "-2.1%",
+                "index": 1.597,
+                "avg": 26.802,
+                "lnglat": "118.275162,33.963008"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [110.154393, 22.63136]
+            },
+            "properties": {
+                "ranking": 147,
+                "prov": "广西壮族自治区",
+                "city": "玉林市",
+                "mom": "-2.7%",
+                "yoy": "-2.8%",
+                "index": 1.595,
+                "avg": 23.94,
+                "lnglat": "110.154393,22.63136"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.075031, 32.123274]
+            },
+            "properties": {
+                "ranking": 148,
+                "prov": "河南省",
+                "city": "信阳市",
+                "mom": "-4.3%",
+                "yoy": "-7.1%",
+                "index": 1.594,
+                "avg": 25.957,
+                "lnglat": "114.075031,32.123274"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.665412, 34.757975]
+            },
+            "properties": {
+                "ranking": 149,
+                "prov": "河南省",
+                "city": "郑州市",
+                "mom": "-3.5%",
+                "yoy": "-5.9%",
+                "index": 1.593,
+                "avg": 30.286,
+                "lnglat": "113.665412,34.757975"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.705117, 34.333439]
+            },
+            "properties": {
+                "ranking": 150,
+                "prov": "陕西省",
+                "city": "咸阳市",
+                "mom": "-10.5%",
+                "yoy": "-9.2%",
+                "index": 1.593,
+                "avg": 25.062,
+                "lnglat": "108.705117,34.333439"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.144146, 32.042426]
+            },
+            "properties": {
+                "ranking": 151,
+                "prov": "湖北省",
+                "city": "襄阳市",
+                "mom": "-4.6%",
+                "yoy": "-2.1%",
+                "index": 1.591,
+                "avg": 26.694,
+                "lnglat": "112.144146,32.042426"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [116.355733, 23.543778]
+            },
+            "properties": {
+                "ranking": 152,
+                "prov": "广东省",
+                "city": "揭阳市",
+                "mom": "-0.7%",
+                "yoy": "0.9%",
+                "index": 1.59,
+                "avg": 22.576,
+                "lnglat": "116.355733,23.543778"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [106.937265, 27.706626]
+            },
+            "properties": {
+                "ranking": 153,
+                "prov": "贵州省",
+                "city": "遵义市",
+                "mom": "-6.7%",
+                "yoy": "-12.6%",
+                "index": 1.589,
+                "avg": 30.219,
+                "lnglat": "106.937265,27.706626"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.890593, 30.396536]
+            },
+            "properties": {
+                "ranking": 154,
+                "prov": "湖北省",
+                "city": "鄂州市",
+                "mom": "-3.1%",
+                "yoy": "-4.4%",
+                "index": 1.589,
+                "avg": 28.372,
+                "lnglat": "114.890593,30.396536"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.607693, 26.900358]
+            },
+            "properties": {
+                "ranking": 155,
+                "prov": "湖南省",
+                "city": "衡阳市",
+                "mom": "-3.8%",
+                "yoy": "-6.2%",
+                "index": 1.588,
+                "avg": 26.46,
+                "lnglat": "112.607693,26.900358"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.649653, 33.620357]
+            },
+            "properties": {
+                "ranking": 156,
+                "prov": "河南省",
+                "city": "周口市",
+                "mom": "-3.5%",
+                "yoy": "-0.6%",
+                "index": 1.588,
+                "avg": 25.442,
+                "lnglat": "114.649653,33.620357"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.939152, 40.976204]
+            },
+            "properties": {
+                "ranking": 157,
+                "prov": "河北省",
+                "city": "承德市",
+                "mom": "0.3%",
+                "yoy": "-3.6%",
+                "index": 1.587,
+                "avg": 34.09,
+                "lnglat": "117.939152,40.976204"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [116.794664, 33.971707]
+            },
+            "properties": {
+                "ranking": 158,
+                "prov": "安徽省",
+                "city": "淮北市",
+                "mom": "-2.1%",
+                "yoy": "-5.3%",
+                "index": 1.587,
+                "avg": 23.751,
+                "lnglat": "116.794664,33.971707"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [111.290843, 30.702636]
+            },
+            "properties": {
+                "ranking": 159,
+                "prov": "湖北省",
+                "city": "宜昌市",
+                "mom": "-3.2%",
+                "yoy": "-6.9%",
+                "index": 1.585,
+                "avg": 26.596,
+                "lnglat": "111.290843,30.702636"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [115.482331, 38.867657]
+            },
+            "properties": {
+                "ranking": 160,
+                "prov": "河北省",
+                "city": "保定市",
+                "mom": "-2.0%",
+                "yoy": "0.3%",
+                "index": 1.585,
+                "avg": 30.656,
+                "lnglat": "115.482331,38.867657"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.173355, 22.320048]
+            },
+            "properties": {
+                "ranking": 161,
+                "prov": "香港",
+                "city": "香港",
+                "mom": "-3.0%",
+                "yoy": "-5.0%",
+                "index": 1.583,
+                "avg": 39.103,
+                "lnglat": "114.173355,22.320048"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [106.082974, 30.795281]
+            },
+            "properties": {
+                "ranking": 162,
+                "prov": "四川省",
+                "city": "南充市",
+                "mom": "-7.4%",
+                "yoy": "-6.2%",
+                "index": 1.582,
+                "avg": 24.96,
+                "lnglat": "106.082974,30.795281"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [115.892151, 28.676493]
+            },
+            "properties": {
+                "ranking": 163,
+                "prov": "江西省",
+                "city": "南昌市",
+                "mom": "-3.1%",
+                "yoy": "-6.1%",
+                "index": 1.581,
+                "avg": 27.336,
+                "lnglat": "115.892151,28.676493"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [115.041299, 35.768234]
+            },
+            "properties": {
+                "ranking": 164,
+                "prov": "河南省",
+                "city": "濮阳市",
+                "mom": "-4.0%",
+                "yoy": "-4.2%",
+                "index": 1.579,
+                "avg": 26.241,
+                "lnglat": "115.041299,35.768234"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [110.671525, 31.744449]
+            },
+            "properties": {
+                "ranking": 165,
+                "prov": "湖北省",
+                "city": "神农架林区",
+                "mom": "-5.2%",
+                "yoy": "-3.9%",
+                "index": 1.579,
+                "avg": 25.394,
+                "lnglat": "110.671525,31.744449"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [102.911008, 34.986354]
+            },
+            "properties": {
+                "ranking": 166,
+                "prov": "甘肃省",
+                "city": "甘南藏族自治州",
+                "mom": "-4.5%",
+                "yoy": "-2.0%",
+                "index": 1.578,
+                "avg": 24.695,
+                "lnglat": "102.911008,34.986354"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [110.349235, 19.684966]
+            },
+            "properties": {
+                "ranking": 167,
+                "prov": "海南省",
+                "city": "定安县",
+                "mom": "-1.4%",
+                "yoy": "-0.5%",
+                "index": 1.578,
+                "avg": 29.473,
+                "lnglat": "110.349235,19.684966"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.363228, 32.939667]
+            },
+            "properties": {
+                "ranking": 168,
+                "prov": "安徽省",
+                "city": "蚌埠市",
+                "mom": "-2.4%",
+                "yoy": "0.4%",
+                "index": 1.578,
+                "avg": 25.615,
+                "lnglat": "117.363228,32.939667"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.453974, 30.364953]
+            },
+            "properties": {
+                "ranking": 169,
+                "prov": "湖北省",
+                "city": "仙桃市",
+                "mom": "-2.5%",
+                "yoy": "-0.7%",
+                "index": 1.575,
+                "avg": 24.812,
+                "lnglat": "113.453974,30.364953"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.114543, 41.034126]
+            },
+            "properties": {
+                "ranking": 170,
+                "prov": "内蒙古自治区",
+                "city": "乌兰察布市",
+                "mom": "-8.0%",
+                "yoy": "-11.7%",
+                "index": 1.574,
+                "avg": 29.055,
+                "lnglat": "113.114543,41.034126"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.175393, 39.635113]
+            },
+            "properties": {
+                "ranking": 171,
+                "prov": "河北省",
+                "city": "唐山市",
+                "mom": "-5.2%",
+                "yoy": "-10.8%",
+                "index": 1.568,
+                "avg": 27.68,
+                "lnglat": "118.175393,39.635113"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [120.750865, 30.762653]
+            },
+            "properties": {
+                "ranking": 172,
+                "prov": "浙江省",
+                "city": "嘉兴市",
+                "mom": "-3.4%",
+                "yoy": "-1.5%",
+                "index": 1.568,
+                "avg": 25.636,
+                "lnglat": "120.750865,30.762653"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [130.975966, 45.300046]
+            },
+            "properties": {
+                "ranking": 173,
+                "prov": "黑龙江省",
+                "city": "鸡西市",
+                "mom": "-2.8%",
+                "yoy": "-5.2%",
+                "index": 1.565,
+                "avg": 29.911,
+                "lnglat": "130.975966,45.300046"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.238266, 35.23904]
+            },
+            "properties": {
+                "ranking": 174,
+                "prov": "河南省",
+                "city": "焦作市",
+                "mom": "-3.4%",
+                "yoy": "2.1%",
+                "index": 1.564,
+                "avg": 26.188,
+                "lnglat": "113.238266,35.23904"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.341447, 34.797049]
+            },
+            "properties": {
+                "ranking": 175,
+                "prov": "河南省",
+                "city": "开封市",
+                "mom": "-5.4%",
+                "yoy": "-8.1%",
+                "index": 1.564,
+                "avg": 26.54,
+                "lnglat": "114.341447,34.797049"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.452606, 19.224584]
+            },
+            "properties": {
+                "ranking": 176,
+                "prov": "海南省",
+                "city": "白沙黎族自治县",
+                "mom": "-0.7%",
+                "yoy": "-3.0%",
+                "index": 1.563,
+                "avg": 24.187,
+                "lnglat": "109.452606,19.224584"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [123.18152, 41.269402]
+            },
+            "properties": {
+                "ranking": 177,
+                "prov": "辽宁省",
+                "city": "辽阳市",
+                "mom": "-7.6%",
+                "yoy": "-4.7%",
+                "index": 1.562,
+                "avg": 28.816,
+                "lnglat": "123.18152,41.269402"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.852186, 27.622946]
+            },
+            "properties": {
+                "ranking": 178,
+                "prov": "江西省",
+                "city": "萍乡市",
+                "mom": "2.6%",
+                "yoy": "4.9%",
+                "index": 1.562,
+                "avg": 32.877,
+                "lnglat": "113.852186,27.622946"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [110.753975, 19.612986]
+            },
+            "properties": {
+                "ranking": 179,
+                "prov": "海南省",
+                "city": "文昌市",
+                "mom": "-2.3%",
+                "yoy": "-6.9%",
+                "index": 1.561,
+                "avg": 24.768,
+                "lnglat": "110.753975,19.612986"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [104.24401, 23.36951]
+            },
+            "properties": {
+                "ranking": 180,
+                "prov": "云南省",
+                "city": "文山壮族苗族自治州",
+                "mom": "-4.3%",
+                "yoy": "-19.5%",
+                "index": 1.56,
+                "avg": 25.504,
+                "lnglat": "104.24401,23.36951"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [121.549792, 29.868388]
+            },
+            "properties": {
+                "ranking": 181,
+                "prov": "浙江省",
+                "city": "宁波市",
+                "mom": "-2.9%",
+                "yoy": "-3.1%",
+                "index": 1.56,
+                "avg": 26.524,
+                "lnglat": "121.549792,29.868388"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [102.634697, 37.929996]
+            },
+            "properties": {
+                "ranking": 182,
+                "prov": "甘肃省",
+                "city": "武威市",
+                "mom": "-5.9%",
+                "yoy": "-4.5%",
+                "index": 1.56,
+                "avg": 25.857,
+                "lnglat": "102.634697,37.929996"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [105.571331, 30.513311]
+            },
+            "properties": {
+                "ranking": 183,
+                "prov": "四川省",
+                "city": "遂宁市",
+                "mom": "-4.6%",
+                "yoy": "-0.7%",
+                "index": 1.559,
+                "avg": 25.998,
+                "lnglat": "105.571331,30.513311"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [100.972344, 22.777321]
+            },
+            "properties": {
+                "ranking": 184,
+                "prov": "云南省",
+                "city": "普洱市",
+                "mom": "-3.7%",
+                "yoy": "-8.8%",
+                "index": 1.558,
+                "avg": 25.914,
+                "lnglat": "100.972344,22.777321"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [120.672111, 28.000575]
+            },
+            "properties": {
+                "ranking": 185,
+                "prov": "浙江省",
+                "city": "温州市",
+                "mom": "-0.9%",
+                "yoy": "-4.5%",
+                "index": 1.558,
+                "avg": 27.708,
+                "lnglat": "120.672111,28.000575"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.391136, 27.8043]
+            },
+            "properties": {
+                "ranking": 186,
+                "prov": "江西省",
+                "city": "宜春市",
+                "mom": "-5.9%",
+                "yoy": "0.8%",
+                "index": 1.556,
+                "avg": 28.743,
+                "lnglat": "114.391136,27.8043"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [100.455472, 38.932897]
+            },
+            "properties": {
+                "ranking": 187,
+                "prov": "甘肃省",
+                "city": "张掖市",
+                "mom": "1.7%",
+                "yoy": "-3.9%",
+                "index": 1.554,
+                "avg": 24.336,
+                "lnglat": "100.455472,38.932897"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [115.782939, 33.869338]
+            },
+            "properties": {
+                "ranking": 188,
+                "prov": "安徽省",
+                "city": "亳州市",
+                "mom": "-4.4%",
+                "yoy": "-2.6%",
+                "index": 1.553,
+                "avg": 24.286,
+                "lnglat": "115.782939,33.869338"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [115.665993, 37.735097]
+            },
+            "properties": {
+                "ranking": 189,
+                "prov": "河北省",
+                "city": "衡水市",
+                "mom": "-3.7%",
+                "yoy": "-0.5%",
+                "index": 1.551,
+                "avg": 26.425,
+                "lnglat": "115.665993,37.735097"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.113556, 36.191112]
+            },
+            "properties": {
+                "ranking": 190,
+                "prov": "山西省",
+                "city": "长治市",
+                "mom": "-4.4%",
+                "yoy": "-1.4%",
+                "index": 1.55,
+                "avg": 27.686,
+                "lnglat": "113.113556,36.191112"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.591544, 24.801322]
+            },
+            "properties": {
+                "ranking": 191,
+                "prov": "广东省",
+                "city": "韶关市",
+                "mom": "-3.3%",
+                "yoy": "-3.0%",
+                "index": 1.55,
+                "avg": 28.237,
+                "lnglat": "113.591544,24.801322"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.508268, 18.247872]
+            },
+            "properties": {
+                "ranking": 192,
+                "prov": "海南省",
+                "city": "三亚市",
+                "mom": "-1.9%",
+                "yoy": "-5.6%",
+                "index": 1.55,
+                "avg": 25.012,
+                "lnglat": "109.508268,18.247872"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [107.028621, 33.077668]
+            },
+            "properties": {
+                "ranking": 193,
+                "prov": "陕西省",
+                "city": "汉中市",
+                "mom": "-4.2%",
+                "yoy": "-3.0%",
+                "index": 1.548,
+                "avg": 25.505,
+                "lnglat": "107.028621,33.077668"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.411703, 24.314617]
+            },
+            "properties": {
+                "ranking": 194,
+                "prov": "广西壮族自治区",
+                "city": "柳州市",
+                "mom": "-1.7%",
+                "yoy": "-2.7%",
+                "index": 1.547,
+                "avg": 24.743,
+                "lnglat": "109.411703,24.314617"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [103.212006, 35.599446]
+            },
+            "properties": {
+                "ranking": 195,
+                "prov": "甘肃省",
+                "city": "临夏回族自治州",
+                "mom": "-3.2%",
+                "yoy": "-5.1%",
+                "index": 1.547,
+                "avg": 25.892,
+                "lnglat": "103.212006,35.599446"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [115.650497, 34.437054]
+            },
+            "properties": {
+                "ranking": 196,
+                "prov": "河南省",
+                "city": "商丘市",
+                "mom": "-2.4%",
+                "yoy": "-2.6%",
+                "index": 1.546,
+                "avg": 24.874,
+                "lnglat": "115.650497,34.437054"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.326443, 35.065282]
+            },
+            "properties": {
+                "ranking": 197,
+                "prov": "山东省",
+                "city": "临沂市",
+                "mom": "-1.9%",
+                "yoy": "0.9%",
+                "index": 1.542,
+                "avg": 28.967,
+                "lnglat": "118.326443,35.065282"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [122.06957, 41.124484]
+            },
+            "properties": {
+                "ranking": 198,
+                "prov": "辽宁省",
+                "city": "盘锦市",
+                "mom": "-2.4%",
+                "yoy": "-4.5%",
+                "index": 1.541,
+                "avg": 29.406,
+                "lnglat": "122.06957,41.124484"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [103.797851, 25.501557]
+            },
+            "properties": {
+                "ranking": 199,
+                "prov": "云南省",
+                "city": "曲靖市",
+                "mom": "-4.4%",
+                "yoy": "-0.3%",
+                "index": 1.54,
+                "avg": 29.83,
+                "lnglat": "103.797851,25.501557"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [100.242143, 34.4736]
+            },
+            "properties": {
+                "ranking": 200,
+                "prov": "青海省",
+                "city": "果洛藏族自治州",
+                "mom": "-5.6%",
+                "yoy": "-3.9%",
+                "index": 1.539,
+                "avg": 26.784,
+                "lnglat": "100.242143,34.4736"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [115.819729, 32.896969]
+            },
+            "properties": {
+                "ranking": 201,
+                "prov": "安徽省",
+                "city": "阜阳市",
+                "mom": "-3.6%",
+                "yoy": "-6.5%",
+                "index": 1.539,
+                "avg": 26.162,
+                "lnglat": "115.819729,32.896969"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.094942, 22.590431]
+            },
+            "properties": {
+                "ranking": 202,
+                "prov": "广东省",
+                "city": "江门市",
+                "mom": "-3.9%",
+                "yoy": "-3.7%",
+                "index": 1.537,
+                "avg": 31.627,
+                "lnglat": "113.094942,22.590431"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [116.358351, 27.98385]
+            },
+            "properties": {
+                "ranking": 203,
+                "prov": "江西省",
+                "city": "抚州市",
+                "mom": "-4.1%",
+                "yoy": "-5.7%",
+                "index": 1.537,
+                "avg": 26.136,
+                "lnglat": "116.358351,27.98385"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [100.797941, 22.001724]
+            },
+            "properties": {
+                "ranking": 204,
+                "prov": "云南省",
+                "city": "西双版纳傣族自治州",
+                "mom": "-0.7%",
+                "yoy": "-1.3%",
+                "index": 1.536,
+                "avg": 24.875,
+                "lnglat": "100.797941,22.001724"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.540918, 32.999082]
+            },
+            "properties": {
+                "ranking": 205,
+                "prov": "河南省",
+                "city": "南阳市",
+                "mom": "-4.5%",
+                "yoy": "0.2%",
+                "index": 1.536,
+                "avg": 24.748,
+                "lnglat": "112.540918,32.999082"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [119.461208, 35.428588]
+            },
+            "properties": {
+                "ranking": 206,
+                "prov": "山东省",
+                "city": "日照市",
+                "mom": "-4.9%",
+                "yoy": "-1.8%",
+                "index": 1.536,
+                "avg": 27.82,
+                "lnglat": "119.461208,35.428588"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.884091, 40.811901]
+            },
+            "properties": {
+                "ranking": 207,
+                "prov": "河北省",
+                "city": "张家口市",
+                "mom": "-8.7%",
+                "yoy": "-6.2%",
+                "index": 1.534,
+                "avg": 34.179,
+                "lnglat": "114.884091,40.811901"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [110.299121, 25.274215]
+            },
+            "properties": {
+                "ranking": 208,
+                "prov": "广西壮族自治区",
+                "city": "桂林市",
+                "mom": "-2.5%",
+                "yoy": "-5.8%",
+                "index": 1.532,
+                "avg": 31.083,
+                "lnglat": "110.299121,25.274215"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.661801, 24.510897]
+            },
+            "properties": {
+                "ranking": 209,
+                "prov": "福建省",
+                "city": "漳州市",
+                "mom": "-1.9%",
+                "yoy": "-2.5%",
+                "index": 1.53,
+                "avg": 26.372,
+                "lnglat": "117.661801,24.510897"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [107.638372, 35.734218]
+            },
+            "properties": {
+                "ranking": 210,
+                "prov": "甘肃省",
+                "city": "庆阳市",
+                "mom": "-6.5%",
+                "yoy": "-13.7%",
+                "index": 1.529,
+                "avg": 26.734,
+                "lnglat": "107.638372,35.734218"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.053351, 19.260968]
+            },
+            "properties": {
+                "ranking": 211,
+                "prov": "海南省",
+                "city": "昌江黎族自治县",
+                "mom": "-5.7%",
+                "yoy": "0.3%",
+                "index": 1.529,
+                "avg": 28.296,
+                "lnglat": "109.053351,19.260968"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [110.007147, 19.737095]
+            },
+            "properties": {
+                "ranking": 212,
+                "prov": "海南省",
+                "city": "澄迈县",
+                "mom": "-1.5%",
+                "yoy": "-4.7%",
+                "index": 1.529,
+                "avg": 28.85,
+                "lnglat": "110.007147,19.737095"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [119.649506, 29.089524]
+            },
+            "properties": {
+                "ranking": 213,
+                "prov": "浙江省",
+                "city": "金华市",
+                "mom": "-7.6%",
+                "yoy": "-4.2%",
+                "index": 1.526,
+                "avg": 23.861,
+                "lnglat": "119.649506,29.089524"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.328963, 29.832798]
+            },
+            "properties": {
+                "ranking": 214,
+                "prov": "湖北省",
+                "city": "咸宁市",
+                "mom": "-2.3%",
+                "yoy": "-1.9%",
+                "index": 1.523,
+                "avg": 29.434,
+                "lnglat": "114.328963,29.832798"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [104.398651, 31.127991]
+            },
+            "properties": {
+                "ranking": 215,
+                "prov": "四川省",
+                "city": "德阳市",
+                "mom": "-4.2%",
+                "yoy": "-2.6%",
+                "index": 1.522,
+                "avg": 34.228,
+                "lnglat": "104.398651,31.127991"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [120.301663, 31.574729]
+            },
+            "properties": {
+                "ranking": 216,
+                "prov": "江苏省",
+                "city": "无锡市",
+                "mom": "-1.2%",
+                "yoy": "-5.2%",
+                "index": 1.522,
+                "avg": 31.654,
+                "lnglat": "120.301663,31.574729"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.590047, 35.090378]
+            },
+            "properties": {
+                "ranking": 217,
+                "prov": "河南省",
+                "city": "济源市",
+                "mom": "-1.6%",
+                "yoy": "3.3%",
+                "index": 1.522,
+                "avg": 26.829,
+                "lnglat": "112.590047,35.090378"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [106.633369, 30.456398]
+            },
+            "properties": {
+                "ranking": 218,
+                "prov": "四川省",
+                "city": "广安市",
+                "mom": "-1.8%",
+                "yoy": "1.6%",
+                "index": 1.521,
+                "avg": 25.443,
+                "lnglat": "106.633369,30.456398"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.214664, 29.29256]
+            },
+            "properties": {
+                "ranking": 219,
+                "prov": "江西省",
+                "city": "景德镇市",
+                "mom": "-4.2%",
+                "yoy": "-8.5%",
+                "index": 1.52,
+                "avg": 27.663,
+                "lnglat": "117.214664,29.29256"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.184811, 34.261792]
+            },
+            "properties": {
+                "ranking": 220,
+                "prov": "江苏省",
+                "city": "徐州市",
+                "mom": "-3.0%",
+                "yoy": "-3.8%",
+                "index": 1.518,
+                "avg": 28.861,
+                "lnglat": "117.184811,34.261792"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.508851, 37.0682]
+            },
+            "properties": {
+                "ranking": 221,
+                "prov": "河北省",
+                "city": "邢台市",
+                "mom": "-3.4%",
+                "yoy": "-2.1%",
+                "index": 1.516,
+                "avg": 29.212,
+                "lnglat": "114.508851,37.0682"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [110.037218, 18.505006]
+            },
+            "properties": {
+                "ranking": 222,
+                "prov": "海南省",
+                "city": "陵水黎族自治县",
+                "mom": "-0.7%",
+                "yoy": "3.1%",
+                "index": 1.515,
+                "avg": 26.334,
+                "lnglat": "110.037218,18.505006"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [120.582112, 29.997117]
+            },
+            "properties": {
+                "ranking": 223,
+                "prov": "浙江省",
+                "city": "绍兴市",
+                "mom": "-2.5%",
+                "yoy": "-3.9%",
+                "index": 1.513,
+                "avg": 29.218,
+                "lnglat": "120.582112,29.997117"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [104.846743, 26.584643]
+            },
+            "properties": {
+                "ranking": 224,
+                "prov": "贵州省",
+                "city": "六盘水市",
+                "mom": "-2.8%",
+                "yoy": "-8.6%",
+                "index": 1.513,
+                "avg": 28.096,
+                "lnglat": "104.846743,26.584643"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [115.980367, 36.456013]
+            },
+            "properties": {
+                "ranking": 225,
+                "prov": "山东省",
+                "city": "聊城市",
+                "mom": "-4.2%",
+                "yoy": "-4.5%",
+                "index": 1.512,
+                "avg": 30.535,
+                "lnglat": "115.980367,36.456013"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.879365, 30.447711]
+            },
+            "properties": {
+                "ranking": 226,
+                "prov": "湖北省",
+                "city": "黄冈市",
+                "mom": "-9.2%",
+                "yoy": "-11.7%",
+                "index": 1.505,
+                "avg": 29.634,
+                "lnglat": "114.879365,30.447711"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [115.992811, 29.712034]
+            },
+            "properties": {
+                "ranking": 227,
+                "prov": "江西省",
+                "city": "九江市",
+                "mom": "-1.5%",
+                "yoy": "1.1%",
+                "index": 1.504,
+                "avg": 32.017,
+                "lnglat": "115.992811,29.712034"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [122.070317, 46.076268]
+            },
+            "properties": {
+                "ranking": 228,
+                "prov": "内蒙古自治区",
+                "city": "兴安盟",
+                "mom": "-7.8%",
+                "yoy": "-7.5%",
+                "index": 1.504,
+                "avg": 31.72,
+                "lnglat": "122.070317,46.076268"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.355042, 28.570066]
+            },
+            "properties": {
+                "ranking": 229,
+                "prov": "湖南省",
+                "city": "益阳市",
+                "mom": "-4.6%",
+                "yoy": "0.2%",
+                "index": 1.504,
+                "avg": 31.807,
+                "lnglat": "112.355042,28.570066"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.024736, 32.980169]
+            },
+            "properties": {
+                "ranking": 230,
+                "prov": "河南省",
+                "city": "驻马店市",
+                "mom": "-4.1%",
+                "yoy": "-6.1%",
+                "index": 1.503,
+                "avg": 27.08,
+                "lnglat": "114.024736,32.980169"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [107.353926, 22.404108]
+            },
+            "properties": {
+                "ranking": 231,
+                "prov": "广西壮族自治区",
+                "city": "崇左市",
+                "mom": "-1.1%",
+                "yoy": "-0.2%",
+                "index": 1.503,
+                "avg": 28.116,
+                "lnglat": "107.353926,22.404108"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.502461, 38.045474]
+            },
+            "properties": {
+                "ranking": 232,
+                "prov": "河北省",
+                "city": "石家庄市",
+                "mom": "-11.4%",
+                "yoy": "-13.2%",
+                "index": 1.503,
+                "avg": 32.899,
+                "lnglat": "114.502461,38.045474"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.047648, 36.814939]
+            },
+            "properties": {
+                "ranking": 233,
+                "prov": "山东省",
+                "city": "淄博市",
+                "mom": "-10.9%",
+                "yoy": "-0.4%",
+                "index": 1.502,
+                "avg": 29.898,
+                "lnglat": "118.047648,36.814939"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [98.854304, 25.850949]
+            },
+            "properties": {
+                "ranking": 234,
+                "prov": "云南省",
+                "city": "怒江傈僳族自治州",
+                "mom": "-5.1%",
+                "yoy": "-2.7%",
+                "index": 1.502,
+                "avg": 29.724,
+                "lnglat": "98.854304,25.850949"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.87263, 28.941708]
+            },
+            "properties": {
+                "ranking": 235,
+                "prov": "浙江省",
+                "city": "衢州市",
+                "mom": "-2.5%",
+                "yoy": "-4.2%",
+                "index": 1.501,
+                "avg": 28.818,
+                "lnglat": "118.87263,28.941708"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [119.107078, 36.70925]
+            },
+            "properties": {
+                "ranking": 236,
+                "prov": "山东省",
+                "city": "潍坊市",
+                "mom": "-1.9%",
+                "yoy": "-0.9%",
+                "index": 1.499,
+                "avg": 32.139,
+                "lnglat": "119.107078,36.70925"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [116.704441, 39.523927]
+            },
+            "properties": {
+                "ranking": 237,
+                "prov": "河北省",
+                "city": "廊坊",
+                "mom": "-9.4%",
+                "yoy": "-3.1%",
+                "index": 1.496,
+                "avg": 31.186,
+                "lnglat": "116.704441,39.523927"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [119.178821, 34.600018]
+            },
+            "properties": {
+                "ranking": 238,
+                "prov": "江苏省",
+                "city": "连云港市",
+                "mom": "-2.5%",
+                "yoy": "-4.5%",
+                "index": 1.492,
+                "avg": 26.45,
+                "lnglat": "119.178821,34.600018"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [116.090996, 43.944018]
+            },
+            "properties": {
+                "ranking": 239,
+                "prov": "内蒙古自治区",
+                "city": "锡林郭勒盟",
+                "mom": "-8.5%",
+                "yoy": "-8.3%",
+                "index": 1.492,
+                "avg": 31,
+                "lnglat": "116.090996,43.944018"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.352482, 36.103442]
+            },
+            "properties": {
+                "ranking": 240,
+                "prov": "河南省",
+                "city": "安阳市",
+                "mom": "-6.1%",
+                "yoy": "-6.9%",
+                "index": 1.49,
+                "avg": 25.379,
+                "lnglat": "114.352482,36.103442"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [80.105498, 32.503187]
+            },
+            "properties": {
+                "ranking": 241,
+                "prov": "西藏自治区",
+                "city": "阿里地区",
+                "mom": "-3.8%",
+                "yoy": "4.8%",
+                "index": 1.49,
+                "avg": 25.997,
+                "lnglat": "80.105498,32.503187"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.624175, 21.967127]
+            },
+            "properties": {
+                "ranking": 242,
+                "prov": "广西壮族自治区",
+                "city": "钦州市",
+                "mom": "-0.5%",
+                "yoy": "-6.1%",
+                "index": 1.489,
+                "avg": 26.783,
+                "lnglat": "108.624175,21.967127"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [91.132212, 29.660361]
+            },
+            "properties": {
+                "ranking": 243,
+                "prov": "西藏自治区",
+                "city": "拉萨市",
+                "mom": "-4.7%",
+                "yoy": "-1.6%",
+                "index": 1.486,
+                "avg": 27.412,
+                "lnglat": "91.132212,29.660361"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [101.546046, 25.041988]
+            },
+            "properties": {
+                "ranking": 244,
+                "prov": "云南省",
+                "city": "楚雄彝族自治州",
+                "mom": "-6.5%",
+                "yoy": "-1.2%",
+                "index": 1.486,
+                "avg": 36.974,
+                "lnglat": "101.546046,25.041988"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [110.466785, 19.246011]
+            },
+            "properties": {
+                "ranking": 245,
+                "prov": "海南省",
+                "city": "琼海市",
+                "mom": "-3.4%",
+                "yoy": "-5.4%",
+                "index": 1.485,
+                "avg": 25.394,
+                "lnglat": "110.466785,19.246011"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.944052, 27.82973]
+            },
+            "properties": {
+                "ranking": 246,
+                "prov": "湖南省",
+                "city": "湘潭市",
+                "mom": "-4.1%",
+                "yoy": "-5.5%",
+                "index": 1.485,
+                "avg": 29.643,
+                "lnglat": "112.944052,27.82973"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [116.307428, 37.453968]
+            },
+            "properties": {
+                "ranking": 247,
+                "prov": "山东省",
+                "city": "德州市",
+                "mom": "-2.6%",
+                "yoy": "-1.9%",
+                "index": 1.484,
+                "avg": 30.358,
+                "lnglat": "116.307428,37.453968"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [97.008522, 33.004049]
+            },
+            "properties": {
+                "ranking": 248,
+                "prov": "青海省",
+                "city": "玉树藏族自治州",
+                "mom": "1.8%",
+                "yoy": "-7.5%",
+                "index": 1.482,
+                "avg": 26.384,
+                "lnglat": "97.008522,33.004049"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [111.691347, 29.040225]
+            },
+            "properties": {
+                "ranking": 249,
+                "prov": "湖南省",
+                "city": "常德市",
+                "mom": "-4.1%",
+                "yoy": "-4.9%",
+                "index": 1.482,
+                "avg": 30.949,
+                "lnglat": "111.691347,29.040225"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.883991, 35.302616]
+            },
+            "properties": {
+                "ranking": 250,
+                "prov": "河南省",
+                "city": "新乡市",
+                "mom": "-7.0%",
+                "yoy": "-2.5%",
+                "index": 1.478,
+                "avg": 26.671,
+                "lnglat": "113.883991,35.302616"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.589421, 24.908853]
+            },
+            "properties": {
+                "ranking": 251,
+                "prov": "福建省",
+                "city": "泉州市",
+                "mom": "-2.0%",
+                "yoy": "-5.8%",
+                "index": 1.477,
+                "avg": 31.247,
+                "lnglat": "118.589421,24.908853"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.316264, 32.303627]
+            },
+            "properties": {
+                "ranking": 252,
+                "prov": "安徽省",
+                "city": "滁州市",
+                "mom": "-1.2%",
+                "yoy": "-2.7%",
+                "index": 1.474,
+                "avg": 26.527,
+                "lnglat": "118.316264,32.303627"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [99.706463, 27.826853]
+            },
+            "properties": {
+                "ranking": 253,
+                "prov": "云南省",
+                "city": "迪庆藏族自治州",
+                "mom": "-9.9%",
+                "yoy": "-3.6%",
+                "index": 1.474,
+                "avg": 25.404,
+                "lnglat": "99.706463,27.826853"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.741193, 38.290162]
+            },
+            "properties": {
+                "ranking": 254,
+                "prov": "陕西省",
+                "city": "榆林市",
+                "mom": "-2.9%",
+                "yoy": "-1.3%",
+                "index": 1.474,
+                "avg": 30.027,
+                "lnglat": "109.741193,38.290162"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [120.102398, 30.867198]
+            },
+            "properties": {
+                "ranking": 255,
+                "prov": "浙江省",
+                "city": "湖州市",
+                "mom": "-1.7%",
+                "yoy": "-2.5%",
+                "index": 1.474,
+                "avg": 29.137,
+                "lnglat": "120.102398,30.867198"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [119.421003, 32.393159]
+            },
+            "properties": {
+                "ranking": 256,
+                "prov": "江苏省",
+                "city": "扬州市",
+                "mom": "-7.0%",
+                "yoy": "-6.5%",
+                "index": 1.471,
+                "avg": 33.799,
+                "lnglat": "119.421003,32.393159"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.490686, 36.612273]
+            },
+            "properties": {
+                "ranking": 257,
+                "prov": "河北省",
+                "city": "邯郸市",
+                "mom": "-6.6%",
+                "yoy": "-6.1%",
+                "index": 1.469,
+                "avg": 27.547,
+                "lnglat": "114.490686,36.612273"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [123.844279, 42.290585]
+            },
+            "properties": {
+                "ranking": 258,
+                "prov": "辽宁省",
+                "city": "铁岭市",
+                "mom": "0.5%",
+                "yoy": "-1.8%",
+                "index": 1.469,
+                "avg": 29.722,
+                "lnglat": "123.844279,42.290585"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [116.507676, 31.752889]
+            },
+            "properties": {
+                "ranking": 259,
+                "prov": "安徽省",
+                "city": "六安市",
+                "mom": "-4.5%",
+                "yoy": "-5.3%",
+                "index": 1.468,
+                "avg": 29.849,
+                "lnglat": "116.507676,31.752889"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [123.921109, 41.875956]
+            },
+            "properties": {
+                "ranking": 260,
+                "prov": "辽宁省",
+                "city": "抚顺市",
+                "mom": "-1.0%",
+                "yoy": "-6.1%",
+                "index": 1.466,
+                "avg": 34.152,
+                "lnglat": "123.921109,41.875956"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.939776, 33.868319]
+            },
+            "properties": {
+                "ranking": 261,
+                "prov": "陕西省",
+                "city": "商洛市",
+                "mom": "-3.6%",
+                "yoy": "-5.0%",
+                "index": 1.462,
+                "avg": 30.769,
+                "lnglat": "109.939776,33.868319"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [125.11272, 46.590734]
+            },
+            "properties": {
+                "ranking": 262,
+                "prov": "黑龙江省",
+                "city": "大庆市",
+                "mom": "-1.3%",
+                "yoy": "-5.5%",
+                "index": 1.461,
+                "avg": 37.07,
+                "lnglat": "125.11272,46.590734"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [102.187888, 38.514238]
+            },
+            "properties": {
+                "ranking": 263,
+                "prov": "甘肃省",
+                "city": "金昌市",
+                "mom": "-3.4%",
+                "yoy": "-1.7%",
+                "index": 1.461,
+                "avg": 30.011,
+                "lnglat": "102.187888,38.514238"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [119.021265, 33.597506]
+            },
+            "properties": {
+                "ranking": 264,
+                "prov": "江苏省",
+                "city": "淮安市",
+                "mom": "-3.0%",
+                "yoy": "-5.1%",
+                "index": 1.461,
+                "avg": 28.062,
+                "lnglat": "119.021265,33.597506"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [105.706422, 38.844814]
+            },
+            "properties": {
+                "ranking": 265,
+                "prov": "内蒙古自治区",
+                "city": "阿拉善盟",
+                "mom": "-5.4%",
+                "yoy": "-4.0%",
+                "index": 1.461,
+                "avg": 30.648,
+                "lnglat": "105.706422,38.844814"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.295444, 35.748236]
+            },
+            "properties": {
+                "ranking": 266,
+                "prov": "河南省",
+                "city": "鹤壁市",
+                "mom": "-2.7%",
+                "yoy": "-1.4%",
+                "index": 1.46,
+                "avg": 36.672,
+                "lnglat": "114.295444,35.748236"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [105.724998, 34.578529]
+            },
+            "properties": {
+                "ranking": 267,
+                "prov": "甘肃省",
+                "city": "天水市",
+                "mom": "4.3%",
+                "yoy": "-3.5%",
+                "index": 1.459,
+                "avg": 31.766,
+                "lnglat": "105.724998,34.578529"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.66471, 37.434564]
+            },
+            "properties": {
+                "ranking": 268,
+                "prov": "山东省",
+                "city": "东营市",
+                "mom": "-3.8%",
+                "yoy": "-6.2%",
+                "index": 1.458,
+                "avg": 32.872,
+                "lnglat": "118.66471,37.434564"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [113.826063, 34.022956]
+            },
+            "properties": {
+                "ranking": 269,
+                "prov": "河南省",
+                "city": "许昌市",
+                "mom": "-3.6%",
+                "yoy": "1.1%",
+                "index": 1.457,
+                "avg": 27.531,
+                "lnglat": "113.826063,34.022956"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.016974, 37.383542]
+            },
+            "properties": {
+                "ranking": 270,
+                "prov": "山东省",
+                "city": "滨州市",
+                "mom": "-2.7%",
+                "yoy": "1.9%",
+                "index": 1.456,
+                "avg": 30.176,
+                "lnglat": "118.016974,37.383542"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [88.885148, 29.267519]
+            },
+            "properties": {
+                "ranking": 271,
+                "prov": "西藏自治区",
+                "city": "日喀则市",
+                "mom": "-7.5%",
+                "yoy": "-6.2%",
+                "index": 1.456,
+                "avg": 25.902,
+                "lnglat": "88.885148,29.267519"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.317325, 29.709239]
+            },
+            "properties": {
+                "ranking": 272,
+                "prov": "安徽省",
+                "city": "黄山市",
+                "mom": "-2.3%",
+                "yoy": "1.3%",
+                "index": 1.455,
+                "avg": 33.852,
+                "lnglat": "118.317325,29.709239"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.99029, 39.817179]
+            },
+            "properties": {
+                "ranking": 273,
+                "prov": "内蒙古自治区",
+                "city": "鄂尔多斯",
+                "mom": "-3.0%",
+                "yoy": "-4.7%",
+                "index": 1.454,
+                "avg": 37.533,
+                "lnglat": "109.99029,39.817179"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [121.428599, 28.661378]
+            },
+            "properties": {
+                "ranking": 274,
+                "prov": "浙江省",
+                "city": "台州市",
+                "mom": "-1.6%",
+                "yoy": "-5.4%",
+                "index": 1.454,
+                "avg": 30.486,
+                "lnglat": "121.428599,28.661378"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.930835, 27.810834]
+            },
+            "properties": {
+                "ranking": 275,
+                "prov": "江西省",
+                "city": "新余市",
+                "mom": "-2.3%",
+                "yoy": "-3.6%",
+                "index": 1.451,
+                "avg": 27.539,
+                "lnglat": "114.930835,27.810834"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [91.766529, 29.236023]
+            },
+            "properties": {
+                "ranking": 276,
+                "prov": "西藏自治区",
+                "city": "山南市",
+                "mom": "-6.1%",
+                "yoy": "-1.1%",
+                "index": 1.451,
+                "avg": 24.525,
+                "lnglat": "91.766529,29.236023"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [119.586579, 39.942531]
+            },
+            "properties": {
+                "ranking": 277,
+                "prov": "河北省",
+                "city": "秦皇岛市",
+                "mom": "-9.8%",
+                "yoy": "-5.9%",
+                "index": 1.449,
+                "avg": 33.282,
+                "lnglat": "119.586579,39.942531"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.576782, 19.517486]
+            },
+            "properties": {
+                "ranking": 278,
+                "prov": "海南省",
+                "city": "儋州",
+                "mom": "-3.8%",
+                "yoy": "-3.4%",
+                "index": 1.449,
+                "avg": 30.594,
+                "lnglat": "109.576782,19.517486"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.896866, 30.421215]
+            },
+            "properties": {
+                "ranking": 279,
+                "prov": "湖北省",
+                "city": "潜江市",
+                "mom": "0.7%",
+                "yoy": "-2.0%",
+                "index": 1.448,
+                "avg": 28.678,
+                "lnglat": "112.896866,30.421215"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.472529, 23.051546]
+            },
+            "properties": {
+                "ranking": 280,
+                "prov": "广东省",
+                "city": "肇庆市",
+                "mom": "-8.8%",
+                "yoy": "-4.3%",
+                "index": 1.447,
+                "avg": 30.692,
+                "lnglat": "112.472529,23.051546"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.971185, 28.44442]
+            },
+            "properties": {
+                "ranking": 281,
+                "prov": "江西省",
+                "city": "上饶市",
+                "mom": "-1.6%",
+                "yoy": "-3.5%",
+                "index": 1.445,
+                "avg": 36.115,
+                "lnglat": "117.971185,28.44442"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [119.946973, 31.772752]
+            },
+            "properties": {
+                "ranking": 282,
+                "prov": "江苏省",
+                "city": "常州市",
+                "mom": "-3.1%",
+                "yoy": "-4.4%",
+                "index": 1.442,
+                "avg": 34.659,
+                "lnglat": "119.946973,31.772752"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.816576, 30.929935]
+            },
+            "properties": {
+                "ranking": 283,
+                "prov": "安徽省",
+                "city": "铜陵市",
+                "mom": "-2.2%",
+                "yoy": "-2.5%",
+                "index": 1.441,
+                "avg": 30.233,
+                "lnglat": "117.816576,30.929935"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.229772, 23.733766]
+            },
+            "properties": {
+                "ranking": 284,
+                "prov": "广西壮族自治区",
+                "city": "来宾市",
+                "mom": "-4.8%",
+                "yoy": "-1.8%",
+                "index": 1.437,
+                "avg": 24.071,
+                "lnglat": "109.229772,23.733766"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [106.684691, 35.54279]
+            },
+            "properties": {
+                "ranking": 285,
+                "prov": "甘肃省",
+                "city": "平凉市",
+                "mom": "-0.6%",
+                "yoy": "-0.4%",
+                "index": 1.432,
+                "avg": 29.787,
+                "lnglat": "106.684691,35.54279"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [131.157304, 46.643442]
+            },
+            "properties": {
+                "ranking": 286,
+                "prov": "黑龙江省",
+                "city": "双鸭山市",
+                "mom": "0.7%",
+                "yoy": "-1.6%",
+                "index": 1.431,
+                "avg": 35.045,
+                "lnglat": "131.157304,46.643442"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.507906, 31.689362]
+            },
+            "properties": {
+                "ranking": 287,
+                "prov": "安徽省",
+                "city": "马鞍山市",
+                "mom": "-2.3%",
+                "yoy": "-3.1%",
+                "index": 1.429,
+                "avg": 29.504,
+                "lnglat": "118.507906,31.689362"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [106.285241, 36.004561]
+            },
+            "properties": {
+                "ranking": 288,
+                "prov": "宁夏回族自治区",
+                "city": "固原市",
+                "mom": "-4.4%",
+                "yoy": "-0.1%",
+                "index": 1.427,
+                "avg": 31.165,
+                "lnglat": "106.285241,36.004561"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [120.451176, 41.576758]
+            },
+            "properties": {
+                "ranking": 289,
+                "prov": "辽宁省",
+                "city": "朝阳市",
+                "mom": "-2.4%",
+                "yoy": "0.0%",
+                "index": 1.427,
+                "avg": 41.559,
+                "lnglat": "120.451176,41.576758"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.557964, 34.856424]
+            },
+            "properties": {
+                "ranking": 290,
+                "prov": "山东省",
+                "city": "枣庄市",
+                "mom": "-3.8%",
+                "yoy": "-2.5%",
+                "index": 1.427,
+                "avg": 29.681,
+                "lnglat": "117.557964,34.856424"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [122.235151, 40.667432]
+            },
+            "properties": {
+                "ranking": 291,
+                "prov": "辽宁省",
+                "city": "营口市",
+                "mom": "-2.2%",
+                "yoy": "-3.0%",
+                "index": 1.426,
+                "avg": 34.483,
+                "lnglat": "122.235151,40.667432"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [103.001033, 29.987722]
+            },
+            "properties": {
+                "ranking": 292,
+                "prov": "四川省",
+                "city": "雅安市",
+                "mom": "-3.0%",
+                "yoy": "-1.9%",
+                "index": 1.423,
+                "avg": 29.974,
+                "lnglat": "103.001033,29.987722"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.119254, 21.473343]
+            },
+            "properties": {
+                "ranking": 293,
+                "prov": "广西壮族自治区",
+                "city": "北海市",
+                "mom": "-3.7%",
+                "yoy": "-5.5%",
+                "index": 1.421,
+                "avg": 29.984,
+                "lnglat": "109.119254,21.473343"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [97.178452, 31.136875]
+            },
+            "properties": {
+                "ranking": 294,
+                "prov": "西藏自治区",
+                "city": "昌都市",
+                "mom": "0.1%",
+                "yoy": "-2.1%",
+                "index": 1.418,
+                "avg": 29.317,
+                "lnglat": "97.178452,31.136875"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [92.060214, 31.476004]
+            },
+            "properties": {
+                "ranking": 295,
+                "prov": "西藏自治区",
+                "city": "那曲地区",
+                "mom": "-2.6%",
+                "yoy": "-",
+                "index": 1.411,
+                "avg": 26.992,
+                "lnglat": "92.060214,31.476004"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [110.479921, 29.127401]
+            },
+            "properties": {
+                "ranking": 296,
+                "prov": "湖南省",
+                "city": "张家界市",
+                "mom": "-2.6%",
+                "yoy": "-5.1%",
+                "index": 1.408,
+                "avg": 32.022,
+                "lnglat": "110.479921,29.127401"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.026405, 33.575855]
+            },
+            "properties": {
+                "ranking": 297,
+                "prov": "河南省",
+                "city": "漯河市",
+                "mom": "-4.5%",
+                "yoy": "-0.4%",
+                "index": 1.406,
+                "avg": 36.403,
+                "lnglat": "114.026405,33.575855"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [100.619542, 36.280353]
+            },
+            "properties": {
+                "ranking": 298,
+                "prov": "青海省",
+                "city": "海南藏族自治州",
+                "mom": "-3.5%",
+                "yoy": "0.6%",
+                "index": 1.406,
+                "avg": 30.783,
+                "lnglat": "100.619542,36.280353"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [116.984084, 33.633891]
+            },
+            "properties": {
+                "ranking": 299,
+                "prov": "安徽省",
+                "city": "宿州市",
+                "mom": "-4.1%",
+                "yoy": "1.0%",
+                "index": 1.404,
+                "avg": 33.908,
+                "lnglat": "116.984084,33.633891"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [120.856394, 40.755572]
+            },
+            "properties": {
+                "ranking": 300,
+                "prov": "辽宁省",
+                "city": "葫芦岛市",
+                "mom": "-1.4%",
+                "yoy": "-9.1%",
+                "index": 1.403,
+                "avg": 33.166,
+                "lnglat": "120.856394,40.755572"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.376451, 31.326319]
+            },
+            "properties": {
+                "ranking": 301,
+                "prov": "安徽省",
+                "city": "芜湖市",
+                "mom": "-3.1%",
+                "yoy": "-5.2%",
+                "index": 1.403,
+                "avg": 29.874,
+                "lnglat": "118.376451,31.326319"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [104.173606, 36.54568]
+            },
+            "properties": {
+                "ranking": 302,
+                "prov": "甘肃省",
+                "city": "白银市",
+                "mom": "-3.9%",
+                "yoy": "-11.7%",
+                "index": 1.401,
+                "avg": 28.244,
+                "lnglat": "104.173606,36.54568"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.635001, 26.265444]
+            },
+            "properties": {
+                "ranking": 303,
+                "prov": "福建省",
+                "city": "三明市",
+                "mom": "-3.8%",
+                "yoy": "-2.1%",
+                "index": 1.4,
+                "avg": 31.976,
+                "lnglat": "117.635001,26.265444"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [124.711526, 52.335262]
+            },
+            "properties": {
+                "ranking": 304,
+                "prov": "黑龙江省",
+                "city": "大兴安岭地区",
+                "mom": "-3.9%",
+                "yoy": "1.1%",
+                "index": 1.394,
+                "avg": 29.174,
+                "lnglat": "124.711526,52.335262"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [126.427839, 41.942505]
+            },
+            "properties": {
+                "ranking": 305,
+                "prov": "吉林省",
+                "city": "白山市",
+                "mom": "-3.3%",
+                "yoy": "0.6%",
+                "index": 1.393,
+                "avg": 32.123,
+                "lnglat": "126.427839,41.942505"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.043551, 30.50883]
+            },
+            "properties": {
+                "ranking": 306,
+                "prov": "安徽省",
+                "city": "安庆市",
+                "mom": "-4.5%",
+                "yoy": "-5.9%",
+                "index": 1.387,
+                "avg": 31.115,
+                "lnglat": "117.043551,30.50883"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [119.452753, 32.204402]
+            },
+            "properties": {
+                "ranking": 307,
+                "prov": "江苏省",
+                "city": "镇江市",
+                "mom": "-3.6%",
+                "yoy": "-5.9%",
+                "index": 1.383,
+                "avg": 33.826,
+                "lnglat": "119.452753,32.204402"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [98.277304, 39.786529]
+            },
+            "properties": {
+                "ranking": 308,
+                "prov": "甘肃省",
+                "city": "嘉峪关市",
+                "mom": "-1.3%",
+                "yoy": "-0.2%",
+                "index": 1.383,
+                "avg": 27.944,
+                "lnglat": "98.277304,39.786529"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [98.510795, 39.744023]
+            },
+            "properties": {
+                "ranking": 309,
+                "prov": "甘肃省",
+                "city": "酒泉市",
+                "mom": "-5.2%",
+                "yoy": "-5.5%",
+                "index": 1.381,
+                "avg": 30.76,
+                "lnglat": "98.510795,39.744023"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [102.221374, 31.899792]
+            },
+            "properties": {
+                "ranking": 310,
+                "prov": "四川省",
+                "city": "阿坝藏族羌族自治州",
+                "mom": "-2.7%",
+                "yoy": "-11.3%",
+                "index": 1.379,
+                "avg": 33.793,
+                "lnglat": "102.221374,31.899792"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [114.986373, 27.111699]
+            },
+            "properties": {
+                "ranking": 311,
+                "prov": "江西省",
+                "city": "吉安市",
+                "mom": "-0.1%",
+                "yoy": "-0.9%",
+                "index": 1.375,
+                "avg": 32.426,
+                "lnglat": "114.986373,27.111699"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.736465, 37.696495]
+            },
+            "properties": {
+                "ranking": 312,
+                "prov": "山西省",
+                "city": "晋中市",
+                "mom": "-1.1%",
+                "yoy": "-2.4%",
+                "index": 1.371,
+                "avg": 34.517,
+                "lnglat": "112.736465,37.696495"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [112.733538, 38.41769]
+            },
+            "properties": {
+                "ranking": 313,
+                "prov": "山西省",
+                "city": "忻州市",
+                "mom": "-5.7%",
+                "yoy": "-3.3%",
+                "index": 1.37,
+                "avg": 34.276,
+                "lnglat": "112.733538,38.41769"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.653789, 19.10198]
+            },
+            "properties": {
+                "ranking": 314,
+                "prov": "海南省",
+                "city": "东方市",
+                "mom": "-4.2%",
+                "yoy": "-7.6%",
+                "index": 1.363,
+                "avg": 28.807,
+                "lnglat": "108.653789,19.10198"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [120.139998, 33.377631]
+            },
+            "properties": {
+                "ranking": 315,
+                "prov": "江苏省",
+                "city": "盐城市",
+                "mom": "-0.4%",
+                "yoy": "-4.5%",
+                "index": 1.36,
+                "avg": 37.387,
+                "lnglat": "120.139998,33.377631"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [121.648962, 42.011796]
+            },
+            "properties": {
+                "ranking": 316,
+                "prov": "辽宁省",
+                "city": "阜新市",
+                "mom": "-4.9%",
+                "yoy": "-4.7%",
+                "index": 1.354,
+                "avg": 31.258,
+                "lnglat": "121.648962,42.011796"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [80.265068, 41.170712]
+            },
+            "properties": {
+                "ranking": 317,
+                "prov": "新疆维吾尔自治区",
+                "city": "阿克苏地区",
+                "mom": "-3.1%",
+                "yoy": "0.3%",
+                "index": 1.354,
+                "avg": 28.008,
+                "lnglat": "80.265068,41.170712"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [88.13963, 47.848393]
+            },
+            "properties": {
+                "ranking": 318,
+                "prov": "新疆维吾尔自治区",
+                "city": "阿勒泰地区",
+                "mom": "-4.2%",
+                "yoy": "-6.2%",
+                "index": 1.352,
+                "avg": 28.854,
+                "lnglat": "88.13963,47.848393"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [111.134335, 37.524366]
+            },
+            "properties": {
+                "ranking": 319,
+                "prov": "山西省",
+                "city": "吕梁市",
+                "mom": "-13.8%",
+                "yoy": "-3.4%",
+                "index": 1.352,
+                "avg": 35.294,
+                "lnglat": "111.134335,37.524366"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [94.362348, 29.654693]
+            },
+            "properties": {
+                "ranking": 320,
+                "prov": "西藏自治区",
+                "city": "林芝市",
+                "mom": "-3.1%",
+                "yoy": "-5.2%",
+                "index": 1.349,
+                "avg": 31.495,
+                "lnglat": "94.362348,29.654693"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [106.199409, 37.986165]
+            },
+            "properties": {
+                "ranking": 321,
+                "prov": "宁夏回族自治区",
+                "city": "吴忠市",
+                "mom": "-6.5%",
+                "yoy": "-4.1%",
+                "index": 1.349,
+                "avg": 36.514,
+                "lnglat": "106.199409,37.986165"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.489157, 30.656037]
+            },
+            "properties": {
+                "ranking": 322,
+                "prov": "安徽省",
+                "city": "池州市",
+                "mom": "-2.0%",
+                "yoy": "-5.7%",
+                "index": 1.348,
+                "avg": 31.672,
+                "lnglat": "117.489157,30.656037"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.345478, 21.614631]
+            },
+            "properties": {
+                "ranking": 323,
+                "prov": "广西壮族自治区",
+                "city": "防城港市",
+                "mom": "1.3%",
+                "yoy": "4.6%",
+                "index": 1.341,
+                "avg": 33.885,
+                "lnglat": "108.345478,21.614631"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [87.505603, 43.982546]
+            },
+            "properties": {
+                "ranking": 324,
+                "prov": "新疆维吾尔自治区",
+                "city": "乌鲁木齐",
+                "mom": "-3.6%",
+                "yoy": "-7.4%",
+                "index": 1.338,
+                "avg": 34.483,
+                "lnglat": "87.505603,43.982546"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [117.033838, 28.238638]
+            },
+            "properties": {
+                "ranking": 325,
+                "prov": "江西省",
+                "city": "鹰潭市",
+                "mom": "-0.3%",
+                "yoy": "1.7%",
+                "index": 1.337,
+                "avg": 34.731,
+                "lnglat": "117.033838,28.238638"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [108.979608, 34.916582]
+            },
+            "properties": {
+                "ranking": 326,
+                "prov": "陕西省",
+                "city": "铜川市",
+                "mom": "-1.2%",
+                "yoy": "1.9%",
+                "index": 1.337,
+                "avg": 37.264,
+                "lnglat": "108.979608,34.916582"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [119.921786, 28.451993]
+            },
+            "properties": {
+                "ranking": 327,
+                "prov": "浙江省",
+                "city": "丽水市",
+                "mom": "-4.2%",
+                "yoy": "-4.2%",
+                "index": 1.336,
+                "avg": 34.25,
+                "lnglat": "119.921786,28.451993"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [120.864608, 32.016212]
+            },
+            "properties": {
+                "ranking": 328,
+                "prov": "江苏省",
+                "city": "南通市",
+                "mom": "-1.9%",
+                "yoy": "-4.9%",
+                "index": 1.335,
+                "avg": 38.65,
+                "lnglat": "120.864608,32.016212"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [81.285884, 40.541914]
+            },
+            "properties": {
+                "ranking": 329,
+                "prov": "新疆维吾尔自治区",
+                "city": "阿拉尔市",
+                "mom": "-2.6%",
+                "yoy": "-0.7%",
+                "index": 1.335,
+                "avg": 34.426,
+                "lnglat": "81.285884,40.541914"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [131.015584, 45.771266]
+            },
+            "properties": {
+                "ranking": 330,
+                "prov": "黑龙江省",
+                "city": "七台河市",
+                "mom": "0.6%",
+                "yoy": "-1.2%",
+                "index": 1.333,
+                "avg": 41.41,
+                "lnglat": "131.015584,45.771266"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [87.824932, 47.353177]
+            },
+            "properties": {
+                "ranking": 331,
+                "prov": "新疆维吾尔自治区",
+                "city": "北屯市",
+                "mom": "-6.7%",
+                "yoy": "-3.0%",
+                "index": 1.328,
+                "avg": 26.766,
+                "lnglat": "87.824932,47.353177"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [122.106863, 30.016028]
+            },
+            "properties": {
+                "ranking": 332,
+                "prov": "浙江省",
+                "city": "舟山市",
+                "mom": "0.6%",
+                "yoy": "-0.9%",
+                "index": 1.323,
+                "avg": 39.731,
+                "lnglat": "122.106863,30.016028"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [79.92533, 37.110687]
+            },
+            "properties": {
+                "ranking": 333,
+                "prov": "新疆维吾尔自治区",
+                "city": "和田地区",
+                "mom": "-4.2%",
+                "yoy": "-3.8%",
+                "index": 1.318,
+                "avg": 31.88,
+                "lnglat": "79.92533,37.110687"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [87.304012, 44.014577]
+            },
+            "properties": {
+                "ranking": 334,
+                "prov": "新疆维吾尔自治区",
+                "city": "昌吉回族自治州",
+                "mom": "-6.4%",
+                "yoy": "-8.2%",
+                "index": 1.314,
+                "avg": 28.636,
+                "lnglat": "87.304012,44.014577"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [110.102773, 19.362916]
+            },
+            "properties": {
+                "ranking": 335,
+                "prov": "海南省",
+                "city": "屯昌县",
+                "mom": "-3.7%",
+                "yoy": "-3.9%",
+                "index": 1.313,
+                "avg": 34.752,
+                "lnglat": "110.102773,19.362916"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [105.189568, 37.514951]
+            },
+            "properties": {
+                "ranking": 336,
+                "prov": "宁夏回族自治区",
+                "city": "中卫市",
+                "mom": "-3.5%",
+                "yoy": "0.8%",
+                "index": 1.305,
+                "avg": 36.442,
+                "lnglat": "105.189568,37.514951"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [107.14487, 34.369315]
+            },
+            "properties": {
+                "ranking": 337,
+                "prov": "陕西省",
+                "city": "宝鸡市",
+                "mom": "-3.7%",
+                "yoy": "0.2%",
+                "index": 1.301,
+                "avg": 52.457,
+                "lnglat": "107.14487,34.369315"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [86.150969, 41.768552]
+            },
+            "properties": {
+                "ranking": 338,
+                "prov": "新疆维吾尔自治区",
+                "city": "巴音郭楞蒙古自治州",
+                "mom": "-3.1%",
+                "yoy": "-2.2%",
+                "index": 1.299,
+                "avg": 32.34,
+                "lnglat": "86.150969,41.768552"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [111.194099, 34.777338]
+            },
+            "properties": {
+                "ranking": 339,
+                "prov": "河南省",
+                "city": "三门峡市",
+                "mom": "1.2%",
+                "yoy": "-0.2%",
+                "index": 1.296,
+                "avg": 43.569,
+                "lnglat": "111.194099,34.777338"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.502882, 34.499381]
+            },
+            "properties": {
+                "ranking": 340,
+                "prov": "陕西省",
+                "city": "渭南市",
+                "mom": "-3.1%",
+                "yoy": "-0.1%",
+                "index": 1.291,
+                "avg": 49.628,
+                "lnglat": "109.502882,34.499381"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [118.757995, 30.945667]
+            },
+            "properties": {
+                "ranking": 341,
+                "prov": "安徽省",
+                "city": "宣城市",
+                "mom": "-2.5%",
+                "yoy": "-1.3%",
+                "index": 1.286,
+                "avg": 37.819,
+                "lnglat": "118.757995,30.945667"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [119.915176, 32.484882]
+            },
+            "properties": {
+                "ranking": 342,
+                "prov": "江苏省",
+                "city": "泰州市",
+                "mom": "-1.6%",
+                "yoy": "-1.9%",
+                "index": 1.284,
+                "avg": 39.978,
+                "lnglat": "119.915176,32.484882"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [81.317946, 43.92186]
+            },
+            "properties": {
+                "ranking": 343,
+                "prov": "新疆维吾尔自治区",
+                "city": "伊犁",
+                "mom": "-4.0%",
+                "yoy": "-3.6%",
+                "index": 1.282,
+                "avg": 30.853,
+                "lnglat": "81.317946,43.92186"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [109.739735, 28.314296]
+            },
+            "properties": {
+                "ranking": 344,
+                "prov": "湖南省",
+                "city": "湘西土家族苗族自治州",
+                "mom": "-2.1%",
+                "yoy": "-1.6%",
+                "index": 1.278,
+                "avg": 51.829,
+                "lnglat": "109.739735,28.314296"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [95.357233, 37.853631]
+            },
+            "properties": {
+                "ranking": 345,
+                "prov": "青海省",
+                "city": "海西蒙古族藏族自治州",
+                "mom": "-4.8%",
+                "yoy": "-2.0%",
+                "index": 1.276,
+                "avg": 37.778,
+                "lnglat": "95.357233,37.853631"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [128.899396, 47.724775]
+            },
+            "properties": {
+                "ranking": 346,
+                "prov": "黑龙江省",
+                "city": "伊春市",
+                "mom": "-4.7%",
+                "yoy": "-14.7%",
+                "index": 1.275,
+                "avg": 36.795,
+                "lnglat": "128.899396,47.724775"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [104.626294, 35.579578]
+            },
+            "properties": {
+                "ranking": 347,
+                "prov": "甘肃省",
+                "city": "定西市",
+                "mom": "-0.5%",
+                "yoy": "9.3%",
+                "index": 1.272,
+                "avg": 46.156,
+                "lnglat": "104.626294,35.579578"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [86.041075, 44.305886]
+            },
+            "properties": {
+                "ranking": 348,
+                "prov": "新疆维吾尔自治区",
+                "city": "石河子市",
+                "mom": "-3.8%",
+                "yoy": "-0.2%",
+                "index": 1.267,
+                "avg": 31.456,
+                "lnglat": "86.041075,44.305886"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [111.517973, 36.08415]
+            },
+            "properties": {
+                "ranking": 349,
+                "prov": "山西省",
+                "city": "临汾市",
+                "mom": "-3.4%",
+                "yoy": "-6.1%",
+                "index": 1.266,
+                "avg": 49.503,
+                "lnglat": "111.517973,36.08415"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [84.873946, 45.595886]
+            },
+            "properties": {
+                "ranking": 350,
+                "prov": "新疆维吾尔自治区",
+                "city": "克拉玛依市",
+                "mom": "-4.9%",
+                "yoy": "-4.8%",
+                "index": 1.261,
+                "avg": 35.273,
+                "lnglat": "84.873946,45.595886"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [75.989138, 39.467664]
+            },
+            "properties": {
+                "ranking": 351,
+                "prov": "新疆维吾尔自治区",
+                "city": "喀什地区",
+                "mom": "-3.5%",
+                "yoy": "-5.5%",
+                "index": 1.254,
+                "avg": 31.234,
+                "lnglat": "75.989138,39.467664"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [82.074778, 44.903258]
+            },
+            "properties": {
+                "ranking": 352,
+                "prov": "新疆维吾尔自治区",
+                "city": "博尔塔拉蒙古自治州",
+                "mom": "-7.6%",
+                "yoy": "-2.6%",
+                "index": 1.25,
+                "avg": 33.281,
+                "lnglat": "82.074778,44.903258"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [82.985732, 46.746301]
+            },
+            "properties": {
+                "ranking": 353,
+                "prov": "新疆维吾尔自治区",
+                "city": "塔城地区",
+                "mom": "-4.3%",
+                "yoy": "-3.0%",
+                "index": 1.241,
+                "avg": 34.095,
+                "lnglat": "82.985732,46.746301"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [87.526884, 44.167401]
+            },
+            "properties": {
+                "ranking": 354,
+                "prov": "新疆维吾尔自治区",
+                "city": "五家渠市",
+                "mom": "-4.0%",
+                "yoy": "-1.8%",
+                "index": 1.234,
+                "avg": 33.437,
+                "lnglat": "87.526884,44.167401"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [106.376173, 39.01333]
+            },
+            "properties": {
+                "ranking": 355,
+                "prov": "宁夏回族自治区",
+                "city": "石嘴山市",
+                "mom": "-2.5%",
+                "yoy": "-4.9%",
+                "index": 1.223,
+                "avg": 45.026,
+                "lnglat": "106.376173,39.01333"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [104.929379, 33.388598]
+            },
+            "properties": {
+                "ranking": 356,
+                "prov": "甘肃省",
+                "city": "陇南市",
+                "mom": "-3.2%",
+                "yoy": "-1.0%",
+                "index": 1.211,
+                "avg": 60.428,
+                "lnglat": "104.929379,33.388598"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [89.184078, 42.947613]
+            },
+            "properties": {
+                "ranking": 357,
+                "prov": "新疆维吾尔自治区",
+                "city": "吐鲁番市",
+                "mom": "0.4%",
+                "yoy": "-4.0%",
+                "index": 1.188,
+                "avg": 34.273,
+                "lnglat": "89.184078,42.947613"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [76.172825, 39.713431]
+            },
+            "properties": {
+                "ranking": 358,
+                "prov": "新疆维吾尔自治区",
+                "city": "克孜勒苏柯尔克孜自治",
+                "mom": "-3.8%",
+                "yoy": "3.7%",
+                "index": 1.187,
+                "avg": 60.028,
+                "lnglat": "76.172825,39.713431"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [82.353656, 44.840524]
+            },
+            "properties": {
+                "ranking": 359,
+                "prov": "新疆维吾尔自治区",
+                "city": "双河市",
+                "mom": "-2.7%",
+                "yoy": "-4.2%",
+                "index": 1.158,
+                "avg": 51.613,
+                "lnglat": "82.353656,44.840524"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [100.901059, 36.959435]
+            },
+            "properties": {
+                "ranking": 360,
+                "prov": "青海省",
+                "city": "海北藏族自治州",
+                "mom": "-2.9%",
+                "yoy": "0.6%",
+                "index": 1.145,
+                "avg": 50.839,
+                "lnglat": "100.901059,36.959435"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [102.10327, 36.502916]
+            },
+            "properties": {
+                "ranking": 361,
+                "prov": "青海省",
+                "city": "海东市",
+                "mom": "-1.4%",
+                "yoy": "1.1%",
+                "index": 1.092,
+                "avg": 72.455,
+                "lnglat": "102.10327,36.502916"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [121.25881, 24.208265]
+            },
+            "properties": {
+                "ranking": 362,
+                "prov": "台湾省",
+                "city": "台北市",
+                "mom": "-2.4%",
+                "yoy": "-2.1%",
+                "index": 2.367,
+                "avg": 14.685,
+                "lnglat": "121.25881,24.208265"
+            }
+        }
+    ]
+}

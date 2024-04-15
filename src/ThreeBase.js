@@ -14,6 +14,7 @@ export default class ThreeBase {
     this.isGUI = false;
     this.cameraNear = 1;
     this.cameraFar = 2000;
+    this.isTWEEN = false;
   }
   initGui() {
     let gui = new GUI();
@@ -151,6 +152,9 @@ gui.add( obj, 'number2', 0, 100, 10 ); // min, max, step
     if (this.isRaycaster) {
       this.initRaycaster();
     }
+    if (this.isTWEEN) {
+      this.TWEEN = TWEEN;
+    }
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
@@ -164,6 +168,9 @@ gui.add( obj, 'number2', 0, 100, 10 ); // min, max, step
     }
     if (this.controls) {
       this.controls.update();
+    }
+    if (TWEEN.getAll().length) {
+      TWEEN.update();
     }
 
     this.animateAction();
@@ -184,7 +191,7 @@ gui.add( obj, 'number2', 0, 100, 10 ); // min, max, step
   setView(cameraPos, controlPos) {
     let orgCamera = this.camera.position;
     let orgControl = this.controls.target;
-    let tween = new TWEEN({
+    let tween = new TWEEN.Tween({
       cameraX: orgCamera.x,
       cameraY: orgCamera.y,
       cameraZ: orgCamera.z,
@@ -192,14 +199,17 @@ gui.add( obj, 'number2', 0, 100, 10 ); // min, max, step
       controlsY: orgControl.y,
       controlsZ: orgControl.z
     })
-      .to({
-        cameraX: cameraPos.x,
-        cameraY: cameraPos.y,
-        cameraZ: cameraPos.z,
-        controlsX: controlPos.x,
-        controlsY: controlPos.y,
-        controlsZ: controlPos.z
-      })
+      .to(
+        {
+          cameraX: cameraPos.x,
+          cameraY: cameraPos.y,
+          cameraZ: cameraPos.z,
+          controlsX: controlPos.x,
+          controlsY: controlPos.y,
+          controlsZ: controlPos.z
+        },
+        500
+      )
       .easing(TWEEN.Easing.Quadratic.Out)
       .onUpdate((obj) => {
         this.camera.position.set(obj.cameraX, obj.cameraY, obj.cameraZ);

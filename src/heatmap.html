@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="module">
+      import { initGeoFun, latlng2px } from './geoUtil.js';
+      import { createHeatmap } from './heatmap.js';
+      initGeoFun(1000);
+      fetch('./assets/traffic.json')
+        .then((res) => res.json())
+        .then((res) => {
+          let info = {
+            max: Number.MIN_SAFE_INTEGER,
+            min: Number.MAX_SAFE_INTEGER,
+            maxlng: Number.MIN_SAFE_INTEGER,
+            minlng: Number.MAX_SAFE_INTEGER,
+            maxlat: Number.MIN_SAFE_INTEGER,
+            minlat: Number.MAX_SAFE_INTEGER,
+            data: []
+          };
+          res.features.forEach((item) => {
+            let pos = latlng2px(item.geometry.coordinates);
+            let newitem = {
+              lng: pos[0],
+              lat: pos[1],
+              value: item.properties.avg
+            };
+            info.max = Math.max(newitem.value, info.max);
+            info.maxlng = Math.max(newitem.lng, info.maxlng);
+            info.maxlat = Math.max(newitem.lat, info.maxlat);
+
+            info.min = Math.min(newitem.value, info.min);
+            info.minlng = Math.min(newitem.lng, info.minlng);
+            info.minlat = Math.min(newitem.lat, info.minlat);
+            info.data.push(newitem);
+          });
+          info.size = info.max - info.min;
+          info.sizelng = info.maxlng - info.minlng;
+          info.sizelat = info.maxlat - info.minlat;
+          console.log(info);
+          const radius = 50;
+          createHeatmap({
+            width: info.sizelng + radius * 2,
+            height: info.sizelng + radius * 2,
+            colors: {
+              0.1: '#2A85B8',
+              0.2: '#16B0A9',
+              0.3: '#29CF6F',
+              0.4: '#5CE182',
+              0.5: '#7DF675',
+              0.6: '#FFF100',
+              0.7: '#FAA53F',
+              1: '#D04343'
+            },
+            radius,
+            ...info
+            // x, y 表示二维坐标； value表示强弱值
+          });
+        });
+    </script>
+  </body>
+</html>

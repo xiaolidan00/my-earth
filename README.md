@@ -25,3 +25,7 @@
 # src/radar.html 雷达扩散特效
 
 # src/radar1.html 雷达扫描特效
+
+# src/heatmap.html 2D 热力图
+
+# src/heatmap.html 3D 热力山丘图
