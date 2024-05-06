@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        background-color: black;
+        height: 800px;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../node_modules/three/build/three.module.js",
+          "three/addons/": "../node_modules/three/examples/jsm/utils/"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from '../node_modules/three/build/three.module.js';
+
+      import ThreeBase from './ThreeBase.js';
+      import * as BufferGeometryUtils from 'three/addons/BufferGeometryUtils.js';
+      class MyThree extends ThreeBase {
+        constructor() {
+          super();
+          this.initCameraPos = [-18, 12, 17];
+          this.vector = new THREE.Vector2();
+          this.isGUI = true;
+          this.dataObj = {
+            weather: 'rain',
+            rainSpeed: 3.0,
+            fogSpeed: 1.0,
+            fogOpacity: 1.0
+          };
+          this.guiSettings = [
+            { type: 'select', key: 'weather', options: ['rain', 'snow', 'fog'] },
+            {
+              type: 'number',
+              key: 'rainSpeed',
+              min: 1.0,
+              max: 10.0
+            },
+            {
+              type: 'number',
+              key: 'fogSpeed',
+              min: 1.0,
+              max: 10.0
+            },
+            {
+              type: 'number',
+              key: 'fogOpacity',
+              min: 0.0,
+              max: 3.0
+            }
+          ];
+        }
+
+        addFrameBuffer() {
+          const dpr = window.devicePixelRatio;
+
+          const width = this.container.offsetWidth;
+          const height = this.container.offsetHeight;
+
+          const sceneOrtho = new THREE.Scene();
+          this.sceneOrtho = sceneOrtho;
+          const cameraOrtho = new THREE.OrthographicCamera(
+            -width / 2,
+            width / 2,
+            height / 2,
+            -height / 2,
+            1,
+            10
+          );
+          cameraOrtho.position.z = 10;
+          cameraOrtho.left = -width / 2;
+          cameraOrtho.right = width / 2;
+          cameraOrtho.top = height / 2;
+          cameraOrtho.bottom = -height / 2;
+          this.cameraOrtho = cameraOrtho;
+          this.texture = new THREE.FramebufferTexture(width * dpr, height * dpr);
+          const g = new THREE.PlaneGeometry(width * dpr, height * dpr);
+          {
+            const rainMaterial = new THREE.ShaderMaterial({
+              transparent: true,
+              uniforms: {
+                rainSpeed: { value: 3.0 },
+                iTime: { value: 1.0 },
+                rainAngle: { value: -0.1 }
+              },
+              vertexShader: `
+                            varying vec2 vUv;
+                            void main(){
+                                vUv=uv;
+                                gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+                            }`,
+              fragmentShader: `//https://www.shadertoy.com/view/td2yRD
+              varying vec2 vUv;
+uniform float iTime;//随时间变化
+uniform float rainSpeed;//下雨速度
+uniform float rainAngle;//下雨倾斜角度
+float PI = 3.1415926;
+ //随机数
+float random(in vec2 uv) {
+    return fract(sin(dot(uv.xy, vec2(12.9898, 78.233))) *
+        43758.5453123);
+}
+ //噪声函数
+float noise(in vec2 uv) {
+    vec2 i = floor(uv);
+    vec2 f = fract(uv);
+    f = f * f * (3. - 2. * f);
+
+    float lb = random(i + vec2(0., 0.));
+    float rb = random(i + vec2(1., 0.));
+    float lt = random(i + vec2(0., 1.));
+    float rt = random(i + vec2(1., 1.));
+
+    return mix(mix(lb, rb, f.x), mix(lt, rt, f.x), f.y);
+}
+//下雨效果
+float rain(vec2 uv) {
+    float travelTime = (iTime * 0.2) + 0.1;
+
+    vec2 tiling = vec2(1., .01);
+    vec2 offset = vec2(travelTime * 0.5 + uv.x * 0.2, travelTime * 0.2);
+
+    vec2 st = uv * tiling + offset;
+
+    float rain = 0.1;
+    float f = fract(noise(st * 200.5) * noise(st * 125.5) * rainSpeed);
+    f = clamp(pow(abs(f), 15.0) * 1.5 * (rain * rain * 125.0), 0.0, 0.25);
+    return f;
+}
+//旋转角度
+mat2 rotate2d(float angle) {
+    return mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
+}
+void main() {
+    mat2 a = rotate2d(rainAngle * PI);
+    float rain = rain(vUv * a);
+    if(rain <= 0.0) {
+        discard;
+        return;
+    }
+    vec3 col = vec3(1.0);
+    gl_FragColor = vec4(col, rain);
+
+}
+            `
+            });
+
+            const snowMaterial = new THREE.ShaderMaterial({
+              transparent: true,
+              uniforms: {
+                iTime: { value: 1.0 }
+              },
+              vertexShader: `
+                varying vec2 vUv;
+                void main(){
+                    vUv=uv;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+                }`,
+              fragmentShader: `//https://www.shadertoy.com/view/Mdt3Df
+              varying vec2 vUv;
+uniform float iTime;
+void main() {
+    float snow = 0.0;
+    for(int k = 0; k < 6; k++) {
+        for(int i = 0; i < 12; i++) {
+            float cellSize = 2.0 + (float(i) * 3.0);
+            float downSpeed = 0.3 + (sin(iTime * 0.4 + float(k + i * 20)) + 1.0) * 0.00008;
+            vec2 uv = vUv + vec2(0.01 * sin((iTime + float(k * 6185)) * 0.6 + float(i)) * (5.0 / float(i)), downSpeed * (iTime + float(k * 1352)) * (1.0 / float(i)));
+            vec2 uvStep = (ceil((uv) * cellSize - vec2(0.5, 0.5)) / cellSize);
+            float x = fract(sin(dot(uvStep.xy, vec2(12.9898 + float(k) * 12.0, 78.233 + float(k) * 315.156))) * 43758.5453 + float(k) * 12.0) - 0.5;
+            float y = fract(sin(dot(uvStep.xy, vec2(62.2364 + float(k) * 23.0, 94.674 + float(k) * 95.0))) * 62159.8432 + float(k) * 12.0) - 0.5;
+
+            float randomMagnitude1 = sin(iTime * 2.5) * 0.7 / cellSize;
+            float randomMagnitude2 = cos(iTime * 2.5) * 0.7 / cellSize;
+
+            float d = 5.0 * distance((uvStep.xy + vec2(x * sin(y), y) * randomMagnitude1 + vec2(y, x) * randomMagnitude2), uv.xy);
+
+            float omiVal = fract(sin(dot(uvStep.xy, vec2(32.4691, 94.615))) * 31572.1684);
+            if(omiVal < 0.08 ? true : false) {
+                float newd = (x + 1.0) * 0.4 * clamp(1.9 - d * (15.0 + (x * 6.3)) * (cellSize / 1.4), 0.0, 1.0);
+                snow += newd;
+            }
+        }
+    }
+    gl_FragColor = vec4(1.0, 1.0, 1.0, snow);
+}
+`
+            });
+            const fogMaterial = new THREE.ShaderMaterial({
+              transparent: true,
+              uniforms: {
+                iTime: { value: 1.0 },
+                fogOpacity: { value: 1.0 },
+                fogSpeed: { value: 1.0 }
+              },
+              vertexShader: `
+                varying vec2 vUv;
+                void main(){
+                    vUv=uv;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+                }`,
+              fragmentShader: `//https://www.shadertoy.com/view/XtfSW4
+              float cloudDensity = 1.0; 	// overall density [0,1]
+float noisiness = 0.35; 	// overall strength of the noise effect [0,1]
+float speed = 0.1;			// controls the animation speed [0, 0.1 ish)
+float cloudHeight = 0.5; 	// (inverse) height of the input gradient [0,...)
+uniform float iTime;
+uniform float fogSpeed;
+uniform float fogOpacity;
+varying vec2 vUv;
+
+vec3 mod289(vec3 x) {
+  return x - floor(x * (1.0 / 289.0)) * 289.0;
+}
+
+vec4 mod289(vec4 x) {
+  return x - floor(x * (1.0 / 289.0)) * 289.0;
+}
+
+vec4 permute(vec4 x) {
+     return mod289(((x*34.0)+1.0)*x);
+}
+
+vec4 taylorInvSqrt(vec4 r)
+{
+  return 1.79284291400159 - 0.85373472095314 * r;
+}
+
+float snoise(vec3 v)
+  { 
+  const vec2  C = vec2(1.0/6.0, 1.0/3.0) ;
+  const vec4  D = vec4(0.0, 0.5, 1.0, 2.0);
+
+// First corner
+  vec3 i  = floor(v + dot(v, C.yyy) );
+  vec3 x0 =   v - i + dot(i, C.xxx) ;
+
+// Other corners
+  vec3 g = step(x0.yzx, x0.xyz);
+  vec3 l = 1.0 - g;
+  vec3 i1 = min( g.xyz, l.zxy );
+  vec3 i2 = max( g.xyz, l.zxy );
+
+  //   x0 = x0 - 0.0 + 0.0 * C.xxx;
+  //   x1 = x0 - i1  + 1.0 * C.xxx;
+  //   x2 = x0 - i2  + 2.0 * C.xxx;
+  //   x3 = x0 - 1.0 + 3.0 * C.xxx;
+  vec3 x1 = x0 - i1 + C.xxx;
+  vec3 x2 = x0 - i2 + C.yyy; // 2.0*C.x = 1/3 = C.y
+  vec3 x3 = x0 - D.yyy;      // -1.0+3.0*C.x = -0.5 = -D.y
+
+// Permutations
+  i = mod289(i); 
+  vec4 p = permute( permute( permute( 
+             i.z + vec4(0.0, i1.z, i2.z, 1.0 ))
+           + i.y + vec4(0.0, i1.y, i2.y, 1.0 )) 
+           + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));
+
+// Gradients: 7x7 points over a square, mapped onto an octahedron.
+// The ring size 17*17 = 289 is close to a multiple of 49 (49*6 = 294)
+  float n_ = 0.142857142857; // 1.0/7.0
+  vec3  ns = n_ * D.wyz - D.xzx;
+
+  vec4 j = p - 49.0 * floor(p * ns.z * ns.z);  //  mod(p,7*7)
+
+  vec4 x_ = floor(j * ns.z);
+  vec4 y_ = floor(j - 7.0 * x_ );    // mod(j,N)
+
+  vec4 x = x_ *ns.x + ns.yyyy;
+  vec4 y = y_ *ns.x + ns.yyyy;
+  vec4 h = 1.0 - abs(x) - abs(y);
+
+  vec4 b0 = vec4( x.xy, y.xy );
+  vec4 b1 = vec4( x.zw, y.zw );
+
+  //vec4 s0 = vec4(lessThan(b0,0.0))*2.0 - 1.0;
+  //vec4 s1 = vec4(lessThan(b1,0.0))*2.0 - 1.0;
+  vec4 s0 = floor(b0)*2.0 + 1.0;
+  vec4 s1 = floor(b1)*2.0 + 1.0;
+  vec4 sh = -step(h, vec4(0.0));
+
+  vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ;
+  vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww ;
+
+  vec3 p0 = vec3(a0.xy,h.x);
+  vec3 p1 = vec3(a0.zw,h.y);
+  vec3 p2 = vec3(a1.xy,h.z);
+  vec3 p3 = vec3(a1.zw,h.w);
+
+//Normalise gradients
+  vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
+  p0 *= norm.x;
+  p1 *= norm.y;
+  p2 *= norm.z;
+  p3 *= norm.w;
+
+// Mix final noise value
+  vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
+  m = m * m;
+  return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1), 
+                                dot(p2,x2), dot(p3,x3) ) );
+}
+
+/// Cloud stuff:
+const float maximum = 1.0/1.0 + 1.0/2.0 + 1.0/3.0 + 1.0/4.0 + 1.0/5.0 + 1.0/6.0 + 1.0/7.0 + 1.0/8.0;
+// Fractal Brownian motion, or something that passes for it anyway: range [-1, 1]
+float fBm(vec3 uv)
+{
+    float sum = 0.0;
+    for (int i = 0; i < 8; ++i) {
+        float f = float(i+1);
+        sum += snoise(uv*f) / f;
+    }
+    return sum / maximum;
+}
+
+// Simple vertical gradient:
+float gradient(vec2 uv) {
+ 	return (1.0 - uv.y * uv.y * cloudHeight);   
+}
+
+void main() {
+    vec2 uv = vUv;
+    vec3 p = vec3(uv, iTime * speed);
+    vec3 offset = vec3(sin(iTime * fogSpeed*3.0), sin(iTime * fogSpeed), sin(iTime * fogSpeed*2.0));
+    vec2 duv = vec2(fBm(p), fBm(p + offset)) * noisiness;
+    float q = gradient(uv + duv) * cloudDensity;
+    if(q <= 0.0) {
+        discard;
+        return;
+    }
+    gl_FragColor = vec4(vec3(1.0), q * fogOpacity);
+}`
+            });
+            this.snowMaterial = snowMaterial;
+            this.rainMaterial = rainMaterial;
+            this.fogMaterial = fogMaterial;
+            this.material = rainMaterial;
+            // this.material = new THREE.MeshBasicMaterial({
+            //   color: 0xff0000,
+            //   transparent: 0,
+            //   opacity: 0.5
+            // });
+
+            const mesh = new THREE.Mesh(g, this.material);
+            mesh.position.set(0, 0, 1);
+            sceneOrtho.add(mesh);
+            this.weatherMesh = mesh;
+          }
+          {
+            const mesh = new THREE.Mesh(
+              g,
+              new THREE.MeshBasicMaterial({
+                map: this.texture,
+                transparent: true
+              })
+            );
+            mesh.position.set(0, 0, 0);
+            sceneOrtho.add(mesh);
+          }
+        }
+
+        addLight() {
+          const light = new THREE.AmbientLight(0xffffff, 0.6); // soft white light
+          this.scene.add(light);
+          const size = 20;
+          const dirLight = new THREE.DirectionalLight(0x0000ff, 3);
+          dirLight.position.set(size, size, size);
+          dirLight.castShadow = true;
+          dirLight.shadow.camera.top = size * 2;
+          dirLight.shadow.camera.bottom = -size * 2;
+          dirLight.shadow.camera.left = -size * 2;
+          dirLight.shadow.camera.right = size * 2;
+          dirLight.shadow.camera.near = 1;
+          dirLight.shadow.camera.far = size * 4;
+          dirLight.shadow.mapSize.set(1024, 1024);
+          this.scene.add(dirLight);
+        }
+        createChart() {
+          this.renderer.autoClear = false;
+          this.addFrameBuffer();
+
+          this.addLight();
+          this.scene.background = new THREE.Color('#00008B');
+
+          {
+            const mesh = new THREE.Mesh(
+              new THREE.PlaneGeometry(20, 20),
+              new THREE.MeshStandardMaterial({ color: 0xffffff, depthWrite: false })
+            );
+            mesh.rotation.x = -Math.PI / 2;
+
+            mesh.receiveShadow = true;
+            this.scene.add(mesh);
+          }
+          {
+            const tex = new THREE.TextureLoader().load(`./assets/image.jpg`);
+            tex.wrapS = THREE.RepeatWrapping;
+            tex.wrapT = THREE.RepeatWrapping;
+            const material = new THREE.MeshStandardMaterial({
+              map: tex
+            });
+            this.geometries = [];
+            const helper = new THREE.Object3D();
+            for (let i = 0; i < 50; i++) {
+              const h = Math.round(Math.random() * 3) + 1;
+              const x = Math.round(Math.random() * 8);
+              const y = Math.round(Math.random() * 8);
+              helper.position.set((x % 2 ? -1 : 1) * x, h * 0.5, (y % 2 ? -1 : 1) * y);
+              const geometry = new THREE.BoxGeometry(1, h, 1);
+              helper.updateWorldMatrix(true, false);
+              geometry.applyMatrix4(helper.matrixWorld);
+              this.geometries.push(geometry);
+            }
+            const mergedGeometry = BufferGeometryUtils.mergeGeometries(this.geometries, false);
+            const cube = new THREE.Mesh(mergedGeometry, material);
+            cube.receiveShadow = true;
+            cube.castShadow = true;
+            this.scene.add(cube);
+          }
+        }
+        onGuiAction() {
+          if (this.dataObj.weather == 'snow') {
+            this.weatherMesh.material = this.snowMaterial;
+            this.material = this.snowMaterial;
+          } else if (this.dataObj.weather == 'rain') {
+            this.weatherMesh.material = this.rainMaterial;
+            this.rainMaterial.uniforms.rainSpeed.value = this.dataObj.rainSpeed;
+            this.material = this.rainMaterial;
+          } else if (this.dataObj.weather == 'fog') {
+            this.weatherMesh.material = this.fogMaterial;
+            this.fogMaterial.uniforms.fogOpacity.value = this.dataObj.fogOpacity;
+            this.fogMaterial.uniforms.fogSpeed.value = this.dataObj.fogSpeed;
+            this.material = this.fogMaterial;
+          }
+        }
+
+        animate() {
+          this.renderer.clear();
+          this.renderer.render(this.scene, this.camera);
+          if (this.texture) {
+            this.renderer.clearDepth();
+
+            this.renderer.copyFramebufferToTexture(this.vector, this.texture);
+            if (this.material) {
+              this.material.uniforms.iTime.value += 0.01;
+            }
+            this.renderer.render(this.sceneOrtho, this.cameraOrtho);
+          }
+          this.threeAnim = requestAnimationFrame(this.animate.bind(this));
+        }
+      }
+
+      var myThree = new MyThree();
+      window.myThree = myThree;
+      myThree.initThree(document.getElementById('canvas'));
+      myThree.createChart({});
+    </script>
+  </body>
+</html>

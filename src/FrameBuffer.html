@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        background-color: black;
+        height: 800px;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../node_modules/three/build/three.module.js",
+          "three/addons/": "../node_modules/three/examples/jsm/utils/"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from '../node_modules/three/build/three.module.js';
+
+      import ThreeBase from './ThreeBase.js';
+      import * as BufferGeometryUtils from 'three/addons/BufferGeometryUtils.js';
+      class MyThree extends ThreeBase {
+        constructor() {
+          super();
+          this.initCameraPos = [-18, 12, 17];
+          this.vector = new THREE.Vector2();
+        }
+
+        addFrameBuffer() {
+          const dpr = window.devicePixelRatio;
+          this.dpr = dpr;
+
+          const width = this.container.offsetWidth;
+          const height = this.container.offsetHeight;
+
+          const sceneOrtho = new THREE.Scene();
+          this.sceneOrtho = sceneOrtho;
+          const cameraOrtho = new THREE.OrthographicCamera(
+            -width / 2,
+            width / 2,
+            height / 2,
+            -height / 2,
+            1,
+            10
+          );
+          cameraOrtho.position.z = 10;
+          cameraOrtho.left = -width / 2;
+          cameraOrtho.right = width / 2;
+          cameraOrtho.top = height / 2;
+          cameraOrtho.bottom = -height / 2;
+          this.cameraOrtho = cameraOrtho;
+          this.texture = new THREE.FramebufferTexture(width * dpr, height * dpr);
+          const g = new THREE.PlaneGeometry(width * dpr, height * dpr);
+
+          {
+            const mesh = new THREE.Mesh(
+              g,
+              new THREE.MeshBasicMaterial({
+                // color: 0x000000,
+                map: this.texture,
+                transparent: true
+              })
+            );
+            mesh.scale.set(0.5, 0.5, 0.5);
+            mesh.position.set(-width * 0.25, height * 0.25, 0);
+            sceneOrtho.add(mesh);
+          }
+        }
+
+        addLight() {
+          const light = new THREE.AmbientLight(0xffffff, 0.6); // soft white light
+          this.scene.add(light);
+          const size = 20;
+          const dirLight = new THREE.DirectionalLight(0x0000ff, 3);
+          dirLight.position.set(size, size, size);
+          dirLight.castShadow = true;
+          dirLight.shadow.camera.top = size * 2;
+          dirLight.shadow.camera.bottom = -size * 2;
+          dirLight.shadow.camera.left = -size * 2;
+          dirLight.shadow.camera.right = size * 2;
+          dirLight.shadow.camera.near = 1;
+          dirLight.shadow.camera.far = size * 4;
+          dirLight.shadow.mapSize.set(1024, 1024);
+          this.scene.add(dirLight);
+        }
+        createChart() {
+          this.renderer.autoClear = false;
+          this.addFrameBuffer();
+
+          this.addLight();
+          this.scene.background = new THREE.Color('#00008B');
+
+          {
+            const mesh = new THREE.Mesh(
+              new THREE.PlaneGeometry(20, 20),
+              new THREE.MeshStandardMaterial({ color: 0xffffff, depthWrite: false })
+            );
+            mesh.rotation.x = -Math.PI / 2;
+
+            mesh.receiveShadow = true;
+            this.scene.add(mesh);
+          }
+          {
+            const tex = new THREE.TextureLoader().load(`./assets/image.jpg`);
+            tex.wrapS = THREE.RepeatWrapping;
+            tex.wrapT = THREE.RepeatWrapping;
+            const material = new THREE.MeshStandardMaterial({
+              map: tex
+            });
+            this.geometries = [];
+            const helper = new THREE.Object3D();
+            for (let i = 0; i < 50; i++) {
+              const h = Math.round(Math.random() * 3) + 1;
+              const x = Math.round(Math.random() * 8);
+              const y = Math.round(Math.random() * 8);
+              helper.position.set((x % 2 ? -1 : 1) * x, h * 0.5, (y % 2 ? -1 : 1) * y);
+              const geometry = new THREE.BoxGeometry(1, h, 1);
+              helper.updateWorldMatrix(true, false);
+              geometry.applyMatrix4(helper.matrixWorld);
+              this.geometries.push(geometry);
+            }
+            const mergedGeometry = BufferGeometryUtils.mergeGeometries(this.geometries, false);
+            const cube = new THREE.Mesh(mergedGeometry, material);
+            cube.receiveShadow = true;
+            cube.castShadow = true;
+            this.scene.add(cube);
+          }
+        }
+
+        animate() {
+          this.renderer.clear();
+          this.renderer.render(this.scene, this.camera);
+          if (this.texture) {
+            this.renderer.clearDepth();
+
+            this.renderer.copyFramebufferToTexture(this.vector, this.texture);
+            if (this.material) {
+              this.material.uniforms.iTime.value += 0.01;
+            }
+            //不想要第一个场景的结果可以加上 this.renderer.clear();
+            this.renderer.render(this.sceneOrtho, this.cameraOrtho);
+          }
+          this.threeAnim = requestAnimationFrame(this.animate.bind(this));
+        }
+      }
+
+      var myThree = new MyThree();
+      window.myThree = myThree;
+      myThree.initThree(document.getElementById('canvas'));
+      myThree.createChart({});
+    </script>
+  </body>
+</html>

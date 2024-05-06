@@ -29,3 +29,7 @@
 # src/heatmap.html 2D 热力图
 
 # src/heatmap.html 3D 热力山丘图
+
+# src/FrameBuffer.html 帧缓存贴图
+
+# src/RainSnow.html 雨雪雾
