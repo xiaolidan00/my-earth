@@ -34,6 +34,6 @@
 
 # src/RainSnow.html 雨雪雾
 
-# src/earthScan.html 地球扫光
+# src/earthScan.html 地球渐变扫光
 
 # src/earthScan1.html 地球斑点扫光
