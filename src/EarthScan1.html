@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        background-color: black;
+        height: 800px;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../node_modules/three/build/three.module.js",
+          "three/addons/": "../node_modules/three/examples/jsm/utils/"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from 'three';
+      import * as BufferGeometryUtils from 'three/addons/BufferGeometryUtils.js';
+      import ThreeBase from './ThreeBase.js';
+      class MyThree extends ThreeBase {
+        constructor() {
+          super();
+          //   this.isAxis = true;
+          this.isStats = true;
+          this.initCameraPos = [37, 50, 100];
+        }
+
+        createChart(that) {
+          {
+            const light = new THREE.AmbientLight(0xffffff, 1); // soft white light
+            this.scene.add(light);
+          }
+          {
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+            directionalLight.position.set(20, 20, 10);
+            this.scene.add(directionalLight);
+          }
+
+          {
+            const geometry = new THREE.SphereGeometry(16, 32, 32);
+            const texture = new THREE.TextureLoader().load('assets/world.jpg');
+            texture.wrapS = THREE.RepeatWrapping;
+            texture.wrapT = THREE.RepeatWrapping;
+
+            const texture1 = new THREE.TextureLoader().load('assets/earth.jpg');
+            texture1.wrapS = THREE.RepeatWrapping;
+            texture1.wrapT = THREE.RepeatWrapping;
+
+            const material = new THREE.MeshStandardMaterial({
+              map: texture,
+              bumpMap: texture,
+              bumpScale: 10
+            });
+            const sphere = new THREE.Mesh(geometry, material);
+            this.scene.add(sphere);
+          }
+          {
+            const geometry = new THREE.SphereGeometry(18, 32, 16);
+            const material = new THREE.ShaderMaterial({
+              uniforms: {
+                iTime: { value: 0.0 },
+                pointNum: { value: new THREE.Vector2(32, 16) },
+                uColor: { value: new THREE.Color('#FFFFFF') }
+              },
+              transparent: true,
+              vertexShader: `
+                        varying vec2 vUv;
+                        void main(){
+                        vUv=uv;
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                        }`,
+              fragmentShader: `
+                        float PI = acos(-1.0);
+                        uniform vec3 uColor;
+                      uniform vec2 pointNum;
+                       uniform float iTime;                        
+                        varying vec2 vUv;
+                        void main(){
+                        vec2 uv = vUv+ vec2(0.0, iTime);
+              float current = abs(sin(uv.y * PI) );             
+      if(current < 0.996) {      
+      current=current*0.5;
+       }
+    float d = distance(fract(uv * pointNum*2.0), vec2(0.5, 0.5));
+ 
+    if(d > current*0.2 ) {
+       discard;
+    } else {
+      gl_FragColor =vec4(uColor,current);
+    }
+                        }
+                        `
+            });
+            this.material = material;
+            const sphere = new THREE.Mesh(geometry, material);
+            this.scene.add(sphere);
+          }
+        }
+        animateAction() {
+          if (this.material) {
+            if (this.material.uniforms.iTime.value > 1) this.material.uniforms.iTime.value = 0;
+            else this.material.uniforms.iTime.value += 0.005;
+          }
+        }
+      }
+
+      var myThree = new MyThree();
+      window.myThree = myThree;
+      myThree.initThree(document.getElementById('canvas'));
+      myThree.createChart({});
+    </script>
+  </body>
+</html>

@@ -33,3 +33,7 @@
 # src/FrameBuffer.html 帧缓存贴图
 
 # src/RainSnow.html 雨雪雾
+
+# src/earthScan.html 地球扫光
+
+# src/earthScan1.html 地球斑点扫光
