@@ -32,6 +32,22 @@
 
       import ThreeBase from './ThreeBase.js';
 
+      class HeartCurve extends THREE.Curve {
+        constructor(scale = 1) {
+          super();
+          this.scale = scale;
+        }
+
+        getPoint(a, optionalTarget = new THREE.Vector3()) {
+          const t = a * Math.PI * 2;
+          const tx = 16 * Math.pow(Math.sin(t), 3);
+          const ty = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+          const tz = 0;
+
+          return optionalTarget.set(tx, ty, tz).multiplyScalar(this.scale);
+        }
+      }
+
       class MyEarth extends ThreeBase {
         constructor() {
           super();
@@ -57,24 +73,18 @@
               }
             });
           }
-
           if (this.composer) {
             //必须关闭autoClear,避免渲染效果被清除
             this.renderer.autoClear = false;
             this.renderer.clear();
-            //不需要发光的物体在bloom后期前隐藏
-            this.normalObj.visible = false;
 
             this.composer.render();
             this.renderer.clearDepth();
-            //不需要发光的物体在bloom后期后显示
-            this.normalObj.visible = true;
           }
+
           this.renderer.render(this.scene, this.camera);
           this.threeAnim = requestAnimationFrame(this.animate.bind(this));
         }
-        setMat(m) {}
-
         initBloom() {
           const params = {
             threshold: 0,
@@ -84,7 +94,6 @@
           };
           const renderScene = new RenderPass(this.scene, this.camera);
           //strength = 1, kernelSize = 25, sigma = 4
-          //自身体积范围内发光
           const bloomPass = new BloomPass(5, 20, 100);
           bloomPass.threshold = params.threshold;
           bloomPass.strength = params.strength;
@@ -100,44 +109,20 @@
         }
         createChart(that) {
           this.initBloom();
-
           const commonUniforms = {
-            uFade: { value: new THREE.Vector2(0, 0.6) },
+            uFade: { value: new THREE.Vector2(0, 0.5) },
             uOffset: { value: new THREE.Vector2(40, 20) }
           };
-
-          const vertexMoveHeight = `
-          float getMove(float u,float offset){
-          float a=u*PI*2.0;
-          return sin(a+PI*0.25)*u*offset;
-          }
-          float getHeight(float u,float offset){
-          float a=u*PI*3.0;
-        return cos(a)*u*offset ;
-          }
-          `;
-
+          const materials = [];
           {
-            const spline = new THREE.LineCurve3(
-              new THREE.Vector3(0, 0, that.height * 0.25),
-              new THREE.Vector3(0, 0, -that.height * 0.75)
-            );
+            const spline = new HeartCurve(1);
             const geometry = new THREE.TubeGeometry(spline, that.height, that.lineWidth, 8, false);
-            const vertexShader = ` 
-            float PI = acos(-1.0);
-uniform vec2 uOffset;
-varying vec2 vUv;
- ${vertexMoveHeight}
-void main(void) {
-    vUv = uv;
-    float m = getMove(uv.x, uOffset.x);
-    float h = getHeight(uv.x, uOffset.y);
-
-    vec3 newPosition = position;
-    newPosition.x = newPosition.x + m;
-    newPosition.y = newPosition.y + h;
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
-}`;
+            const vertexShader = `
+            varying vec2 vUv;
+            void main(void) {
+                vUv = uv;
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            }`;
             const fragmentShader = `
             varying vec2 vUv;
               uniform float uSpeed;
@@ -147,12 +132,14 @@ void main(void) {
             uniform float uDirection;
             void main() {
             vec3 color =uColor;
-            float s=-uTime*uSpeed;
+            float s=0.0;
             float v=0.0;
             if(uDirection==1.0){
-            v=vUv.x; 
+            v=vUv.x;
+            s=-uTime*uSpeed;
             }else{
-            v= -vUv.x; 
+            v= -vUv.x;
+            s= -uTime*uSpeed;
             }
             float d=mod(  (v + s) ,1.0) ;
             if(d>uFade.y)discard;
@@ -162,91 +149,68 @@ void main(void) {
             gl_FragColor =  vec4(color,alpha);
             }
             } `;
-            const materials = [];
-            const amount = that.amount;
-            const step = (that.width - that.gap) / amount;
-            for (let i = 0; i < amount; i++) {
-              const c = new THREE.Color();
-              const v = i / amount;
-              c.setHSL(
-                THREE.MathUtils.lerp(that.hueStart, that.hueEnd, v),
-                1,
-                THREE.MathUtils.lerp(that.lightStart, that.lightEnd, v)
-              );
+
+            {
+              const c = new THREE.Color('pink');
+
               const material = new THREE.ShaderMaterial({
                 side: THREE.DoubleSide,
                 transparent: true,
                 uniforms: {
                   uColor: { value: c },
-                  uTime: { value: THREE.MathUtils.lerp(-1, 1, Math.random()) },
-                  uDirection: { value: i < amount * 0.5 ? 1 : 0 },
-                  uSpeed: { value: THREE.MathUtils.lerp(1, 1.5, Math.random()) },
+                  uTime: { value: 0 },
+                  uDirection: { value: 1 },
+                  uSpeed: { value: 1 },
                   ...commonUniforms
                 },
-                vertexShader,
+                vertexShader: `varying vec2 vUv;
+                void main(void) {
+                    vUv = uv;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                }`,
                 fragmentShader
               });
               materials.push(material);
               const mesh = new THREE.Mesh(geometry, material);
-              mesh.position.x = i * step + (i > amount * 0.5 - 1 ? that.gap : 0);
-              mesh.position.y = Math.random() * 5;
               this.scene.add(mesh);
-              this.materials = materials;
             }
+
             {
-              const geometry = new THREE.PlaneGeometry(
-                that.width,
-                that.height,
-                that.width * 0.25,
-                that.height * 0.25
-              );
+              const c = new THREE.Color('#00BFFF');
 
               const material = new THREE.ShaderMaterial({
                 side: THREE.DoubleSide,
                 transparent: true,
                 uniforms: {
-                  uColor: { value: new THREE.Color('gray') },
+                  uColor: { value: c },
+                  uTime: { value: 0.5 },
+                  uDirection: { value: 1 },
+                  uSpeed: { value: 1 },
                   ...commonUniforms
                 },
-                vertexShader: `
-            float PI = acos(-1.0); 
-             uniform vec2 uOffset;
-             ${vertexMoveHeight}
-              void main(void)
-              {
-              float m=getMove(uv.y,uOffset.x);
-              float h=getHeight(uv.y,uOffset.y);
-               vec3 newPosition = position;
-               newPosition.x=newPosition.x+m  ;
-               newPosition.z= newPosition.z+h ;
- 
-              gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
-              }`,
-                fragmentShader: `
-              uniform vec3 uColor;
-              void main() {
-              gl_FragColor =vec4(uColor,0.6);
-              } `
+                vertexShader: `varying vec2 vUv;
+                void main(void) {
+                    vUv = uv;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                }`,
+                fragmentShader
               });
-              this.planeMat = material;
-              const plane = new THREE.Mesh(geometry, material);
-              plane.rotateX(-Math.PI * 0.5);
-              plane.position.set(that.width * 0.5, -1, -that.height * 0.25);
-              this.normalObj = plane;
-              this.scene.add(plane);
+              materials.push(material);
+              const mesh = new THREE.Mesh(geometry, material);
+              this.scene.add(mesh);
             }
           }
-
+          this.materials = materials;
           this.setView(
             {
-              x: 43.947300458634935,
-              y: 39.97735626386216,
-              z: 107.49722442529104
+              x: 8.232825569486495,
+              y: 6.160110792632685,
+              z: 80.04545659562301
             },
             {
-              x: 13.508741066497619,
-              y: -9.597826632694558,
-              z: -0.4297661600473564
+              x: 3.1562947111097164,
+              y: -2.765585157509981,
+              z: -0.6436907841128285
             }
           );
         }
@@ -257,10 +221,9 @@ void main(void) {
       myEarth.initThree(document.getElementById('canvas'));
       myEarth.createChart({
         lineWidth: 0.5,
-        width: 48,
-        height: 400,
-        gap: 8,
-        amount: 20,
+        width: 100,
+        height: 100,
+        amount: 2,
         hueStart: 0.7,
         hueEnd: 0.2,
         lightStart: 0.5,
