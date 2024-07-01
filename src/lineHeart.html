@@ -13,6 +13,7 @@
       }
     </style>
   </head>
+
   <body>
     <div id="canvas"></div>
     <script type="importmap">
@@ -111,8 +112,10 @@
           this.initBloom();
           const commonUniforms = {
             uFade: { value: new THREE.Vector2(0, 0.5) },
-            uOffset: { value: new THREE.Vector2(40, 20) }
+            uDirection: { value: 1 },
+            uSpeed: { value: 1 }
           };
+
           const materials = [];
           {
             const spline = new HeartCurve(1);
@@ -152,22 +155,15 @@
 
             {
               const c = new THREE.Color('pink');
-
               const material = new THREE.ShaderMaterial({
                 side: THREE.DoubleSide,
                 transparent: true,
                 uniforms: {
                   uColor: { value: c },
                   uTime: { value: 0 },
-                  uDirection: { value: 1 },
-                  uSpeed: { value: 1 },
                   ...commonUniforms
                 },
-                vertexShader: `varying vec2 vUv;
-                void main(void) {
-                    vUv = uv;
-                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-                }`,
+                vertexShader,
                 fragmentShader
               });
               materials.push(material);
@@ -177,22 +173,15 @@
 
             {
               const c = new THREE.Color('#00BFFF');
-
               const material = new THREE.ShaderMaterial({
                 side: THREE.DoubleSide,
                 transparent: true,
                 uniforms: {
                   uColor: { value: c },
                   uTime: { value: 0.5 },
-                  uDirection: { value: 1 },
-                  uSpeed: { value: 1 },
                   ...commonUniforms
                 },
-                vertexShader: `varying vec2 vUv;
-                void main(void) {
-                    vUv = uv;
-                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-                }`,
+                vertexShader,
                 fragmentShader
               });
               materials.push(material);
