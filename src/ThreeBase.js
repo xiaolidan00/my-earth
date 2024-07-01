@@ -187,8 +187,11 @@ gui.add( obj, 'number2', 0, 100, 10 ); // min, max, step
       this.cleanNext(obj, idx + 1);
     }
   }
-
   setView(cameraPos, controlPos) {
+    this.camera.position.set(cameraPos.x, cameraPos.y, cameraPos.z);
+    this.controls.target.set(controlPos.x, controlPos.y, controlPos.z);
+  }
+  flyView(cameraPos, controlPos) {
     let orgCamera = this.camera.position;
     let orgControl = this.controls.target;
     let tween = new TWEEN.Tween({

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        position: absolute;
+        background-color: black;
+        height: 800px;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../node_modules/three/build/three.module.js",
+          "three/addons/": "../node_modules/three/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from '../node_modules/three/build/three.module.js';
+      import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+      import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+      import { BloomPass } from 'three/addons/postprocessing/BloomPass.js';
+      import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+      import ThreeBase from './ThreeBase.js';
+
+      class MyEarth extends ThreeBase {
+        constructor() {
+          super();
+          // this.isAxis = true;
+          // this.isStats = true;
+
+          this.speed = 0.005;
+        }
+
+        animate() {
+          if (this.isStats && this.stats) {
+            this.stats.update();
+          }
+          if (this.controls) {
+            this.controls.update();
+          }
+
+          if (this.materials) {
+            this.materials.forEach((m) => {
+              m.uniforms.uTime.value += this.speed;
+              if (m.uniforms.uTime.value > 1) {
+                m.uniforms.uTime.value = 0;
+              }
+            });
+          }
+          if (this.composer) {
+            //必须关闭autoClear,避免渲染效果被清除
+            this.renderer.autoClear = false;
+            this.renderer.clear();
+
+            this.composer.render();
+            this.renderer.clearDepth();
+          }
+
+          this.renderer.render(this.scene, this.camera);
+          this.threeAnim = requestAnimationFrame(this.animate.bind(this));
+        }
+        initBloom() {
+          const params = {
+            threshold: 0,
+            strength: 0.5,
+            radius: 0.5,
+            exposure: 0.5
+          };
+          const renderScene = new RenderPass(this.scene, this.camera);
+          //strength = 1, kernelSize = 25, sigma = 4
+          //自身体积范围内发光
+          const bloomPass = new BloomPass(5, 20, 100);
+          bloomPass.threshold = params.threshold;
+          bloomPass.strength = params.strength;
+          bloomPass.radius = params.radius;
+
+          const composer = new EffectComposer(this.renderer);
+          composer.addPass(renderScene);
+          composer.addPass(bloomPass);
+          const outputPass = new OutputPass();
+          composer.addPass(outputPass);
+
+          this.composer = composer;
+        }
+        createChart(that) {
+          this.initBloom();
+          const commonUniforms = {
+            uFade: { value: new THREE.Vector2(0, 0.6) },
+            uOffset: { value: new THREE.Vector2(40, 20) }
+          };
+
+          {
+            const spline = new THREE.LineCurve3(
+              new THREE.Vector3(0, 0, that.height * 0.25),
+              new THREE.Vector3(0, 0, -that.height * 0.75)
+            );
+            const geometry = new THREE.TubeGeometry(spline, that.height, that.lineWidth, 8, false);
+            const vertexShader = `
+            varying vec2 vUv;
+            void main(void) {
+                vUv = uv;
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            }`;
+            const fragmentShader = ` 
+            varying vec2 vUv;
+              uniform float uSpeed;
+             uniform float uTime;
+            uniform vec2 uFade;
+            uniform vec3 uColor;
+            uniform float uDirection;
+            void main() {
+            vec3 color =uColor;
+            float s=0.0;
+            float v=0.0;
+            if(uDirection==1.0){
+            v=vUv.x;
+            s=-uTime*uSpeed;
+            }else{
+            v= -vUv.x;
+            s= -uTime*uSpeed;
+            }
+            float d=mod(  (v + s) ,1.0) ;
+            if(d>uFade.y)discard;
+            else{
+             float alpha = smoothstep(uFade.x, uFade.y, d);
+            if (alpha < 0.0001) discard;
+            gl_FragColor =  vec4(color,alpha); 
+            } 
+            } `;
+            const materials = [];
+            const amount = that.amount;
+            const step = (that.width - that.gap) / amount;
+            for (let i = 0; i < amount; i++) {
+              const c = new THREE.Color();
+              const v = i / amount;
+              c.setHSL(
+                THREE.MathUtils.lerp(that.hueStart, that.hueEnd, v),
+                1,
+                THREE.MathUtils.lerp(that.lightStart, that.lightEnd, v)
+              );
+              const material = new THREE.ShaderMaterial({
+                side: THREE.DoubleSide,
+                transparent: true,
+                uniforms: {
+                  uColor: { value: c },
+                  uTime: { value: THREE.MathUtils.lerp(-1, 1, Math.random()) },
+                  uDirection: { value: i < amount * 0.5 ? 1 : 0 },
+                  uSpeed: { value: THREE.MathUtils.lerp(1, 1.5, Math.random()) },
+                  ...commonUniforms
+                },
+                vertexShader: `varying vec2 vUv;
+                void main(void) {
+                    vUv = uv;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                }`,
+                fragmentShader
+              });
+              materials.push(material);
+              const mesh = new THREE.Mesh(geometry, material);
+              mesh.position.x = i * step + (i > amount * 0.5 - 1 ? that.gap : 0);
+              mesh.position.y = Math.random() * 5;
+              this.scene.add(mesh);
+              this.materials = materials;
+            }
+          }
+
+          this.setView(
+            {
+              x: 69.92134046248553,
+              y: 55.65132879983692,
+              z: 143.16624674469034
+            },
+            {
+              x: 28.513511345696614,
+              y: -11.789468097549857,
+              z: -3.654840471460444
+            }
+          );
+        }
+      }
+
+      var myEarth = new MyEarth();
+      window.myEarth = myEarth;
+      myEarth.initThree(document.getElementById('canvas'));
+      myEarth.createChart({
+        lineWidth: 0.5,
+        width: 88,
+        height: 400,
+        gap: 8,
+        amount: 20,
+        hueStart: 0.7,
+        hueEnd: 0.2,
+        lightStart: 0.5,
+        lightEnd: 1.0
+      });
+    </script>
+  </body>
+</html>

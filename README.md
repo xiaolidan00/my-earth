@@ -37,3 +37,7 @@
 # src/earthScan.html 地球渐变扫光
 
 # src/earthScan1.html 地球斑点扫光
+
+# src/lineBase.html 无限光束
+
+# src/line.html 顺着公路无限光束
