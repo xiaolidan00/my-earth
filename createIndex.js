@@ -11,7 +11,7 @@ fs.readdir('./src', (err, files) => {
     <title>ThreeJs炫酷效果</title>
   </head>
   <body>
-${ds.map((it) => `<a href="${it}">${it}</a>`).join('<br />')}
+${ds.map((it) => `<a href="src/${it}">${it}</a>`).join('<br />')}
   </body>
 </html>
 `;
