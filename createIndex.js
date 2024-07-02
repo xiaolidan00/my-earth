@@ -15,5 +15,5 @@ ${ds.map((it) => `<a href="src/${it}">${it}</a>`).join('<br />')}
   </body>
 </html>
 `;
-  fs.writeFile('./src/index.html', f, () => {});
+  fs.writeFile('./index.html', f, () => {});
 });

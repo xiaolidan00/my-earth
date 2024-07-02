@@ -1,0 +1,20 @@
+{
+  "name": "@surbowl/world-geo-json-zh",
+  "version": "2.1.2",
+  "description": "A simplified Chinese world map in GeoJSON format, including ISO 3166 codes, Chinese short names, and full names of countries (regions). 简体中文 GeoJson 世界地图，带有国家地区的 ISO 3166 代码、中文简称与全称",
+  "keywords": ["map", "countries", "geo", "geojson", "gis", "echarts", "chinese", "zh-cn"],
+  "main": "world.zh.json",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Surbowl/world-geo-json-zh.git"
+  },
+  "author": "Surbowl",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/Surbowl/world-geo-json-zh/issues"
+  },
+  "homepage": "https://github.com/Surbowl/world-geo-json-zh#readme"
+}
