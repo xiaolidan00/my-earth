@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>高德地图+Three.js实现炫酷飞线+标牌</title>
+    <style>
+      body,
+      #container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+      }
+      @keyframes big {
+        0% {
+          transform: scale(0);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      @keyframes flash {
+        0% {
+          opacity: 0.3;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .tip-box {
+        --base-color: dodgerblue;
+        border: solid 1px var(--base-color);
+        background-color: rgba(30, 144, 255, 0.3);
+        color: white;
+        white-space: nowrap;
+        padding-left: 8px;
+        padding-right: 16px;
+        height: 32px;
+        animation: big 1s ease-in;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 0 8px var(--base-color);
+      }
+      .tip-box .circle {
+        background-color: var(--base-color);
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+
+        animation: flash 0.5s ease-in alternate infinite;
+      }
+      .tip-box .text {
+        margin: 0 8px;
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../node_modules/three/build/three.module.js",
+          "three/addons/": "../node_modules/three/examples/jsm/",
+          "tween": "../node_modules/three/examples/jsm/libs/tween.module.js"
+        }
+      }
+    </script>
+
+    <script src="https://webapi.amap.com/maps?v=2.0&key=d994a78081a6847648e3faa54be6b74a"></script>
+  </head>
+
+  <body>
+    <div id="container"></div>
+
+    <script type="module">
+      import * as THREE from '../node_modules/three/build/three.module.js';
+      import ThreeAMapBase from './ThreeAMapBase.js';
+      import { CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+      import * as TWEEN from 'tween';
+
+      class MyThreeAMap extends ThreeAMapBase {
+        constructor() {
+          super();
+          this.isStats = true;
+          this.cones = [];
+          this.tags = [
+            {
+              name: '北京市',
+              pos: [116.407387, 39.904179],
+              color: 'rgb(255 ,99, 71)',
+              bg: 'rgba(255 ,99, 71, 0.3)'
+            },
+            {
+              name: '上海市',
+              pos: [121.473667, 31.230525],
+              color: 'rgb(255, 215, 0)',
+              bg: 'rgba(255, 215,0, 0.3)'
+            },
+            {
+              name: '广州市',
+              pos: [113.264499, 23.130061],
+              color: 'rgb(154 ,205, 50)',
+              bg: 'rgba(154, 205, 50,0.3)'
+            },
+            {
+              name: '成都市',
+              pos: [104.066301, 30.572961],
+              color: 'rgb(30, 144, 255)',
+              bg: 'rgba(30, 144, 255, 0.3)'
+            }
+          ];
+          this.size = 500000;
+          this.maxHeight = this.size * 1.3;
+          this.minHeight = this.size * 1.1;
+          this.speed = 0.005 * this.size;
+        }
+        //绘制中国大陆运动边界
+        createChinaLine() {
+          return new Promise((resolve) => {
+            fetch('https://geo.datav.aliyun.com/areas_v3/bound/100000.json')
+              .then((res) => res.json())
+              .then((res) => {
+                let path = res.features[0].geometry.coordinates[0][0];
+                //截取10%的线段
+                let len = Math.floor(path.length * 0.1);
+                //边界折线
+                let polyline = new AMap.Polyline({
+                  path: path,
+                  strokeWeight: 4,
+                  strokeColor: 'white',
+                  lineJoin: 'round',
+                  strokeOpacity: 1
+                });
+                this.map.add(polyline);
+                //利用Tween创建动画
+                new TWEEN.Tween({ start: 0 })
+                  .to({ start: path.length }, 3000)
+                  //无限循环动画
+                  .repeat(Infinity)
+                  .onUpdate((obj) => {
+                    if (obj.start + len < path.length) {
+                      polyline.setPath(path.slice(obj.start, obj.start + len));
+                    } else {
+                      const c = path.length - obj.start;
+                      //头尾相接时截取尾部+头部各一段
+                      polyline.setPath(
+                        [].concat(path.slice(obj.start, path.length), path.slice(0, len - c))
+                      );
+                    }
+                  })
+                  .start();
+                resolve();
+              });
+          });
+        }
+        createA(data) {
+          const material = new THREE.ShaderMaterial({
+            uniforms: {
+              uTime: { value: 0 },
+              uHeight: { value: this.size },
+              uColor: { value: new THREE.Color(data.color) }
+            },
+            transparent: true,
+            vertexShader: `precision mediump float;
+            uniform float uTime;
+            uniform float uHeight;
+                  varying float vD;
+                  float PI = acos(-1.0);
+                vec2 center = vec2(0.5);
+                void main(void){
+                float d = length(uv - center)*2.0;
+                vD=pow(1.0-d,3.0);
+                float h=vD*uHeight*uTime ;
+                vec3 pos=vec3(position.x*0.5  ,position.y*0.5   ,h);
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0 );
+              }`,
+            fragmentShader: `precision mediump float;
+            uniform vec3 uColor;
+                varying float vD;
+                void main(void){
+                if(vD<0.01)discard;
+                else
+          gl_FragColor = vec4(uColor,vD*2.0);
+                }`
+          });
+          this.material = material;
+          if (!this.ageometry) {
+            const geometry = new THREE.PlaneGeometry(this.size, this.size, 500, 500);
+            this.ageometry = geometry;
+          }
+          const plane = new THREE.Mesh(this.ageometry, material);
+          const d = this.customCoords.lngLatToCoord(data.pos);
+          plane.position.set(d[0], d[1], 0);
+          this.scene.add(plane);
+        }
+        addALabel(data) {
+          const div = document.createElement('div');
+          div.innerHTML = `<div class="tip-box" style="background:${data.bg};--base-color:${data.color}"><span class="circle" ></span><span class="text">${data.name}</span></div>`;
+          const d = this.customCoords.lngLatToCoord(data.pos);
+          const label = this.addLabel(div, [d[0], d[1], this.size * 1.5]);
+          const r = this.size * 0.1;
+          if (!this.cgeometry) {
+            const geometry = new THREE.ConeGeometry(r, r * 2, 4, 1);
+            this.cgeometry = geometry;
+          }
+          const material = new THREE.MeshLambertMaterial({ color: new THREE.Color(data.color) });
+          const cone = new THREE.Mesh(this.cgeometry, material);
+          cone.rotateX(-Math.PI * 0.5);
+          cone.position.set(d[0], d[1], this.size * 1.1);
+
+          this.scene.add(cone);
+          this.cones.push({ obj: cone, step: this.speed });
+        }
+        async createChart() {
+          {
+            //设置光照
+            const light = new THREE.AmbientLight(0xffffff, 0.6); // soft white light
+            this.scene.add(light);
+            //夜晚光照蓝色
+            const dirLight = new THREE.DirectionalLight(0xffffff, 3);
+            dirLight.position.set(this.size, this.size, this.size);
+            this.scene.add(dirLight);
+          }
+          this.animate();
+          //运动边界线
+          await this.createChinaLine();
+          //绘制山峰
+          await this.createA(this.tags[0]);
+          //视角变化
+          this.map.setPitch(68, false, 3000);
+          this.map.setRotation(24, false, 3000);
+          await this.sleep(2000);
+          {
+            //升起山峰
+            const tw = await this.addAnimate({ time: 0 }, { time: 1 }, 1000, (obj) => {
+              this.material.uniforms.uTime.value = obj.time;
+            });
+            TWEEN.remove(tw);
+            //添加标牌
+            this.addALabel(this.tags[0]);
+          }
+          await this.sleep(2000);
+          //绘制飞线
+          this.addLine([this.tags[0].pos, this.tags[1].pos], this.tags[0].color);
+          for (let i = 1; i < this.tags.length; i++) {
+            const data = this.tags[i];
+            //视角跟随到新地点
+            this.map.setCenter(data.pos, false, 1000);
+            this.map.setZoom(6, false, 1000);
+            await this.sleep(1000);
+            //绘制山峰
+            await this.createA(data);
+            //升起山峰
+            const tw = await this.addAnimate({ time: 0 }, { time: 1 }, 1000, (obj) => {
+              this.material.uniforms.uTime.value = obj.time;
+            });
+            TWEEN.remove(tw);
+            this.addALabel(data);
+            await this.sleep(1000);
+            //添加飞线
+            if (i < this.tags.length - 1) {
+              this.addLine([data.pos, this.tags[i + 1].pos], data.color);
+            } else {
+              //最终视角
+              this.map.setPitch(73.2, false, 3000);
+              this.map.setZoom(5, false, 1000);
+              this.map.setRotation(58.7, false, 3000);
+              this.map.setCenter([101.6, 35.6], false, 1000);
+            }
+          }
+        }
+        addLine(posList, color) {
+          const d = this.customCoords.lngLatsToCoords(posList);
+          const curve = new THREE.QuadraticBezierCurve3(
+            new THREE.Vector3(d[0][0], d[0][1], 0),
+            new THREE.Vector3((d[0][0] + d[1][0]) * 0.5, (d[0][1] + d[1][1]) * 0.5, this.size),
+            new THREE.Vector3(d[1][0], d[1][1], 0)
+          );
+          const geometry = new THREE.TubeGeometry(curve, 32, 10000, 8, false);
+          const material = new THREE.ShaderMaterial({
+            uniforms: {
+              uTime: { value: 0.0 },
+              uLen: { value: 0.6 },
+              uSize: { value: 10000 },
+              uColor: { value: new THREE.Color(color) }
+            },
+            transparent: true,
+
+            vertexShader: `float PI = acos(-1.0);
+            varying float vT;
+            varying float vS;
+            uniform float uTime;
+            uniform float uSize;
+            uniform float uLen;
+            void main(void){
+            float d=mod(uv.x-uTime,1.0);
+            vS=smoothstep(0.0, uLen, d);
+            if (vS < 0.01||d>uLen) return;
+            vec3 pos=position+normal*sin(PI*0.5*(vS-0.6))*uSize;
+             gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+            }`,
+            fragmentShader: `varying float vS; 
+uniform vec3 uColor; 
+void main(void) {
+    gl_FragColor = vec4(uColor, vS);
+}`
+          });
+
+          const line = new THREE.Mesh(geometry, material);
+          this.scene.add(line);
+
+          new TWEEN.Tween({ time: 0 })
+            .to({ time: 1.0 }, 1000)
+            .repeat(Infinity)
+            .onUpdate((obj) => {
+              material.uniforms.uTime.value = obj.time;
+            })
+            .start();
+        }
+        sleep(time) {
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              resolve();
+            }, time);
+          });
+        }
+        addAnimate(start, end, time, update) {
+          return new Promise((resolve) => {
+            const tween = new TWEEN.Tween(start)
+              .to(end, time)
+              .onUpdate(update)
+              .easing(TWEEN.Easing.Quadratic.In)
+              .onComplete(() => {
+                resolve(tween);
+              })
+              .start();
+          });
+        }
+        animateAction() {
+          if (TWEEN.getAll().length) {
+            TWEEN.update();
+          }
+          if (this.cones.length) {
+            this.cones.forEach((c) => {
+              if (c.obj.position.z >= this.maxHeight) {
+                c.step = -this.speed;
+              } else if (c.obj.position.z <= this.minHeight) {
+                c.step = this.speed;
+              }
+
+              c.obj.position.z += c.step;
+            });
+          }
+        }
+      }
+
+      var myThreeMap = new MyThreeAMap();
+      myThreeMap.init(document.getElementById('container'));
+    </script>
+  </body>
+</html>
