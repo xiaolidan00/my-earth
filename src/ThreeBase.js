@@ -1,8 +1,10 @@
 import * as THREE from '../node_modules/three/build/three.module.js';
+import * as TWEEN from '../node_modules/three/examples/jsm/libs/tween.module.js';
+
+import { GUI } from '../node_modules/three/examples/jsm/libs/lil-gui.module.min.js';
 import { OrbitControls } from '../node_modules/three/examples/jsm/controls/OrbitControls.js';
 import Stats from '../node_modules/three/examples/jsm/libs/stats.module.js';
-import * as TWEEN from '../node_modules/three/examples/jsm/libs/tween.module.js';
-import { GUI } from '../node_modules/three/examples/jsm/libs/lil-gui.module.min.js';
+
 export default class ThreeBase {
   constructor() {
     this.isModelRGB = false;
@@ -15,6 +17,7 @@ export default class ThreeBase {
     this.cameraNear = 1;
     this.cameraFar = 2000;
     this.isTWEEN = false;
+    this.isControl = true;
   }
   initGui() {
     let gui = new GUI();
@@ -102,8 +105,7 @@ gui.add( obj, 'number2', 0, 100, 10 ); // min, max, step
     window.ThreeBase = this;
     this.container = el;
     THREE.Cache.enabled = true;
-    if (this.customInit) {
-    }
+
     this.renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,
@@ -155,8 +157,9 @@ gui.add( obj, 'number2', 0, 100, 10 ); // min, max, step
     if (this.isTWEEN) {
       this.TWEEN = TWEEN;
     }
-
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    if (this.isControl) {
+      this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    }
 
     this.animate();
     window.addEventListener('resize', this.onResize.bind(this));

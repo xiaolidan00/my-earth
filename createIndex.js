@@ -22,7 +22,8 @@ const cfg = {
   'src/earthScan1.html': '地球斑点扫光',
   'src/lineBase.html': '无限光束',
   'src/line.html': '顺着公路无限光束',
-  'src/lineHeart.html': '心形流动光束'
+  'src/lineHeart.html': '心形流动光束',
+  'src/mapTravel.html': '高德地图+Three.js实现炫酷飞线+标牌'
 };
 
 const list = [];
