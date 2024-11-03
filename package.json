@@ -13,5 +13,8 @@
     "@surbowl/world-geo-json-zh": "^2.1.2",
     "dat.gui": "^0.7.9",
     "three": "^0.161.0"
+  },
+  "devDependencies": {
+    "@weacast/grib2json": "^2.2.0"
   }
 }

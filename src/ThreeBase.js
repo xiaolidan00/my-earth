@@ -14,7 +14,7 @@ export default class ThreeBase {
     this.initCameraPos = [0, 10, 50];
     this.customInit = false;
     this.isGUI = false;
-    this.cameraNear = 1;
+    this.cameraNear = 0.1;
     this.cameraFar = 2000;
     this.isTWEEN = false;
     this.isControl = true;
