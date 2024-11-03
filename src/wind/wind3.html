@@ -247,9 +247,9 @@
           this.frameCount = 0;
         }
         openMap() {
-          // this.sphere.rotation.y = -Math.PI * 0.5;
-          // this.lines.rotation.y = -Math.PI * 0.5;
-          this.lines.position.x = 1;
+          this.sphere.rotation.y = -Math.PI * 0.5;
+          this.lines.rotation.y = -Math.PI * 0.5;
+          this.lines.position.z = 1;
           const tw = new TWEEN.Tween({ time: 0.0 })
             .to({ time: 1.0 }, 2000)
 
