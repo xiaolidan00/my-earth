@@ -113,3 +113,13 @@
 
 - [源码地址:src/mapTravel.html](src/mapTravel.html)
 - [预览效果](https://xiaolidan00.github.io/my-earth/src/mapTravel.html)
+
+## 2D风场图
+
+- [源码地址:src/wind/windCanvas.html](src/wind/windCanvas.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/wind/windCanvas.html)
+
+## 3D风场图
+
+- [源码地址:src/wind/wind.html](src/wind/wind.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/wind/wind.html)

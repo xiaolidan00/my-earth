@@ -23,7 +23,12 @@ const cfg = {
   'src/lineBase.html': '无限光束',
   'src/line.html': '顺着公路无限光束',
   'src/lineHeart.html': '心形流动光束',
-  'src/mapTravel.html': '高德地图+Three.js实现炫酷飞线+标牌'
+  'src/mapTravel.html': '高德地图+Three.js实现炫酷飞线+标牌',
+  'src/wind/windCanvas.html': 'canvas 2D风场图',
+  'src/wind/windPic.html': '风场uv风向数据图片',
+  'src/wind/wind.html': 'canvas贴图3D风场图',
+  'src/wind/wind1.html': '平面3D风场图',
+  'src/wind/wind2.html': '地球3D风场图'
 };
 
 const list = [];

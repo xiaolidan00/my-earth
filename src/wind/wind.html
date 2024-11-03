@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        background-color: black;
+        height: 800px;
+        width: 1500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <button onclick="openMap()">展开地图</button>
+    <button onclick="closeMap()">收起地图</button>
+    <script type="importmap">
+      {
+        "imports": {
+          "tween": "../../node_modules/three/examples/jsm/libs/tween.module.js",
+          "three": "../../node_modules/three/build/three.module.js"
+        }
+      }
+    </script>
+    <script type="x-shader/x-vertex" id="vertexShader">
+
+      varying vec2 vUv;
+        void main() {
+          vUv=uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.);
+
+        }
+    </script>
+    <script type="x-shader/x-vertex" id="vertexShader1">
+
+            uniform float time;
+            uniform float radius;
+            varying vec2 vUv;
+            float PI = acos(-1.0);
+      void main()
+      {  vUv=uv;
+            float w=radius*PI;
+      vec3 newPosition =mix(position,vec3( 0.0,(uv.y-0.5)*w,-(uv.x-0.5)*2.0* w),sin(time*PI*0.5));
+      gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
+      }
+    </script>
+
+    <script type="x-shader/x-fragment" id="fragmentShader">
+
+            varying vec2 vUv;
+            uniform sampler2D windTex;
+            uniform sampler2D worldTex;
+      void main() {
+        vec4 color=texture2D(windTex,vUv);
+        float a= color.a;
+        if(a<0.01){
+          a=0.;
+        }
+
+        vec4 w=texture2D(worldTex,vUv);
+        //根据透明度合并世界贴图和风场贴图
+        vec4 c=w*(1.-a)+color*a;
+
+        gl_FragColor =c;
+      }
+    </script>
+    <script src="./windy.js"></script>
+    <script type="module">
+      import * as THREE from 'three';
+      import * as TWEEN from 'tween';
+      import ThreeBase from '../ThreeBase.js';
+
+      function getData(url) {
+        return new Promise((resolve) => {
+          fetch(url)
+            .then((res) => res.json())
+            .then(function (res) {
+              resolve(res);
+            });
+        });
+      }
+      class MyEarth extends ThreeBase {
+        constructor() {
+          super();
+          this.initCameraPos = [0, 0, 6];
+          this.isAxis = false;
+          this.isStats = true;
+        }
+        async createWindCanvas() {
+          const header = await getData('./info.json');
+          console.log(header);
+          const canvas = document.createElement('canvas');
+          canvas.width = 4000;
+          canvas.height = 2000;
+          this.cw = new Windy({
+            header,
+            // data,
+            canvas,
+            //运动速度
+            speed: 0.05,
+            //随机点数量
+            particlesCount: 1000,
+            //生命周期
+            maxAge: 120,
+            //1秒更新次数
+            frame: 10,
+            //线渐变
+            // color: {
+            //   0: 'rgba(255,255,0,0)',
+            //   1: '#ffff00'
+            // },
+            color: '#ffff00',
+            //线宽度
+            lineWidth: 3,
+            imageUrl: 'wind.png'
+            //autoAnimate: true
+          });
+          const texture = new THREE.CanvasTexture(canvas);
+          texture.needsUpdate = true;
+
+          return texture;
+        }
+
+        async createChart(that) {
+          this.windTex = await this.createWindCanvas();
+
+          const worldTex = new THREE.TextureLoader().load('../assets/world.jpg');
+
+          const material = new THREE.ShaderMaterial({
+            uniforms: {
+              worldTex: { value: worldTex },
+              time: { value: 0 },
+              radius: { value: 2 },
+              windTex: { value: this.windTex }
+            },
+            vertexShader: document.getElementById('vertexShader1').innerHTML,
+            fragmentShader: document.getElementById('fragmentShader').innerHTML,
+            side: THREE.DoubleSide,
+            transparent: true
+          });
+          this.mat = material;
+          const geometry = new THREE.SphereGeometry(2, 32, 16);
+
+          const sphere = new THREE.Mesh(geometry, material);
+          sphere.rotation.y = -Math.PI * 0.5;
+          this.scene.add(sphere);
+          this.sphere = sphere;
+        }
+        openMap() {
+          const tw = new TWEEN.Tween({ time: 0.0 })
+            .to({ time: 1.0 }, 2000)
+
+            .onUpdate((obj) => {
+              if (this.mat) {
+                this.mat.uniforms.time.value = obj.time;
+              }
+            })
+            .start();
+          TWEEN.add(tw);
+        }
+        closeMap() {
+          const tw = new TWEEN.Tween({ time: 1.0 })
+            .to({ time: 0.0 }, 2000)
+
+            .onUpdate((obj) => {
+              if (this.mat) {
+                this.mat.uniforms.time.value = obj.time;
+              }
+            })
+            .start();
+          TWEEN.add(tw);
+        }
+        animateAction() {
+          if (this.windTex) {
+            if (this.cw) {
+              this.cw.render();
+            }
+            this.windTex.needsUpdate = true;
+          }
+
+          if (TWEEN.getAll().length) {
+            TWEEN.update();
+          }
+        }
+      }
+
+      var myEarth = new MyEarth();
+      window.myEarth = myEarth;
+      myEarth.initThree(document.getElementById('canvas'));
+      myEarth.createChart();
+    </script>
+    <script>
+      function openMap() {
+        window.myEarth.openMap();
+      }
+      function closeMap() {
+        window.myEarth.closeMap();
+      }
+    </script>
+  </body>
+</html>

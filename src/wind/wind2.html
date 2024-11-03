@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        background-color: black;
+        height: 800px;
+        width: 1500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+     
+    <script type="importmap">
+      {
+        "imports": {
+          "tween": "../../node_modules/three/examples/jsm/libs/tween.module.js",
+          "three": "../../node_modules/three/build/three.module.js"
+        }
+      }
+    </script>
+
+    <script type="x-shader/x-vertex" id="vertexShader">
+      float PI = 3.1415926;
+      float rad = 3.1415926 / 180.;
+      uniform vec2 uResolution;
+      uniform vec2 uSize;
+      //旋转翻过来
+      uniform mat4 rotateX;
+      //半径
+      uniform float radius;
+
+      varying vec2 vUv;
+            //经纬度坐标转为三维坐标
+      vec3 lnglat2pos(vec2 p) {
+          float lng = p.x * rad;
+          float lat = p.y * rad;
+          float x = cos(lat) * cos(lng);
+          float y = cos(lat) * sin(lng);
+          float z = sin(lat);
+          return vec3(x, z, y);
+      }
+      void main() {
+          vUv = vec2(position.z);
+                  //转换成经纬度
+          vec2 p = vec2(position.x, -position.y) - vec2(180., 90.);
+                 //经纬度转三维坐标
+          vec3 newPosition = radius * lnglat2pos(p);
+          gl_Position = projectionMatrix * modelViewMatrix *rotateX* vec4(newPosition, 1.);
+
+      }
+    </script>
+ 
+    <script type="x-shader/x-fragment" id="fragmentShader">
+
+                  varying vec2 vUv;
+      uniform vec3 startColor;
+      uniform vec3 endColor;
+            void main() {
+
+              gl_FragColor =vec4(mix(startColor,endColor,vUv.y),1.0);
+            }
+    </script>
+
+  
+    </script>
+    <script src="./windy.js"></script>
+    <script type="module">
+      import * as THREE from 'three';
+      import * as TWEEN from 'tween';
+      import ThreeBase from '../ThreeBase.js';
+
+      function getData(url) {
+        return new Promise((resolve) => {
+          fetch(url)
+            .then((res) => res.json())
+            .then(function (res) {
+              resolve(res);
+            });
+        });
+      }
+      class MyEarth extends ThreeBase {
+        constructor() {
+          super();
+          this.isStats = true;
+          this.initCameraPos = [0, 0, 6];
+          this.isAxis = true;
+        }
+        async createWindy() {
+          const header = await getData('./info.json');
+          console.log(header);
+          const canvas = document.createElement('canvas');
+          canvas.width = 4000;
+          canvas.height = 2000;
+          const num = 2000;
+          const points = new Float32Array(num * 6);
+          let i = 0;
+
+          this.cw = new Windy({
+            header,
+            // data,
+            // canvas,
+            //运动速度
+            speed: 0.05,
+            //随机点数量
+            particlesCount: num,
+            //生命周期
+            maxAge: 120,
+            //1秒更新次数
+            frame: 10,
+            //线渐变
+            // color: {
+            //   0: 'rgba(255,255,0,0)',
+            //   1: '#ffff00'
+            // },
+            color: '#ffff00',
+            //线宽度
+            lineWidth: 3,
+            imageUrl: 'wind.png',
+            pointCallback: (p) => {
+              // 线段开始位置
+              points[i] = p.x;
+              points[i + 1] = p.y;
+              points[i + 2] = 0; //开始点z坐标标识是0
+              // 线段结束位置
+              points[i + 3] = p.tx;
+              points[i + 4] = p.ty;
+              points[i + 5] = 1; //结束点z坐标标识是1
+
+              //递增索引
+              i += 6;
+            }
+            //autoAnimate: true
+          });
+
+          return points;
+        }
+        sleep(time) {
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              resolve();
+            }, time);
+          });
+        }
+        async createChart(that) {
+          const worldTex = new THREE.TextureLoader().load('../assets/world.jpg');
+          worldTex.offset.x = 0.5;
+          worldTex.wrapS = THREE.RepeatWrapping;
+          const sg = new THREE.SphereGeometry(2, 32, 16);
+
+          const sphere = new THREE.Mesh(sg, new THREE.MeshBasicMaterial({ map: worldTex }));
+          this.scene.add(sphere);
+
+          const points = await this.createWindy();
+          await this.sleep(1000);
+          console.log(this.points, this.indexs);
+
+          const matrix = new THREE.Matrix4();
+          matrix.makeRotationX(Math.PI);
+
+          const material = new THREE.ShaderMaterial({
+            uniforms: {
+              rotateX: { value: matrix },
+              //nx和ny网格大小
+              uResolution: { value: new THREE.Vector2(this.cw.header.nx, this.cw.header.ny) },
+              //显示宽高大小
+              uSize: { value: new THREE.Vector2(20, 10) },
+              time: { value: 0 },
+              radius: { value: 2 },
+              //渐变开始颜色
+              startColor: { value: new THREE.Color('#ffff00') },
+              //渐变结束颜色
+              endColor: { value: new THREE.Color('#ff0000') }
+            },
+            vertexShader: document.getElementById('vertexShader').innerHTML,
+            fragmentShader: document.getElementById('fragmentShader').innerHTML,
+            side: THREE.DoubleSide,
+            transparent: true
+          });
+
+          const geometry = new THREE.BufferGeometry();
+          geometry.setAttribute('position', new THREE.BufferAttribute(points, 3));
+
+          this.geometry = geometry;
+
+          this.mat = material;
+
+          const lines = new THREE.LineSegments(geometry, material);
+
+          this.lines = lines;
+          this.scene.add(lines);
+          this.frame = Math.floor(60 / 16);
+          this.frameCount = 0;
+        }
+         
+        animateAction() {
+          if (this.frameCount % this.frame === 0 && this.cw && this.geometry) {
+            let i = 0;
+            const g = this.geometry;
+            this.cw.movePoints((p) => {
+              g.attributes.position.array[i] = p.x;
+              g.attributes.position.array[i + 1] = p.y;
+              g.attributes.position.array[i + 3] = p.tx;
+              g.attributes.position.array[i + 4] = p.ty;
+              i += 6;
+            });
+            g.attributes.position.needsUpdate = true;
+          }
+
+          if (TWEEN.getAll().length) {
+            TWEEN.update();
+          }
+          this.frameCount++;
+        }
+      }
+
+      var myEarth = new MyEarth();
+      window.myEarth = myEarth;
+      myEarth.initThree(document.getElementById('canvas'));
+      myEarth.createChart();
+    </script>
+     
+  </body>
+</html>

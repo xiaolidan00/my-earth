@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        position: absolute;
+        padding: 0px 0 0 0;
+      }
+
+      #theCanvas {
+        margin: 20px;
+        padding: 0;
+      }
+    </style>
+  </head>
+
+  <body class="">
+    <canvas id="theCanvas"> </canvas>
+    <button onclick="saveImage('theCanvas','wind')">保存图片</button>
+
+    <script>
+      function getData(url) {
+        return new Promise((resolve) => {
+          fetch(url)
+            .then((res) => res.json())
+            .then(function (res) {
+              resolve(res);
+            });
+        });
+      }
+
+      function convertBase64UrlToFile(base64, fileName) {
+        let parts = base64.split(';base64,');
+        let contentType = parts[0].split(':')[1];
+        let raw = window.atob(parts[1]);
+        let rawLength = raw.length;
+        let uInt8Array = new Uint8Array(rawLength);
+        for (let i = 0; i < rawLength; i++) {
+          uInt8Array[i] = raw.charCodeAt(i);
+        }
+        return new File([uInt8Array], fileName, { type: contentType });
+      }
+
+      async function createCanvas() {
+        const data = await getData('./wind.json');
+        const info = await getData('info.json');
+        const canvas = document.getElementById('theCanvas');
+        canvas.width = info.nx;
+        canvas.height = info.ny;
+
+        const minU = Math.abs(info.minU);
+        const minV = Math.abs(info.minV);
+        // uv风方向范围
+        const uSize = info.maxU - info.minU;
+        const vSize = info.maxV - info.minV;
+        const ctx = canvas.getContext('2d');
+        //获取imageData像素数据
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        data.forEach((item, i) => {
+          //值转换成正数
+          const u = item[0] + minU;
+          const v = item[1] + minV;
+          //转换成颜色值
+          const r = (u / uSize) * 255;
+          const g = (v / vSize) * 255;
+          imageData.data[i * 4] = r;
+          imageData.data[i * 4 + 1] = g;
+          //透明度默认255即不透明
+          imageData.data[i * 4 + 3] = 255;
+        });
+        //用imageData像素颜色值绘制图片
+        ctx.putImageData(imageData, 0, 0);
+      }
+      createCanvas();
+      function saveImage(id, fileName) {
+        const canvas = document.getElementById(id);
+        const base64 = canvas.toDataURL('image/png', 1.0);
+        const dom = document.createElement('a');
+        dom.download = fileName + '.png';
+        dom.href = window.URL.createObjectURL(convertBase64UrlToFile(base64, 'wind.png'));
+        document.body.appendChild(dom);
+        dom.click();
+      }
+    </script>
+  </body>
+</html>
