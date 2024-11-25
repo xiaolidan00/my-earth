@@ -1,4 +1,6 @@
 # 用three.js实现各种炫酷效果
+## 掘金博客：敲敲敲敲暴你脑袋
+- [详细实现过程讲解请看博客](https://juejin.cn/user/224781403162798)
 ## 地球贴图
 
 - [源码地址:src/world.html](src/world.html)
@@ -86,13 +88,13 @@
 
 ## 地球渐变扫光
 
-- [源码地址:src/earthScan.html](src/earthScan.html)
-- [预览效果](https://xiaolidan00.github.io/my-earth/src/earthScan.html)
+- [源码地址:src/EarthScan.html](src/EarthScan.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/EarthScan.html)
 
 ## 地球斑点扫光
 
-- [源码地址:src/earthScan1.html](src/earthScan1.html)
-- [预览效果](https://xiaolidan00.github.io/my-earth/src/earthScan1.html)
+- [源码地址:src/EarthScan1.html](src/EarthScan1.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/EarthScan1.html)
 
 ## 无限光束
 
