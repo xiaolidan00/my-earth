@@ -1,6 +1,9 @@
 # 用three.js实现各种炫酷效果
+
 ## 掘金博客：敲敲敲敲暴你脑袋
-- [详细实现过程讲解请看博客](https://juejin.cn/user/224781403162798)
+
+- [详细实现过程讲解请看博客](https://juejin.cn/user/224781403162798/posts)
+
 ## 地球贴图
 
 - [源码地址:src/world.html](src/world.html)

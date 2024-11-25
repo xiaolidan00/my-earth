@@ -79,7 +79,7 @@ fs.writeFile('./index.html', f, () => {});
 
 fs.writeFile(
   './README.md',
-  '# 用three.js实现各种炫酷效果\n## 掘金博客：敲敲敲敲暴你脑袋\n- [详细实现过程讲解请看博客](https://juejin.cn/user/224781403162798)\n' +
+  '# 用three.js实现各种炫酷效果\n\n## 掘金博客：敲敲敲敲暴你脑袋\n\n- [详细实现过程讲解请看博客](https://juejin.cn/user/224781403162798/posts)\n\n' +
     readme.join('\n'),
   () => {}
 );
