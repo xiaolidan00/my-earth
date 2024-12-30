@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        background-color: black;
+        height: 800px;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../node_modules/three/build/three.module.js",
+          "dat.gui": "../node_modules/dat.gui/build/dat.gui.module.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from '../node_modules/three/build/three.module.js';
+
+      import ThreeBase from './ThreeBase.js';
+      class MyEarth extends ThreeBase {
+        constructor() {
+          super();
+          this.initCameraPos = [0, 0, 10];
+          this.isAxis = true;
+        }
+
+        createChart(that) {
+          const light = new THREE.AmbientLight(0xffffff); // soft white light
+          this.scene.add(light);
+
+          // White directional light at half intensity shining from the top.
+          const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
+          directionalLight.position.set(4, 4, 4);
+          this.scene.add(directionalLight);
+
+          const geometry = new THREE.SphereGeometry(1, 16, 16);
+          // console.log(geometry);
+          const count = geometry.attributes.normal.count;
+          const normal = geometry.attributes.normal;
+          const smoothNormal = [];
+          for (let i = 0; i < count; i += 3) {
+            const v = new THREE.Vector3(
+              normal[i % count] + normal[(i + 3) % count] + normal[(i + 6) % count],
+              normal[(i + 1) % count] + normal[(i + 4) % count] + normal[(i + 7) % count],
+              normal[(i + 2) % count] + normal[(i + 5) % count] + normal[(i + 8) % count]
+            );
+            v.divideScalar(3);
+            v.normalize();
+            smoothNormal.push(...v.toArray());
+          }
+
+          geometry.setAttribute(
+            'normal',
+            new THREE.BufferAttribute(new Float32Array(smoothNormal), 3)
+          );
+          // geometry.deleteAttribute('uv');
+          // geometry.deleteAttribute('normal');
+          // geometry.computeVertexNormals();
+
+          const material = new THREE.MeshStandardMaterial({ color: 0xffff00, flatShading: true });
+          const sphere = new THREE.Mesh(geometry, material);
+
+          this.scene.add(sphere);
+        }
+      }
+
+      var myEarth = new MyEarth();
+      window.myEarth = myEarth;
+      myEarth.initThree(document.getElementById('canvas'));
+      myEarth.createChart();
+    </script>
+  </body>
+</html>

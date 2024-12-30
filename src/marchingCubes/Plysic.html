@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        background-color: black;
+        height: 800px;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three/addons/": "../../node_modules/three/examples/jsm/",
+          "three": "../../node_modules/three/build/three.module.js",
+          "dat.gui": "../../node_modules/dat.gui/build/dat.gui.module.js"
+        }
+      }
+    </script>
+    <script src="../../node_modules/three/examples/jsm/libs/ammo.wasm.js"></script>
+    <script type="module">
+      import * as THREE from 'three';
+      import { AmmoPhysics } from 'three/addons/physics/AmmoPhysics.js';
+      import ThreeBase from '../ThreeBase.js';
+      class MyEarth extends ThreeBase {
+        constructor() {
+          super();
+          this.initCameraPos = [0, 0, 10];
+          this.isAxis = true;
+        }
+
+        async createChart(that) {
+          const light = new THREE.AmbientLight(0xffffff); // soft white light
+          this.scene.add(light);
+
+          const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
+          directionalLight.position.set(10, 10, 10);
+          this.scene.add(directionalLight);
+          const physics = await AmmoPhysics();
+          this.physics = physics;
+
+          const matrix = new THREE.Matrix4();
+          const color = new THREE.Color();
+          this.position = new THREE.Vector3();
+          const geometrySphere = new THREE.IcosahedronGeometry(0.05, 4);
+          const material = new THREE.MeshLambertMaterial();
+          const spheres = new THREE.InstancedMesh(geometrySphere, material, 400);
+          spheres.instanceMatrix.setUsage(THREE.DynamicDrawUsage); // will be updated every frame
+          spheres.castShadow = true;
+          spheres.receiveShadow = true;
+          spheres.userData.physics = { mass: 1 };
+          this.scene.add(spheres);
+
+          for (let i = 0; i < spheres.count; i++) {
+            matrix.setPosition(Math.random() - 0.5, Math.random() * 2, Math.random() - 0.5);
+            spheres.setMatrixAt(i, matrix);
+            spheres.setColorAt(i, color.setHex(0xffffff * Math.random()));
+          }
+          this.spheres = spheres;
+
+          const p = new THREE.BoxGeometry(10, 1, 10);
+          const m = new THREE.MeshBasicMaterial({ color: 0x808080, side: THREE.DoubleSide });
+          const plane = new THREE.Mesh(p, m);
+
+          plane.userData.physics = { mass: 0 };
+          this.scene.add(plane);
+          physics.addScene(this.scene);
+        }
+        animateAction() {
+          if (this.spheres) {
+            let index = Math.floor(Math.random() * this.spheres.count);
+
+            this.position.set(0, Math.random() + 1, 0);
+            this.physics.setMeshPosition(this.spheres, this.position, index);
+          }
+        }
+      }
+
+      var myEarth = new MyEarth();
+      window.myEarth = myEarth;
+      myEarth.initThree(document.getElementById('canvas'));
+      myEarth.createChart();
+    </script>
+  </body>
+</html>
