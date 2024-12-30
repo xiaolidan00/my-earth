@@ -99,6 +99,8 @@
                       vUv=position.xz/uSize;`;
           const vertexShader3 = `#include <fog_vertex>
                         vUv=vec2(position.x,-position.y)/uSize;`;
+
+          //雷达扫描参考链接：https://www.shadertoy.com/view/dtdczM
           const fragmentShader1 = `varying vec2 vUv;
                 uniform float uTime;
                 uniform vec3 uColor;

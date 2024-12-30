@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./MarchingCubesData.js"></script>
+    <style>
+      #canvas {
+        background-color: black;
+        height: 800px;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three/addons/": "../../node_modules/three/examples/jsm/",
+          "three": "../../node_modules/three/build/three.module.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from 'three';
+      import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js';
+
+      import ThreeBase from '../ThreeBase.js';
+
+      function getDistance(p1, p2) {
+        return Math.sqrt(
+          Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2) + Math.pow(p1.z - p2.z, 2)
+        );
+      }
+      class MyEarth extends ThreeBase {
+        constructor() {
+          super();
+          this.initCameraPos = [0, 0, 10];
+          this.isAxis = true;
+        }
+
+        createChart(that) {
+          const light = new THREE.AmbientLight(0xffffff); // soft white light
+          this.scene.add(light);
+          const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
+          directionalLight.position.set(3, 3, 3);
+          this.scene.add(directionalLight);
+          const size = 30;
+
+          const min = -5;
+          const max = 5;
+          const range = max - min;
+
+          const grid = [];
+          for (let k = 0; k < size; k++) {
+            const kk = [];
+
+            for (let j = 0; j < size; j++) {
+              const jj = [];
+              for (let i = 0; i < size; i++) {
+                const x = min + (range * i) / (size - 1);
+                const y = min + (range * j) / (size - 1);
+                const z = min + (range * k) / (size - 1);
+
+                jj.push(new THREE.Vector4(x, y, z, 0));
+              }
+              kk.push(jj);
+            }
+            grid.push(kk);
+          }
+
+          this.addSphere(grid, new THREE.Vector3(0, 3.5, 0), 1);
+          this.addSphere(grid, new THREE.Vector3(-1, -1, 0), 2);
+          const points = this.marchingcube(grid, size, 0.1);
+          const geometry = new THREE.BufferGeometry();
+          geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(points), 3));
+
+          geometry.computeVertexNormals();
+          console.log(grid);
+          const material = new THREE.MeshLambertMaterial({
+            color: 0xff0000,
+            side: THREE.DoubleSide
+          });
+          const mesh = new THREE.Mesh(geometry, material);
+          this.scene.add(mesh);
+        }
+        lerpPoint(val, p1, p2, type) {
+          const v1 = p1.w,
+            v2 = p2.w;
+
+          if (Math.abs(val - v1) < 0.001) return p1;
+          if (Math.abs(val - v2) < 0.001) return p2;
+          if (Math.abs(v1 - v2) < 0.001) return;
+          let mu = (val - v1) / (v2 - v1);
+          // if (type === 'x') {
+          //   return [p1.x + mu * (p2.x - p1.x), p1.y, p1.z];
+          // } else if (type === 'y') {
+          //   return [p1.x, p1.y + mu * (p2.y - p1.y), p1.z];
+          // } else if (type === 'z') {
+          //   return [p1.x, p1.y, p1.z + mu * (p2.z - p1.z)];
+          // }
+
+          // if (mu < -1) {
+          //   console.log(mu, val - v1, v2 - v1);
+          //   mu = -1;
+          // } else if (mu > 1) {
+          //   mu = 1;
+          // }
+
+          const x = p1.x + mu * (p2.x - p1.x);
+          const y = p1.y + mu * (p2.y - p1.y);
+          const z = p1.z + mu * (p2.z - p1.z);
+          return [x, y, z];
+        }
+        //   4
+        //       [4]--------------[5]
+        //       /|               /|
+        //     7/ |             5/ |
+        //     / 8|    6       /   |9
+        //   [7]--------------[6]  |
+        //    |   |            |   |
+        //    |  [0] ----------|--[1]
+        // 11 |  /       0     |10/
+        //    | / 3            | /  1
+        //    |/               |/
+        //   [3]--------------[2]
+        //            2
+        marchingcube(grid, size, isol) {
+          const points = [];
+          const lines = [
+            //top
+            [0, 1],
+            [1, 3],
+            [2, 3],
+            [0, 2],
+            //bottom
+            [4, 5],
+            [5, 7],
+            [6, 7],
+            [4, 6],
+            //side
+            [0, 4],
+            [1, 5],
+            [2, 6],
+            [3, 7]
+          ];
+
+          const vlist = new Array(12);
+          for (let z = 0; z < size - 1; z++) {
+            for (let y = 0; y < size - 1; y++) {
+              for (let x = 0; x < size - 1; x++) {
+                const v = [
+                  grid[z][y][x],
+                  grid[z + 1][y][x],
+                  grid[z][y + 1][x],
+                  grid[z + 1][y + 1][x],
+
+                  grid[z][y][x + 1],
+                  grid[z + 1][y + 1][x + 1],
+                  grid[z][y + 1][x + 1],
+                  grid[z + 1][y + 1][x + 1]
+                ];
+
+                // const pos = [
+                //   [x, y, z],
+                //   [x + 1, y, z],
+                //   [x + 1, y, z + 1],
+                //   [x, y, z + 1],
+
+                //   [x, y + 1, z],
+                //   [x + 1, y + 1, z],
+                //   [x + 1, y + 1, z + 1],
+                //   [x, y + 1, z + 1]
+                // ];
+                let cubeindex = 0;
+                if (v[0].w < isol) cubeindex |= 1;
+                if (v[1].w < isol) cubeindex |= 2;
+                if (v[2].w < isol) cubeindex |= 8;
+                if (v[3].w < isol) cubeindex |= 4;
+                if (v[4].w < isol) cubeindex |= 16;
+                if (v[5].w < isol) cubeindex |= 32;
+                if (v[6].w < isol) cubeindex |= 128;
+                if (v[7].w < isol) cubeindex |= 64;
+
+                //不存在交接点
+                var bits = edgeTable[cubeindex];
+                if (0 == bits) continue;
+
+                let mu = 0.5;
+
+                const t = triTable[cubeindex];
+                for (let i = 0; t[i] != -1; i += 3) {
+                  // const p1 = vlist[t[i]];
+                  // const p2 = vlist[t[i + 1]];
+                  // const p3 = vlist[t[i + 2]];
+
+                  const a = lines[t[i]];
+                  const b = lines[t[i + 1]];
+                  const c = lines[t[i + 2]];
+                  const p1 = this.lerpPoint(isol, v[a[0]], v[a[1]], a[2]);
+                  const p2 = this.lerpPoint(isol, v[b[0]], v[b[1]], b[2]);
+                  const p3 = this.lerpPoint(isol, v[c[0]], v[c[1]], c[2]);
+
+                  if (p1 && p2 && p3) points.push(...p1, ...p2, ...p3);
+                }
+              }
+            }
+          }
+          console.log(points);
+          return points;
+        }
+
+        addSphere(grid, pos, radius) {
+          const size = grid.length;
+          for (let i = 0; i < size; i++) {
+            for (let j = 0; j < size; j++) {
+              for (let k = 0; k < size; k++) {
+                const p = grid[i][j][k];
+                const d = radius - getDistance(pos, p);
+                p.w += Math.exp(-(d * d));
+              }
+            }
+          }
+        }
+        resetGrid(grid, size = 100) {
+          for (let i = 0; i < size; i++) {
+            for (let j = 0; j < size; j++) {
+              for (let k = 0; k < size; k++) {
+                grid[i][j][k] = 0;
+              }
+            }
+          }
+        }
+      }
+
+      var myEarth = new MyEarth();
+      window.myEarth = myEarth;
+      myEarth.initThree(document.getElementById('canvas'));
+      myEarth.createChart();
+    </script>
+  </body>
+</html>

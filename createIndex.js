@@ -18,8 +18,8 @@ const cfg = {
   'src/heatmap3d.html': '3D 热力山丘图',
   'src/FrameBuffer.html': '帧缓存贴图',
   'src/RainSnow.html': '雨雪雾',
-  'src/earthScan.html': '地球渐变扫光',
-  'src/earthScan1.html': '地球斑点扫光',
+  'src/EarthScan.html': '地球渐变扫光',
+  'src/EarthScan1.html': '地球斑点扫光',
   'src/lineBase.html': '无限光束',
   'src/line.html': '顺着公路无限光束',
   'src/lineHeart.html': '心形流动光束',
@@ -28,7 +28,11 @@ const cfg = {
   'src/wind/windPic.html': '风场uv风向数据图片',
   'src/wind/wind.html': 'canvas贴图3D风场图',
   'src/wind/wind1.html': '平面3D风场图',
-  'src/wind/wind2.html': '地球3D风场图'
+  'src/wind/wind2.html': '地球3D风场图',
+  'src/ContourLine.html': '纯色3D等高线图',
+  'src/ContourLine1.html': '彩色3D等高线图',
+  'src/ContourLine2.html': '3D等高线图+热力图',
+  'src/ContourLine3.html': '3D断层阶梯热力图'
 };
 
 const list = [];
@@ -77,4 +81,9 @@ ${list.join('')}
 `;
 fs.writeFile('./index.html', f, () => {});
 
-fs.writeFile('./README.md', '# 用three.js实现各种炫酷效果\n' + readme.join('\n'), () => {});
+fs.writeFile(
+  './README.md',
+  '# 用three.js实现各种炫酷效果\n\n## 掘金博客：敲敲敲敲暴你脑袋\n\n- [详细实现过程讲解请看博客](https://juejin.cn/user/224781403162798/posts)\n\n' +
+    readme.join('\n'),
+  () => {}
+);

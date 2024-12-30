@@ -1,6 +1,6 @@
 function createColors(option) {
   const canvas = document.createElement('canvas');
-  document.body.appendChild(canvas);
+  // document.body.appendChild(canvas);
   const ctx = canvas.getContext('2d');
   canvas.width = 256;
   canvas.height = 1;
@@ -17,7 +17,7 @@ function createColors(option) {
 
 //https://www.jianshu.com/p/f795cc2c14f5
 //https://github.com/pa7/heatmap.js/blob/master/src/renderer/canvas2d.js
-function drawCircle(ctx, option, item) {
+export function drawCircle(ctx, option, item) {
   let { lng, lat, value } = item;
   let x = lng - option.minlng + option.radius;
   let y = lat - option.minlat + option.radius;
@@ -33,7 +33,7 @@ function drawCircle(ctx, option, item) {
 }
 export function createHeatmap(option) {
   const canvas = document.createElement('canvas');
-  document.body.appendChild(canvas);
+  // document.body.appendChild(canvas);
   canvas.width = option.width;
   canvas.height = option.height;
   const ctx = canvas.getContext('2d');

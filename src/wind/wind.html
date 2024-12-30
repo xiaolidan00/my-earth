@@ -61,9 +61,9 @@
 
         vec4 w=texture2D(worldTex,vUv);
         //根据透明度合并世界贴图和风场贴图
-        vec4 c=w*(1.-a)+color*a;
+        //vec4 c=w*(1.-a)+color*a;
 
-        gl_FragColor =c;
+        gl_FragColor =vec4(mix(w.rgb,color.rgb,a),1.0);
       }
     </script>
     <script src="./windy.js"></script>

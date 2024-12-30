@@ -1,4 +1,8 @@
-# 用three.js实现各种炫酷效果
+# 用 three.js 实现各种炫酷效果
+
+## 掘金博客：敲敲敲敲暴你脑袋
+
+- [详细实现过程讲解请看博客](https://juejin.cn/user/224781403162798/posts)
 
 ## 地球贴图
 
@@ -87,13 +91,13 @@
 
 ## 地球渐变扫光
 
-- [源码地址:src/earthScan.html](src/earthScan.html)
-- [预览效果](https://xiaolidan00.github.io/my-earth/src/earthScan.html)
+- [源码地址:src/EarthScan.html](src/EarthScan.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/EarthScan.html)
 
 ## 地球斑点扫光
 
-- [源码地址:src/earthScan1.html](src/earthScan1.html)
-- [预览效果](https://xiaolidan00.github.io/my-earth/src/earthScan1.html)
+- [源码地址:src/EarthScan1.html](src/EarthScan1.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/EarthScan1.html)
 
 ## 无限光束
 
@@ -110,32 +114,52 @@
 - [源码地址:src/lineHeart.html](src/lineHeart.html)
 - [预览效果](https://xiaolidan00.github.io/my-earth/src/lineHeart.html)
 
-## 高德地图+Three.js实现炫酷飞线+标牌
+## 高德地图+Three.js 实现炫酷飞线+标牌
 
 - [源码地址:src/mapTravel.html](src/mapTravel.html)
 - [预览效果](https://xiaolidan00.github.io/my-earth/src/mapTravel.html)
 
-## canvas 2D风场图
+## canvas 2D 风场图
 
 - [源码地址:src/wind/windCanvas.html](src/wind/windCanvas.html)
 - [预览效果](https://xiaolidan00.github.io/my-earth/src/wind/windCanvas.html)
 
-## 风场uv风向数据图片
+## 风场 uv 风向数据图片
 
 - [源码地址:src/wind/windPic.html](src/wind/windPic.html)
 - [预览效果](https://xiaolidan00.github.io/my-earth/src/wind/windPic.html)
 
-## canvas贴图3D风场图
+## canvas 贴图 3D 风场图
 
 - [源码地址:src/wind/wind.html](src/wind/wind.html)
 - [预览效果](https://xiaolidan00.github.io/my-earth/src/wind/wind.html)
 
-## 平面3D风场图
+## 平面 3D 风场图
 
 - [源码地址:src/wind/wind1.html](src/wind/wind1.html)
 - [预览效果](https://xiaolidan00.github.io/my-earth/src/wind/wind1.html)
 
-## 地球3D风场图
+## 地球 3D 风场图
 
 - [源码地址:src/wind/wind2.html](src/wind/wind2.html)
 - [预览效果](https://xiaolidan00.github.io/my-earth/src/wind/wind2.html)
+
+## 纯色 3D 等高线图
+
+- [源码地址:src/ContourLine.html](src/ContourLine.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/ContourLine.html)
+
+## 彩色 3D 等高线图
+
+- [源码地址:src/ContourLine1.html](src/ContourLine1.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/ContourLine1.html)
+
+## 3D 等高线图+热力图
+
+- [源码地址:src/ContourLine2.html](src/ContourLine2.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/ContourLine2.html)
+
+## 3D 断层阶梯热力图
+
+- [源码地址:src/ContourLine3.html](src/ContourLine3.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/ContourLine3.html)
