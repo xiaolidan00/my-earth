@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        background-color: black;
+        height: 800px;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../node_modules/three/build/three.module.js",
+          "dat.gui": "../node_modules/dat.gui/build/dat.gui.module.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from 'three';
+      import ThreeBase from './ThreeBase.js';
+      import { initGeoFun, latlng2px } from './geoUtil.js';
+      import { createHeatmap } from './heatmap.js';
+      initGeoFun(1000);
+      class MyHeatmap extends ThreeBase {
+        constructor() {
+          super();
+          //   this.isRaycaster = true;
+          this.initCameraPos = [-25, 288, 342];
+          this.isTWEEN = true;
+        }
+
+        createHeatmap() {
+          return new Promise((resolve) => {
+            fetch('./assets/traffic.json')
+              .then((res) => res.json())
+              .then((res) => {
+                let info = {
+                  max: Number.MIN_SAFE_INTEGER,
+                  min: Number.MAX_SAFE_INTEGER,
+                  maxlng: Number.MIN_SAFE_INTEGER,
+                  minlng: Number.MAX_SAFE_INTEGER,
+                  maxlat: Number.MIN_SAFE_INTEGER,
+                  minlat: Number.MAX_SAFE_INTEGER,
+                  data: []
+                };
+                res.features.forEach((item) => {
+                  let pos = latlng2px(item.geometry.coordinates);
+                  let newitem = {
+                    lng: pos[0],
+                    lat: pos[1],
+                    value: item.properties.avg
+                  };
+                  info.max = Math.max(newitem.value, info.max);
+                  info.maxlng = Math.max(newitem.lng, info.maxlng);
+                  info.maxlat = Math.max(newitem.lat, info.maxlat);
+
+                  info.min = Math.min(newitem.value, info.min);
+                  info.minlng = Math.min(newitem.lng, info.minlng);
+                  info.minlat = Math.min(newitem.lat, info.minlat);
+                  info.data.push(newitem);
+                });
+                info.size = info.max - info.min;
+                info.sizelng = info.maxlng - info.minlng;
+                info.sizelat = info.maxlat - info.minlat;
+                const radius = 40;
+                const option = {
+                  width: info.sizelng + radius * 2,
+                  height: info.sizelng + radius * 2,
+                  radius,
+                  ...info,
+                  colors: {
+                    0.1: '#2A85B8',
+                    0.2: '#16B0A9',
+                    0.3: '#29CF6F',
+                    0.4: '#5CE182',
+                    0.5: '#7DF675',
+                    0.6: '#FFF100',
+                    0.7: '#FAA53F',
+                    1: '#D04343'
+                  }
+                };
+                const canvas = createHeatmap(option);
+                resolve({ option, canvas });
+              });
+          });
+        }
+
+        async createChart(that) {
+          const { canvas: heatmapCanvas, option } = await this.createHeatmap();
+          console.log(option);
+          const map = new THREE.CanvasTexture(heatmapCanvas);
+          map.wrapS = THREE.RepeatWrapping;
+          map.wrapT = THREE.RepeatWrapping;
+          const geometry = new THREE.PlaneGeometry(
+            option.width * 0.5,
+            option.height * 0.5,
+            1000,
+            1000
+          );
+
+          const material = new THREE.ShaderMaterial({
+            transparent: true,
+            side: THREE.DoubleSide,
+            uniforms: {
+              //热力贴图
+              map: { value: map },
+              //山丘高度
+              uHeight: { value: 50 },
+              //热力信息：最小值，最大值，值范围，等高线高度间隔
+              uInfo: { value: new THREE.Vector4(option.min, option.max, option.size, 10) },
+              //等高线宽度
+              uMinLne: { value: 1 }
+            },
+            vertexShader: /* glsl */ `//热力贴图
+uniform sampler2D map;
+//山丘高度
+uniform float uHeight;
+//等高线宽度
+uniform float uMinLne;
+//热力信息
+uniform vec4 uInfo;
+varying vec4 vColor;
+//varying float val;
+void main(void) {
+//热力贴图颜色
+    vec4 color = texture2D(map, uv);
+    vColor = color;
+//热力贴图透明度
+    float a = color.a;
+//还原热力值 
+    float v = a * uInfo.z + uInfo.x;
+    //val=v;
+//断层，利用等高线高度间隔取模，在[-uMinLne,+uMinLne]范围内断开连接的点
+float m = mod(v, uInfo.w);
+if(m <= uMinLne || m >= uInfo.w - uMinLne)
+    return;
+//热力值对等高线高度间隔向下取整
+    float f = (floor(v / uInfo.w) * uInfo.w - uInfo.x) / uInfo.z;
+//计算热力高度
+    float h = f * uHeight;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position.x, position.y, h, 1.0);
+}`,
+            fragmentShader: /* glsl */ `            
+                varying vec4 vColor;
+                uniform float uMinLne;
+//热力信息
+uniform vec4 uInfo;
+//varying float val;
+void main(void) {
+//float m = mod(val, uInfo.w);
+//if(m <= uMinLne || m >= uInfo.w - uMinLne)return;
+//热力贴图颜色
+    gl_FragColor.rgb = vColor.rgb; 
+//增加透明度，限制范围
+    gl_FragColor.a = clamp(vColor.a * 10., 0., 1.);
+
+}`
+          });
+          const plane = new THREE.Mesh(geometry, material);
+          plane.rotateX(-Math.PI * 0.5);
+          this.scene.add(plane);
+        }
+      }
+
+      var heatmap = new MyHeatmap();
+      window.heatmap = heatmap;
+      heatmap.initThree(document.getElementById('canvas'));
+      heatmap.createChart();
+    </script>
+  </body>
+</html>

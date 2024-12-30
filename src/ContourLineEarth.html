@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas {
+        background-color: black;
+        height: 800px;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../node_modules/three/build/three.module.js",
+          "dat.gui": "../node_modules/dat.gui/build/dat.gui.module.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from 'three';
+      import ThreeBase from './ThreeBase.js';
+      import { initGeoFun, latlng2px } from './geoUtil.js';
+      import { drawCircle } from './heatmap.js';
+
+      class MyHeatmap extends ThreeBase {
+        constructor() {
+          super();
+          //   this.isAxis = true;
+          this.isStats = true;
+          this.initCameraPos = [0, 0, 10];
+        }
+
+        createChart(that) {
+          const geometry = new THREE.SphereGeometry(3, 32, 32);
+          const texture = new THREE.TextureLoader().load('assets/world.jpg');
+          texture.wrapS = THREE.RepeatWrapping;
+          texture.wrapT = THREE.RepeatWrapping;
+          const material = new THREE.MeshBasicMaterial({
+            map: texture
+          });
+
+          const texture1 = new THREE.TextureLoader().load('assets/earth.jpg');
+          texture1.wrapS = THREE.RepeatWrapping;
+          texture1.wrapT = THREE.RepeatWrapping;
+
+          {
+            const material = new THREE.ShaderMaterial({
+              uniforms: {
+                map: { value: texture1 },
+                earthMap: { value: texture },
+                uHeight: { value: 1 },
+                uMinLne: { value: 0.1 }
+              },
+              vertexShader: /* glsl */ `uniform sampler2D map;
+                            uniform float uHeight;
+                           varying float vH;
+                            varying vec2 v_texcoord;
+                void main(void)
+                {
+                  v_texcoord = uv;
+                  vec4 c=texture2D(map, uv);
+                float r= (c.r+c.g+c.b)/3.;
+                float h=r*uHeight ;
+                vH=h;
+                vec3 p=position+h*normal;
+                gl_Position = projectionMatrix * modelViewMatrix * vec4( p, 1.0 );
+                }`,
+              fragmentShader: /* glsl */ `precision mediump float; 
+              uniform float uMinLne;
+              
+               uniform sampler2D earthMap;
+               varying float vH;
+                varying vec2 v_texcoord;
+               
+                void main (void)
+                { vec4 color= texture2D(earthMap, v_texcoord);
+                  
+                  if(fract(vH*30.) <=uMinLne){
+                   gl_FragColor=vec4(1.0,1.0,1.,1.);
+            }else{
+            gl_FragColor=color;
+            }
+                }`
+            });
+            const sphere = new THREE.Mesh(geometry, material);
+            this.scene.add(sphere);
+          }
+        }
+      }
+
+      var heatmap = new MyHeatmap();
+      window.heatmap = heatmap;
+      heatmap.initThree(document.getElementById('canvas'));
+      heatmap.createChart();
+    </script>
+  </body>
+</html>

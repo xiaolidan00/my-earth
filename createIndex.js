@@ -28,7 +28,11 @@ const cfg = {
   'src/wind/windPic.html': '风场uv风向数据图片',
   'src/wind/wind.html': 'canvas贴图3D风场图',
   'src/wind/wind1.html': '平面3D风场图',
-  'src/wind/wind2.html': '地球3D风场图'
+  'src/wind/wind2.html': '地球3D风场图',
+  'src/ContourLine.html': '纯色3D等高线图',
+  'src/ContourLine1.html': '彩色3D等高线图',
+  'src/ContourLine2.html': '3D等高线图+热力图',
+  'src/ContourLine3.html': '3D断层阶梯热力图'
 };
 
 const list = [];

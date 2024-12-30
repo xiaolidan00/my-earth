@@ -143,3 +143,23 @@
 
 - [源码地址:src/wind/wind2.html](src/wind/wind2.html)
 - [预览效果](https://xiaolidan00.github.io/my-earth/src/wind/wind2.html)
+
+## 纯色3D等高线图
+
+- [源码地址:src/ContourLine.html](src/ContourLine.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/ContourLine.html)
+
+## 彩色3D等高线图
+
+- [源码地址:src/ContourLine1.html](src/ContourLine1.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/ContourLine1.html)
+
+## 3D等高线图+热力图
+
+- [源码地址:src/ContourLine2.html](src/ContourLine2.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/ContourLine2.html)
+
+## 3D断层阶梯热力图
+
+- [源码地址:src/ContourLine3.html](src/ContourLine3.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/ContourLine3.html)
