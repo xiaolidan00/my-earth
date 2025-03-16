@@ -40,6 +40,20 @@
         background: linear-gradient(to right bottom, transparent 50%, rgba(0, 255, 255, 0.3) 50%);
         transform: rotate(45deg);
       }
+      #zoom9,
+      #zoom16 {
+        display: block;
+        border: none;
+        background-color: dodgerblue;
+        color: white;
+        line-height: 32px;
+        padding: 0 10px;
+        margin: 10px;
+      }
+      #zoom9:hover,
+      #zoom16:hover {
+        filter: brightness(120%);
+      }
     </style>
     <script type="importmap">
       {
@@ -53,6 +67,10 @@
   </head>
   <body>
     <div id="mapContainer"></div>
+    <span style="position: fixed; top: 0; left: 0; z-index: 999; display: flex">
+      <button id="zoom9">zoom:9</button>
+      <button id="zoom16">zoom:16</button>
+    </span>
     <script type="module" src="map.js"></script>
   </body>
 </html>

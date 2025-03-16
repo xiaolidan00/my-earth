@@ -1,3 +1,4 @@
+import * as TWEEN from '../../node_modules/three/examples/jsm/libs/tween.module.js';
 const PI2 = 2 * Math.PI;
 class MyThreeAMap {
   constructor() {
@@ -19,17 +20,13 @@ class MyThreeAMap {
     this.img = img;
   }
   setView(c) {
-    this.map.setCenter(c.pos);
-    this.map.setZoom(c.zoom);
-    this.map.setPitch(c.pitch, true, 1000);
-    this.map.setRotation(c.rotate, true, 1000);
+    this.map.setCenter(c.center, true, 1000);
+    this.map.setZoom(c.zoom, true, 1000);
   }
   getView() {
     console.log({
       center: this.map.getCenter(),
-      zoom: this.map.getZoom(),
-      pitch: this.map.getPitch(),
-      rotate: this.map.getRotation()
+      zoom: this.map.getZoom()
     });
   }
   init(dom) {
@@ -89,6 +86,7 @@ class MyThreeAMap {
       for (let i = 0; i < result.countList.length; i += 1) {
         const item = result.countList[i];
         const center = result.centroids[item.idx];
+        //经纬度转换成像素坐标
         const pos = map.lngLatToContainer(center);
         //簇包含的数量
         const v = item.num;
@@ -131,6 +129,7 @@ class MyThreeAMap {
       this.showPoints = showPoints;
       for (let i = 0; i < this.data.length; i++) {
         const center = this.data[i];
+        //经纬度转换成像素坐标
         const pos = map.lngLatToContainer(center);
         //只绘制可视范围内的聚类点
         if (
@@ -295,8 +294,26 @@ class MyThreeAMap {
       }
     });
   }
-  animateAction() {}
+  zoom9() {
+    this.map.setZoomAndCenter(9, [113.121825, 23.021822], true);
+  }
+  zoom16() {
+    this.map.setZoomAndCenter(16, [113.121825, 23.021822], true);
+  }
+  sleep(time) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, time);
+    });
+  }
 }
 const myThreeMap = new MyThreeAMap();
 myThreeMap.init(document.getElementById('mapContainer'));
 window.ThreeMap = myThreeMap;
+document.getElementById('zoom9').onclick = () => {
+  myThreeMap.zoom9();
+};
+document.getElementById('zoom16').onclick = () => {
+  myThreeMap.zoom16();
+};
