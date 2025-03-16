@@ -32,7 +32,8 @@ const cfg = {
   'src/ContourLine.html': '纯色3D等高线图',
   'src/ContourLine1.html': '彩色3D等高线图',
   'src/ContourLine2.html': '3D等高线图+热力图',
-  'src/ContourLine3.html': '3D断层阶梯热力图'
+  'src/ContourLine3.html': '3D断层阶梯热力图',
+  'src/kmeans/map.html': '高德地图聚类分析'
 };
 
 const list = [];

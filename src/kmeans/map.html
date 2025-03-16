@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../node_modules/skmeans/dist/browser/skmeans.min.js"></script>
+    <script src="https://webapi.amap.com/maps?v=2.0&key=d994a78081a6847648e3faa54be6b74a"></script>
+    <style>
+      body,
+      #mapContainer {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+      }
+      .info-box {
+        width: 100px;
+        background-color: rgba(30, 144, 255, 0.5);
+        color: white;
+        line-height: 32px;
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 4px;
+        box-shadow: 0 0 10px #ccc;
+      }
+      .info-box-triangle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .info-box-triangle > span {
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        position: relative;
+        top: -5px;
+
+        background: linear-gradient(to right bottom, transparent 50%, rgba(0, 255, 255, 0.3) 50%);
+        transform: rotate(45deg);
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../../node_modules/three/build/three.module.js",
+          "three/addons/": "../../node_modules/three/examples/jsm/",
+          "tween": "../../node_modules/three/examples/jsm/libs/tween.module.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="mapContainer"></div>
+    <script type="module" src="map.js"></script>
+  </body>
+</html>
