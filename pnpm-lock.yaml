@@ -7,6 +7,9 @@ dependencies:
   dat.gui:
     specifier: ^0.7.9
     version: 0.7.9
+  skmeans:
+    specifier: ^0.11.3
+    version: 0.11.3
   three:
     specifier: ^0.161.0
     version: 0.161.0
@@ -59,6 +62,10 @@ packages:
     optionalDependencies:
       graceful-fs: 4.2.11
     dev: true
+
+  /skmeans@0.11.3:
+    resolution: {integrity: sha512-nccEnlSeOMNAYM9ETMSq+m15u8g0KRCIvH2an/ROTx4Igmci/j3oYHBPGdAeGjhR7knAVoIIQwr/wy2dN/eKQA==}
+    dev: false
 
   /three@0.161.0:
     resolution: {integrity: sha512-LC28VFtjbOyEu5b93K0bNRLw1rQlMJ85lilKsYj6dgTu+7i17W+JCCEbvrpmNHF1F3NAUqDSWq50UD7w9H2xQw==}

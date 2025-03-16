@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../node_modules/skmeans/dist/browser/skmeans.min.js"></script>
+  </head>
+  <body>
+    <script type="module">
+      /**https://www.jsdelivr.com/package/npm/skmeans
+                     * 计算数据上的单向和多维k-means聚类。参数如下：
+
+            - data要聚类的值的单维或多维数组。对于单向数据，采用简单数组[1,2,3…..，n]的形式。对于多维数据，需要一个NxM数组[[1,2]，[2,3]。。。。[n，m]]
+            - k集群数量
+            - 质心可选。初始质心值。如果没有提供，算法将尝试选择一个合适的算法。替代值可以是：
+            “kmrand”集群初始化将是随机的，但需要额外的检查，因此不会有两个相等的初始质心。
+            “kmpp”算法将使用k-means++聚类初始化方法。
+            迭代可选。最大迭代次数。如果没有提供，将设置为10000。
+            距离功能可选。自定义距离功能。将两点作为参数，并返回一个标量。
+            该函数将返回一个包含以下数据的对象：
+
+            - it算法收敛前执行的迭代次数
+            k集群大小
+            质心簇的每个质心的值
+            idxs数据数组中每个值对应的质心索引
+            测试新点成员资格的功能
+            **/
+      //全国粤菜分布情况 https://lbs.amap.com/demo/loca-v2/demos/cat-point/guangdong_cuisine
+      const data = [];
+      for (let i = 0; i < 3000; i++) {
+        data.push([Math.random() * 180, Math.random() * 90]);
+      }
+
+      const res1 = skmeans(data, 10, 'kmrand');
+      const res2 = skmeans(data, 10, 'kmpp');
+      console.log(res1, res2);
+    </script>
+  </body>
+</html>
