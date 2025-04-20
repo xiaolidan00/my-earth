@@ -33,7 +33,10 @@ const cfg = {
   'src/ContourLine1.html': '彩色3D等高线图',
   'src/ContourLine2.html': '3D等高线图+热力图',
   'src/ContourLine3.html': '3D断层阶梯热力图',
-  'src/kmeans/map.html': '高德地图聚类分析'
+  'src/kmeans/map.html': '高德地图聚类分析',
+  'src/areaBar/areaCanvas.html': '行政区卫星贴图',
+  'src/areaBar/areaCanvasTest.html': '行政区卫星贴图在高德3D地图',
+  'src/areaBar/areaBar.html': '动态卫星贴图行政区块和递增柱体'
 };
 
 const list = [];

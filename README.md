@@ -168,3 +168,18 @@
 
 - [源码地址:src/kmeans/map.html](src/kmeans/map.html)
 - [预览效果](https://xiaolidan00.github.io/my-earth/src/kmeans/map.html)
+
+## 行政区卫星贴图
+
+- [源码地址:src/areaBar/areaCanvas.html](src/areaBar/areaCanvas.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/areaBar/areaCanvas.html)
+
+## 行政区卫星贴图在高德3D地图
+
+- [源码地址:src/areaBar/areaCanvasTest.html](src/areaBar/areaCanvasTest.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/areaBar/areaCanvasTest.html)
+
+## 动态卫星贴图行政区块和递增柱体
+
+- [源码地址:src/areaBar/areaBar.html](src/areaBar/areaBar.html)
+- [预览效果](https://xiaolidan00.github.io/my-earth/src/areaBar/areaBar.html)

@@ -7,8 +7,11 @@ import Stats from 'three/addons/libs/stats.module.js';
 export default class ThreeAMapBase {
   constructor() {
     this.isStats = false;
-
+    this.zoom = 4.5;
+    this.pitch = 0;
     this.center = [101.8, 39];
+
+    this.mapConfig = {};
   }
 
   createChart() {}
@@ -39,10 +42,9 @@ export default class ThreeAMapBase {
     this.map = new AMap.Map(this.container, {
       //缩放范围
       zooms: [2, 20],
-      zoom: 4.5,
+      zoom: this.zoom,
       //倾斜角度
-      pitch: 0,
-      // pitch: 68,
+      pitch: this.pitch,
       // rotation: 24,
       //隐藏标签
       showLabel: false,
@@ -51,7 +53,8 @@ export default class ThreeAMapBase {
       //初始化地图中心点
       center: this.center,
       //暗色风格
-      mapStyle: 'amap://styles/dark'
+      mapStyle: 'amap://styles/dark',
+      ...this.mapConfig
     });
 
     // 数据转换工具
