@@ -23,10 +23,10 @@
       }
     </script>
     <script type="module">
-      import * as THREE from 'three';
-      import ThreeBase from './ThreeBase.js';
+      import * as THREE from "three";
+      import ThreeBase from "./ThreeBase.js";
 
-      import * as BufferGeometryUtils from 'three/addons/BufferGeometryUtils.js';
+      import * as BufferGeometryUtils from "three/addons/BufferGeometryUtils.js";
       class MyEarth extends ThreeBase {
         constructor() {
           super();
@@ -51,15 +51,15 @@
               ctx.fill();
               ctx.stroke();
             }
-            fetch('../node_modules/@surbowl/world-geo-json-zh/world.zh.json')
+            fetch("../node_modules/@surbowl/world-geo-json-zh/world.zh.json")
               .then((res) => res.json())
               .then((geojson) => {
-                let canvas = document.createElement('canvas');
+                let canvas = document.createElement("canvas");
 
                 canvas.width = 3600;
                 canvas.height = 1800;
 
-                let ctx = canvas.getContext('2d');
+                let ctx = canvas.getContext("2d");
                 ctx.fillStyle = that.bg;
                 ctx.rect(0, 0, canvas.width, canvas.height);
                 ctx.fill();
@@ -74,7 +74,7 @@
                 }
 
                 geojson.features.forEach((a) => {
-                  if (a.geometry.type == 'MultiPolygon') {
+                  if (a.geometry.type == "MultiPolygon") {
                     a.geometry.coordinates.forEach((b) => {
                       b.forEach((c) => {
                         drawRegion(ctx, c);
@@ -98,25 +98,21 @@
 
           const hue = THREE.MathUtils.lerp(this.that.barHueStart, this.that.barHueEnd, amount);
           const saturation = 1;
-          const lightness = THREE.MathUtils.lerp(
-            this.that.barLightStart,
-            this.that.barLightEnd,
-            amount
-          );
+          const lightness = THREE.MathUtils.lerp(this.that.barLightStart, this.that.barLightEnd, amount);
           const color = new THREE.Color();
           color.setHSL(hue, saturation, lightness);
 
           const geometry = new THREE.BoxGeometry(1, 1, 1);
 
           const rgb = color.toArray().map((v) => v * 255);
-          const colors = new Uint8Array(3 * geometry.getAttribute('position').count);
+          const colors = new Uint8Array(3 * geometry.getAttribute("position").count);
 
           // 将颜色复制到每个顶点的颜色数组中
           colors.forEach((v, ndx) => {
             colors[ndx] = rgb[ndx % 3];
           });
 
-          geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3, true));
+          geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3, true));
 
           lonHelper.rotation.y = THREE.MathUtils.degToRad(lon) + Math.PI * 0.5;
           latHelper.rotation.x = THREE.MathUtils.degToRad(-lat);
@@ -138,8 +134,10 @@
             const map = new THREE.CanvasTexture(canvas);
             map.wrapS = THREE.RepeatWrapping;
             map.wrapT = THREE.RepeatWrapping;
+            map.magFilter = THREE.NearestFilter;
+            map.minFilter = THREE.NearestFilter;
             const geometry = new THREE.SphereGeometry(1, 32, 32);
-            const material = new THREE.MeshBasicMaterial({ map: map, transparent: true });
+            const material = new THREE.MeshBasicMaterial({map: map, transparent: true});
             const sphere = new THREE.Mesh(geometry, material);
             this.scene.add(sphere);
             const lonHelper = new THREE.Object3D();
@@ -163,7 +161,7 @@
             // make it so it scales away from the positive Z axis
 
             this.geometries = [];
-            fetch('./earthquake.json')
+            fetch("./earthquake.json")
               .then((res) => res.json())
               .then((res) => {
                 res.forEach((a) => {
@@ -202,7 +200,7 @@
 
       var myEarth = new MyEarth();
       window.myEarth = myEarth;
-      myEarth.initThree(document.getElementById('canvas'));
+      myEarth.initThree(document.getElementById("canvas"));
       myEarth.createChart({
         // bg: 'rgb(10 ,20 ,28)',
         // borderColor: 'rgb(10 ,20 ,28)',
@@ -211,12 +209,12 @@
         // blurWidth: 0,
         // fillColor: 'rgb(26, 35, 44)',
 
-        bg: '#000080',
-        borderColor: '#1E90FF',
-        blurColor: '#1E90FF',
+        bg: "#000080",
+        borderColor: "#1E90FF",
+        blurColor: "#1E90FF",
         borderWidth: 1,
         blurWidth: 5,
-        fillColor: 'rgb(30 ,144 ,255,0.3)',
+        fillColor: "rgb(30 ,144 ,255,0.3)",
 
         barHueStart: 0.2,
         barHueEnd: 0.5,
