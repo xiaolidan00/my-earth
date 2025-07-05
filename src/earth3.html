@@ -23,9 +23,9 @@
       }
     </script>
     <script type="module">
-      import * as THREE from 'three';
-      import ThreeBase from './ThreeBase.js';
-      import * as TWEEN from 'tween';
+      import * as THREE from "three";
+      import ThreeBase from "./ThreeBase.js";
+      import * as TWEEN from "tween";
       class MyEarth extends ThreeBase {
         constructor() {
           super();
@@ -56,15 +56,15 @@
               ctx.fill();
               ctx.stroke();
             }
-            fetch('../node_modules/@surbowl/world-geo-json-zh/world.zh.json')
+            fetch("../node_modules/@surbowl/world-geo-json-zh/world.zh.json")
               .then((res) => res.json())
               .then((geojson) => {
-                let canvas = document.createElement('canvas');
+                let canvas = document.createElement("canvas");
 
                 canvas.width = 3600;
                 canvas.height = 1800;
 
-                let ctx = canvas.getContext('2d');
+                let ctx = canvas.getContext("2d");
                 ctx.fillStyle = that.bg;
                 ctx.rect(0, 0, canvas.width, canvas.height);
                 ctx.fill();
@@ -79,7 +79,7 @@
                 }
 
                 geojson.features.forEach((a) => {
-                  if (a.geometry.type == 'MultiPolygon') {
+                  if (a.geometry.type == "MultiPolygon") {
                     a.geometry.coordinates.forEach((b) => {
                       b.forEach((c) => {
                         drawRegion(ctx, c);
@@ -97,16 +97,12 @@
         }
 
         addBar(i, lon, lat, value) {
-          const { lonHelper, latHelper, positionHelper, originHelper } = this;
+          const {lonHelper, latHelper, positionHelper, originHelper} = this;
           const amount = (value - this.min) / this.range;
 
           const hue = THREE.MathUtils.lerp(this.that.barHueStart, this.that.barHueEnd, amount);
           const saturation = 1;
-          const lightness = THREE.MathUtils.lerp(
-            this.that.barLightStart,
-            this.that.barLightEnd,
-            amount
-          );
+          const lightness = THREE.MathUtils.lerp(this.that.barLightStart, this.that.barLightEnd, amount);
           const color = new THREE.Color();
           color.setHSL(hue, saturation, lightness);
           this.mesh.setColorAt(i, color);
@@ -132,8 +128,10 @@
             const map = new THREE.CanvasTexture(canvas);
             map.wrapS = THREE.RepeatWrapping;
             map.wrapT = THREE.RepeatWrapping;
+            map.magFilter = THREE.NearestFilter;
+            map.minFilter = THREE.NearestFilter;
             const geometry = new THREE.SphereGeometry(1, 32, 32);
-            const material = new THREE.MeshBasicMaterial({ map: map, transparent: true });
+            const material = new THREE.MeshBasicMaterial({map: map, transparent: true});
             const sphere = new THREE.Mesh(geometry, material);
             sphere.visible = false;
             this.objGroup.add(sphere);
@@ -155,8 +153,8 @@
             this.max = Number.MIN_SAFE_INTEGER;
             this.boxGeometry = new THREE.BoxGeometry(1, 1, 1);
 
-            this.boxMaterial = new THREE.MeshBasicMaterial({ color: '#FFFFFF' });
-            fetch('./earthquake.json')
+            this.boxMaterial = new THREE.MeshBasicMaterial({color: "#FFFFFF"});
+            fetch("./earthquake.json")
               .then((res) => res.json())
               .then((res) => {
                 res.forEach((a) => {
@@ -176,7 +174,7 @@
                 sphere.visible = true;
                 let orgCamera = this.camera.position;
                 let orgControl = this.controls.target;
-                const { cameraPos, controlPos } = this.that;
+                const {cameraPos, controlPos} = this.that;
                 let tween = new TWEEN.Tween({
                   scale: 0.1,
                   rotate: 0,
@@ -208,8 +206,8 @@
                     this.controls.target.set(obj.controlsX, obj.controlsY, obj.controlsZ);
                   })
                   .chain(
-                    new TWEEN.Tween({ h: this.barMin })
-                      .to({ h: this.barMax }, 2000)
+                    new TWEEN.Tween({h: this.barMin})
+                      .to({h: this.barMax}, 2000)
                       .easing(TWEEN.Easing.Quadratic.Out)
                       .onUpdate((obj) => {
                         this.currentBarH = obj.h;
@@ -232,14 +230,14 @@
 
       var myEarth = new MyEarth();
       window.myEarth = myEarth;
-      myEarth.initThree(document.getElementById('canvas'));
+      myEarth.initThree(document.getElementById("canvas"));
       myEarth.createChart({
-        bg: 'rgb(10 ,20 ,28)',
-        borderColor: 'rgb(10 ,20 ,28)',
-        blurColor: '#000000',
+        bg: "rgb(10 ,20 ,28)",
+        borderColor: "rgb(10 ,20 ,28)",
+        blurColor: "#000000",
         borderWidth: 2,
         blurWidth: 0,
-        fillColor: 'rgb(26, 35, 44)',
+        fillColor: "rgb(26, 35, 44)",
 
         // bg: '#000080',
         // borderColor: '#1E90FF',
