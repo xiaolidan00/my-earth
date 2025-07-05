@@ -58,7 +58,9 @@
           //创建平面
           const geometry = new THREE.PlaneGeometry(w, h);
           const tex = new THREE.CanvasTexture(canvas);
-          tex.minFilter = THREE.LinearMipmapNearestFilter;
+          //像素采样取最接近颜色
+          tex.minFilter = THREE.NearestFilter;
+          tex.magFilter = THREE.NearestFilter;
           //将行政区卫星贴图作为材质贴图，开启透明
           const material = new THREE.MeshBasicMaterial({
             map: tex,
@@ -74,7 +76,7 @@
         }
         async createChart() {
           const geojson = await loadGeojson(this.adcode);
-          const { canvas, bound: b } = await createAreaCanvas(geojson, this.zoom);
+          const { canvas, bound: b } = await createAreaCanvas(geojson, this.zoom + 1);
 
           const { plane, center } = this.createPlane(canvas, b);
           //将地图定位到中心点

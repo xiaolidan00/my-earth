@@ -205,7 +205,9 @@ export default class MyThreeAMap {
     const geometry = new THREE.PlaneGeometry(w, h);
     //将行政区卫星贴图作为材质贴图，开启透明
     const tex = new THREE.CanvasTexture(canvas);
-    tex.minFilter = THREE.LinearMipmapNearestFilter;
+    //像素采样取最接近颜色
+    tex.minFilter = THREE.NearestFilter;
+    tex.magFilter = THREE.NearestFilter;
     const material = new THREE.MeshStandardMaterial({
       map: tex,
       transparent: true,
@@ -239,9 +241,9 @@ export default class MyThreeAMap {
       this.map.setCenter(center);
       this.viewCenter = center;
       //获取2D墨卡托像素范围
-      const { width: w, height: h } = getBoundOrigin(bound, this.zoom);
+      const { width: w, height: h } = getBoundOrigin(bound, this.zoom + 1);
       //绘制宽高最大值两倍大小的卫星底图canvas
-      const { canvas, bounds } = await drawRectLayer(center, this.zoom, Math.max(w, h) * 2);
+      const { canvas, bounds } = await drawRectLayer(center, this.zoom + 1, Math.max(w, h) * 2);
       //添加卫星底图平面
       const { plane: ground, material: gMat } = this.createPlane(canvas, bounds);
       this.ground = ground;
